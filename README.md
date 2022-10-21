@@ -1,5 +1,7 @@
-# FRONT Projekt
+FRONT Projekt
 
+Repository für unser Semesterprojekt in dem Modul Frontend Development an der FHGR.
+Autorinnen: Yara Wagner, Anna Staub, Morena Sager
 
 
 ## Getting started
