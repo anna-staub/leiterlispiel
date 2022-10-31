@@ -1,13 +1,22 @@
 # Leiterlispiel FRONT Projekt 
 
-Repository für unser Projekt in dem Modul Frontend Development an der FHGR. <br>
-Autorinnen: Yara Wagner, Anna Staub, Morena Sager <br>
+Repository für unser Projekt in dem Modul Frontend Development an der FHGR.<br>
+Autorinnen: Yara Wagner, Anna Staub, Morena Sager<br>
 Zeitraum: HS22 + FS23
 
 ## Projektidee
+
 Wir verfolgen das Ziel, ein «Leiterlispiel» zu programmieren. Das Spielfeld soll aus nummerierten Feldern von 1 – XX bestehen (die genaue Anzahl ist von unserem Design abhängig), die in dieser Reihenfolge abgefahren werden, wobei das letzte Feld gleichzeitig das Zielfeld ist. Dabei werden die nummerierten Spielfelder mit Leitern (oder auch anderen Elementen) verbunden, die man je nachdem hochklettern kann, um den Weg abzukürzen, oder runterklettern muss, um somit einen Teil des Weges erneut zurückzulegen. Feld 1, oder alternativ ein zusätzliches Feld ausserhalb des eigentlichen Spielfeldes, markiert die Startposition. Mit einem Würfel wird bestimmt, wie weit die Spielfigur fahren darf. Würfelt man die Zahl sechs, darf man erneut würfeln. Um ins Ziel zu kommen, muss man genau die Zahl würfeln, die man benötigt, um ins Ziel zu gelangen. Würfelt man eine höhere Zahl als man benötigt, muss man mit der Spielfigur die übrig gebliebenen Punkte rückwärtsfahren. 
 
 
+## Projektmanagement
+
+Die Planung des Projektes ist im Ordner Promg einsehbar.<br>
+Dazu gehört:
+
+- Projektstrukturplan (PSP)
+- Zeitbudget
+- Zeitplan und Meilensteinplanung
 
 
 
