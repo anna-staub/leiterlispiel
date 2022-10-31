@@ -1,47 +1,18 @@
-# FRONT Projekt
+# Leiterlispiel FRONT Projekt 
 
-Repository für unser Semesterprojekt in dem Modul Frontend Development an der FHGR.
-Autorinnen: Yara Wagner, Anna Staub, Morena Sager
+Repository für unser Projekt in dem Modul Frontend Development an der FHGR. <br>
+Autorinnen: Yara Wagner, Anna Staub, Morena Sager <br>
+Zeitraum: HS22 + FS23
+
+## Projektidee
+Wir verfolgen das Ziel, ein «Leiterlispiel» zu programmieren. Das Spielfeld soll aus nummerierten Feldern von 1 – XX bestehen (die genaue Anzahl ist von unserem Design abhängig), die in dieser Reihenfolge abgefahren werden, wobei das letzte Feld gleichzeitig das Zielfeld ist. Dabei werden die nummerierten Spielfelder mit Leitern (oder auch anderen Elementen) verbunden, die man je nachdem hochklettern kann, um den Weg abzukürzen, oder runterklettern muss, um somit einen Teil des Weges erneut zurückzulegen. Feld 1, oder alternativ ein zusätzliches Feld ausserhalb des eigentlichen Spielfeldes, markiert die Startposition. Mit einem Würfel wird bestimmt, wie weit die Spielfigur fahren darf. Würfelt man die Zahl sechs, darf man erneut würfeln. Um ins Ziel zu kommen, muss man genau die Zahl würfeln, die man benötigt, um ins Ziel zu gelangen. Würfelt man eine höhere Zahl als man benötigt, muss man mit der Spielfigur die übrig gebliebenen Punkte rückwärtsfahren. 
 
 
 
 
-## Add your files
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/yxaw/front-projekt.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.com/yxaw/front-projekt/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
+<!--
 # Editing this README
 
 When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
@@ -88,3 +59,4 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+-->
