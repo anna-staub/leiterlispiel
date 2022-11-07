@@ -19,14 +19,14 @@ Dazu gehört:
 - Zeitbudget
 - Zeitplan und Meilensteinplanung
 
-Kommunikation im Team findet über Signal und Webex statt, Kommunikation mit den Dozierenden über E-Mail.S<br>
+Kommunikation im Team findet über Signal und Webex statt, Kommunikation mit den Dozierenden über E-Mail.<br>
 Der in den PDF-Files aktuelle Stand ist verbindlich, Änderungen müssen den Dozierenden mitgeteilt werden. 
 
 ## Branch-Management 
 
 ### main
 
-Master, funktionierende Zustände 
+Master, enthält funktionierende Zustände des Projekts <br>
 Der Ordner documents beinhaltet zugehörige Dokumentationen
 
 ### abgabe-prototyp
