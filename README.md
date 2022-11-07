@@ -18,6 +18,23 @@ Dazu gehört:
 - Zeitbudget
 - Zeitplan und Meilensteinplanung
 
+## Branch-Management 
+
+### main
+Master, funktionierende Zustände 
+
+### abgabe-prototyp
+
+Branch zur Abgabe des Prototyps und allen zugehörigen assets. 
+
+### abgabe-projekt
+
+Branch zur Abgabe des fertigen Projekts mit allen zugehörigen assets am Ende des FS22
+- HTML
+- CSS
+- ....
+
+
 
 
 
