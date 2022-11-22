@@ -1,6 +1,6 @@
 # Leiterlispiel FRONT Projekt 
 
-Repository für unser Projekt in dem Modul Frontend Development an der FHGR.<br>
+Repository für unser Projekt im Modul Frontend Development an der FHGR.<br>
 Autorinnen: Yara Wagner, Anna Staub, Morena Sager<br>
 Dozierende: Marc Iten, Elham Müller<br>
 Zeitraum: HS22 + FS23<br>
@@ -12,14 +12,13 @@ Wir verfolgen das Ziel, ein «Leiterlispiel» zu programmieren. Das Spielfeld so
 
 ## Projektmanagement
 
-Die Planung des Projektes ist im Ordner Promg einsehbar.<br>  <!-- in main mergen wenn promg auf aktuellem Zustand und readme anpassen -->
+Die Planung des Projektes ist im Ordner documents einsehbar.<br>
 Dazu gehört:
 
 - Projektstrukturplan (PSP)
-- Zeitbudget
-- Zeitplan und Meilensteinplanung
+- Zeitbudget, Zeitplan und Meilensteinplanung
 
-Kommunikation im Team findet über Signal und Webex statt, Kommunikation mit den Dozierenden über E-Mail.<br>
+Die Kommunikation im Team findet über Signal und Webex statt, die Kommunikation mit den Dozierenden über E-Mail.<br>
 Der in den PDF-Files aktuelle Stand ist verbindlich, Änderungen müssen den Dozierenden mitgeteilt werden. 
 
 ## Branch-Management 
