@@ -26,7 +26,7 @@ Der in den PDF-Files aktuelle Stand ist verbindlich, Änderungen müssen den Doz
 
 ### main
 
-Master, enthält funktionierende Zustände des Projektsgit a <br>
+Master, enthält funktionierende Zustände des Projekts <br>
 Der Ordner documents beinhaltet zugehörige Dokumentationen
 
 ### abgabe-prototyp
