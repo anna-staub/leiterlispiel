@@ -41,8 +41,9 @@ Branch zur Abgabe des fertigen Projekts mit allen zugehörigen assets am Ende de
 work-in-progress 
 
 
-<!-- ## Coding guidelines
-sep datei oder im Readme? -->
+## Coding guidelines
+Public Variablen werden in camelCase geschrieben.
+Private Variablen werden in PascalCase geschrieben.
 
 
 
