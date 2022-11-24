@@ -1,0 +1,22 @@
+main {
+    width: 90vw;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+/* Spielbrett */
+#board {
+    display: grid; 
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+    margin-top: 1em;
+}
+/* Spielfelder */
+#board div {
+    position: relative;
+    display: block;
+    aspect-ratio: 1/1;
+    background-color: white;
+    cursor: pointer;
+    border: solid black 1px;
+}
