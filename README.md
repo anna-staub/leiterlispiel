@@ -42,8 +42,8 @@ work-in-progress
 
 
 ## Coding guidelines
-Public Variablen werden in camelCase geschrieben.
-Private Variablen werden in PascalCase geschrieben.
+Public Variablen werden in PascalCase geschrieben.
+Private Variablen werden in camellCase geschrieben.
 
 
 
