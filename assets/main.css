@@ -43,7 +43,10 @@ main {
     position: relative;
     display: block;
     aspect-ratio: 1/1;
-    background-color: white;
     cursor: pointer;
     border: solid black 1px;
+}
+
+#feld0 {
+    background-color: green;
 }
