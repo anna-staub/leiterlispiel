@@ -28,13 +28,16 @@ class Feld {
     this.#id = 'feld'+id;
     this.#feldtext = id;
     // ID-Attribut auf div-Element setzen
+    // alle Felder die nicht Start oder Ziel sind
     this.#domElement.setAttribute('id', this.#id);
     if (id != 0 && id != 99) {
       this.#domElement.textContent = this.#feldtext;
     }
+    // Startfeld 
     else if (id === 0) {
       this.#domElement.textContent = 'Start';
     }
+    // Zielfeld 
     else if (id === 99) {
       this.#domElement.textContent = 'Ziel';
     }
@@ -48,6 +51,7 @@ class Feld {
       // Leiter verwenden
 }
 
+// Klasse Leiterfeld mit Vererbung instanzieren
 class Leiterfeld extends Feld {
   #zielfeld = '';
 
@@ -104,11 +108,12 @@ class Spielfeld {
 
   // Zug ausführen
   // Würfeln
-  /*  wuerfeln() {
-        return Math.ceil(Math.random() *6) 
-      } */
-      
+  /*wuerfeln() {
+    return Math.ceil(Math.random() *6) 
+      }
+      */
     //evtl noch anpassen 
+
       // erneut Würfeln
       // wenn 6 ausgegeben wird 
   // Spielfigur bewegen
