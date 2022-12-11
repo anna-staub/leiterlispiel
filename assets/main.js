@@ -32,6 +32,12 @@ class Feld {
     if (id != 0 && id != 99) {
       this.#domElement.textContent = this.#feldtext;
     }
+    else if (id === 0) {
+      this.#domElement.textContent = 'Start';
+    }
+    else if (id === 99) {
+      this.#domElement.textContent = 'Ziel';
+    }
   }
 
   AddToBoard(board) {
