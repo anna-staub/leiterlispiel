@@ -8,7 +8,8 @@ Zeitraum: HS22 + FS23<br>
 
 ## Projektidee
 
-Wir verfolgen das Ziel, ein «Leiterlispiel» zu programmieren. Das Spielfeld soll aus nummerierten Feldern von 1 – XX bestehen (die genaue Anzahl ist von unserem Design abhängig), die in dieser Reihenfolge abgefahren werden, wobei das letzte Feld gleichzeitig das Zielfeld ist. Dabei werden die nummerierten Spielfelder mit Leitern (oder auch anderen Elementen) verbunden, die man je nachdem hochklettern kann, um den Weg abzukürzen, oder runterklettern muss, um somit einen Teil des Weges erneut zurückzulegen. Feld 1, oder alternativ ein zusätzliches Feld ausserhalb des eigentlichen Spielfeldes, markiert die Startposition. Mit einem Würfel wird bestimmt, wie weit die Spielfigur fahren darf. Würfelt man die Zahl sechs, darf man erneut würfeln. Um ins Ziel zu kommen, muss man genau die Zahl würfeln, die man benötigt, um ins Ziel zu gelangen. Würfelt man eine höhere Zahl als man benötigt, muss man mit der Spielfigur die übrig gebliebenen Punkte rückwärtsfahren. 
+Wir verfolgen das Ziel, ein Leiterspiel zu programmieren. Das Spielfeld soll aus hundert Feldern bestehen. Dabei ist das erste Feld gleichzeitig auch das Startfeld und das letzte Feld das Zielfeld. Im Spiel sind die nummerierten Spielfelder mit Leitern verbunden, die man je nachdem hochklettern kann, um den Weg abzukürzen, oder runterklettern muss, um somit einen Teil des Weges erneut zurückzulegen. Mit einem 
+sechsseitigen Würfel wird bestimmt, wie weit die Spielfigur fahren darf. Würfelt man die Zahl sechs, darf man einen zusätzlichen Zug ausführen. Der Spieler, der als erstes das Zielfeld erreicht oder darüber hinaus fährt, gewinnt.
 
 ## Projektmanagement
 
@@ -42,9 +43,10 @@ work-in-progress
 
 
 ## Coding guidelines
-Public Variablen werden in PascalCase geschrieben.
-Private Variablen werden in camelCase geschrieben.
-Konstanten werden in Grossbuchstaben geschrieben.
+Bezeichnungen werden deutsch geschrieben. <br>
+Public Variablen werden in PascalCase geschrieben. <br>
+Private Variablen werden in camelCase geschrieben. <br>
+Konstanten werden in Grossbuchstaben geschrieben. <br>
 Strings werden in single quotes geschrieben.
 
 
