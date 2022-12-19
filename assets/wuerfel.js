@@ -3,6 +3,8 @@
 // Ich bin nicht sicher, ob die Würfel-Funktion direkt dem Spieler als Methode gegeben werden sollte?
 // Ich glaube auf jeden Fall, wir sollten nicht alle Funktionalitäten in ein Objekt Spielfeld packen.
 
+//event-Listener bei click auf Würfel-Feld gehört wo hin?
+
 
 class Wuerfel{
     constructor(augenzahl) {
