@@ -13,10 +13,18 @@ body > header h1 {
 
 main {
     width: 90vw;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 1em auto;
 }
 
+/* Sektion mit Spielfeld und Würfelfeld*/
+#game_area{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+/* Spieleranzeige */
 #player {
     font-size: 1em;
 }
@@ -33,6 +41,7 @@ main {
 
 /* Spielbrett */
 #board {
+    width: 80%;
     display: grid; 
     grid-template-columns: repeat(10, 1fr);
     gap: 6px;
@@ -49,4 +58,24 @@ main {
 
 #feld0 {
     background-color: green;
+}
+
+/* Wuerfelfeld */
+#wuerfelfeld {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid black 1px;
+}
+#wuerfelfeld :hover{
+    cursor: pointer;
+}
+#wuerfelbutton{
+    padding: 5px;
+    border: solid black 1px;
+    border-radius: 5%;
+    margin-top: 10%;
 }

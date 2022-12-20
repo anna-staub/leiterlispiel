@@ -14,9 +14,16 @@
         <main>
             <p>Willkommen beim Leiterlispiel</p>
             <p>An der Reihe ist: <span id="player"></span></p>
-            <!-- Spielbrett mit Spielfeldern -->
-            <div id="board">
-            </div>
+            <!-- Sektion mit Spielfeld und Würfelfeld -->
+            <section id="game_area">
+                <!-- Spielbrett mit Spielfeldern -->
+                <div id="board"></div>
+                <!-- Würfelfeld -->
+                <div id ="wuerfelfeld">
+                    <div id="wuerfelanzeige">(Gewürfelte Zahl)</div>
+                    <div id="wuerfelbutton">Würfeln</div>
+                </div>
+            </section>
         </main>
     <script src="assets/spielfeld.js"></script>
     <script src="assets/feld.js"></script>
