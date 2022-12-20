@@ -7,24 +7,35 @@
         <title></title>
     </head>
     <body>
-        <header>
-            <h1>Leiterlispiel</h1>
-        </header>
+        <!-- Meldung, die angezeigt wird unter minimaler Bildschirmbreite-->
+        <div id="smallscreen">
+            <h1>Oh no...</h1>
+            <p>Dein Browserfenster ist zu klein! Um das Spiel zu spielen, vergrössere es bitte auf mindestens 789 Pixel in der Breite!</p>
+        </div>
 
-        <main>
-            <p>Willkommen beim Leiterlispiel</p>
-            <p>An der Reihe ist: <span id="player"></span></p>
-            <!-- Sektion mit Spielfeld und Würfelfeld -->
-            <section id="game_area">
-                <!-- Spielbrett mit Spielfeldern -->
-                <div id="board"></div>
-                <!-- Würfelfeld -->
-                <div id ="wuerfelfeld">
-                    <div id="wuerfelanzeige">(Gewürfelte Zahl)</div>
-                    <div id="wuerfelbutton">Würfeln</div>
-                </div>
-            </section>
-        </main>
+        <!-- Spiel, welches angezeigt wird ab minimaler Bildschirmbreite -->
+        <div id="spiel">
+            <header>
+                <h1>Leiterlispiel</h1>
+            </header>
+
+            <main>
+                <p>Willkommen beim Leiterlispiel</p>
+                <p>An der Reihe ist: <span id="player"></span></p>
+                <!-- Sektion mit Spielfeld und Würfelfeld -->
+                <section id="game_area">
+                    <!-- Spielbrett mit Spielfeldern -->
+                    <div id="board"></div>
+                    <!-- Würfelfeld -->
+                    <div id ="wuerfelfeld">
+                        <div id="wuerfelanzeige">(Gewürfelte Zahl)</div>
+                        <div id="wuerfelbutton">Würfeln</div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+
     <script src="assets/spielfeld.js"></script>
     <script src="assets/feld.js"></script>
     <script src="assets/spieler.js"></script>

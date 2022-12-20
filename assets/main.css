@@ -1,12 +1,22 @@
 @import "https://unpkg.com/open-props";
 @import "https://unpkg.com/open-props/normalize.min.css";
 
-body > header {
+/* Ab minimaler Bildschirmbreite */
+@media (min-width:780px) {
+
+#smallscreen{
+    display: none;
+}
+#spiel{
+    display: block;
+}
+
+body > #spiel > header {
     padding: 1em;
     border-bottom: 1px solid var(--yellow-4);
 }
 
-body > header h1 {
+body > #spiel > header h1 {
     max-width: 600px;
     margin: auto;
 }
@@ -16,6 +26,7 @@ main {
     max-width: 1000px;
     margin: 1em auto;
 }
+
 
 /* Sektion mit Spielfeld und Würfelfeld*/
 #game_area{
@@ -64,6 +75,7 @@ main {
 #wuerfelfeld {
     display: flex;
     flex-direction: column;
+    margin: 0 6px;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -79,3 +91,17 @@ main {
     border-radius: 5%;
     margin-top: 10%;
 }
+
+
+}
+
+/* Unter minimaler Bildschirmbreite */
+@media (max-width:780px) {
+    #smallscreen{
+        display: block;
+    }
+    #spiel{
+        display: none;
+    }
+    
+    }
