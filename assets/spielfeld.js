@@ -13,13 +13,17 @@ class Spielfeld {
     // Spielfeld-Instanz erstellen
     constructor() {
       for (let i = 99; i>-1; i--) {
+        let j=i
+        if (Math.floor(i/10) % 2 === 0) {
+        j = Math.floor(i / 10) * 10 + (9 - i % 10);
+        } 
         let feld = null;
-        let konfig = SPIELFELD_LEITERKONFIG.find(konfig => konfig.id = i);
+        let konfig = SPIELFELD_LEITERKONFIG.find(konfig => konfig.id = j);
         let feldId;
         if (konfig) {
-          feld = new Leiterfeld(this, i, konfig.zielfeld);
+          feld = new Leiterfeld(this, j, konfig.zielfeld);
         } else {
-          feld = new Feld(this, i);
+          feld = new Feld(this, j);
         }
         this.#felderArray.push(feld);
         // DOM-Element (Felder) dem Spielfeld hinzufügen
@@ -29,10 +33,7 @@ class Spielfeld {
   
     // Zug ausführen
     // Würfeln
-    /*wuerfeln() {
-      return Math.ceil(Math.random() *6) 
-        }
-        */
+    
       //evtl noch anpassen 
   
         // erneut Würfeln
