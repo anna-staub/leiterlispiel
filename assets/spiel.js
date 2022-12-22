@@ -6,3 +6,9 @@ class Spiel {
   }
   
   new Spiel();
+
+
+  /* macht das Sinn, diese Instanzen privat zu erstellen? 
+  entweder einen getter einbauen, damit die Instanz gelesen werden kann
+  oder public. So kann man für den Spielerwechsel nicht auf die Instanz zugreifen
+  */

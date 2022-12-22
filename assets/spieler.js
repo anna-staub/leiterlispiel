@@ -8,7 +8,9 @@ class Spieler {
     GetFeld() {
       return this.#feld;
     }
+    
 
+    //Startspieler setzen
     // aktuelles Feld ermitteln
     // Zug ausführen
         // Würfeln
@@ -23,6 +25,9 @@ class Spieler {
         // Würfelergebnis auf 6 prüfen
             // Würfeln
             // ...
+
+
+
     // Zug beenden
     zugBeenden() {
         this.changePlayer();
@@ -37,3 +42,8 @@ class Spieler {
         this.#domElementAktuellerSpieler.className = this.CurrentPlayer;
       }
   }
+
+  //noch alle Bezeichnungen anpassen, dass sie deutsch geschrieben sind
+
+
+  

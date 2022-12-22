@@ -31,6 +31,9 @@ class Spielfeld {
       }
     }
   
+
+/*   das haben wir gesagt, macht der Spieler, oder?
+
     // Zug ausführen
     // Würfeln
     
@@ -57,5 +60,5 @@ class Spielfeld {
       //Sieg feststellen / mitteilen
   
     // Spiel beenden / zurücksetzen
-  
+   */
   }
