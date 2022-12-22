@@ -19,6 +19,11 @@ class Wuerfel{
         if (wuerfelergebnis < 6) {
             return wuerfelergebnis;
         }
+/* Ich glaube das dürfen wir nicht im Würfel integrieren
+sondern der Spieler braucht vor zugBeenden eine Funktion die das 
+Würfelergebnis nochmals überprüft und wenn es eine 6 war, wird einfach der ganze
+Spielzug nochmals ausgeführt
+
 
         // Falls das Würfelergebnis 6 ist
         else if (wuerfelergebnis === 6) {
@@ -26,6 +31,8 @@ class Wuerfel{
             console.log("Sie dürfen noch einmal!")
             return this.wuerfeln();
         }
+*/
+
     }
   };
   
