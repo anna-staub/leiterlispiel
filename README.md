@@ -1,47 +1,61 @@
-# FRONT Projekt
+# Leiterlispiel FRONT Projekt 
 
-Repository für unser Semesterprojekt in dem Modul Frontend Development an der FHGR.
-Autorinnen: Yara Wagner, Anna Staub, Morena Sager
+Repository für unser Projekt im Modul Frontend Development an der FHGR.<br>
+Autorinnen: Yara Wagner, Anna Staub, Morena Sager<br>
+Dozierende: Marc Iten, Elham Müller<br>
+Zeitraum: HS22 + FS23<br>
+
+
+## Projektidee
+
+Wir verfolgen das Ziel, ein Leiterspiel zu programmieren. Das Spielfeld soll aus hundert Feldern bestehen. Dabei ist das erste Feld gleichzeitig auch das Startfeld und das letzte Feld das Zielfeld. Im Spiel sind die nummerierten Spielfelder mit Leitern verbunden, die man je nachdem hochklettern kann, um den Weg abzukürzen, oder runterklettern muss, um somit einen Teil des Weges erneut zurückzulegen. Mit einem 
+sechsseitigen Würfel wird bestimmt, wie weit die Spielfigur fahren darf. Würfelt man die Zahl sechs, darf man einen zusätzlichen Zug ausführen. Der Spieler, der als erstes das Zielfeld erreicht oder darüber hinaus fährt, gewinnt.
+
+## Projektmanagement
+
+Die Planung des Projektes ist im Ordner documents einsehbar.<br>
+Dazu gehört:
+
+- Projektstrukturplan (PSP)
+- Zeitbudget, Zeitplan und Meilensteinplanung
+
+Die Kommunikation im Team findet über Signal und Webex statt, die Kommunikation mit den Dozierenden über E-Mail.<br>
+Der in den PDF-Files aktuelle Stand ist verbindlich, Änderungen müssen den Dozierenden mitgeteilt werden. 
+
+## Branch-Management 
+
+### main
+
+Master, enthält funktionierende Zustände des Projekts <br>
+Der Ordner documents beinhaltet zugehörige Dokumentationen
+
+### abgabe-prototyp
+
+Branch zur Abgabe des Prototyps und allen zugehörigen assets. 
+
+### abgabe-projekt
+
+Branch zur Abgabe des fertigen Projekts mit allen zugehörigen assets am Ende des FS22
+
+### develop
+
+work-in-progress 
+
+
+## Coding guidelines
+Bezeichnungen werden deutsch geschrieben. <br>
+Public Variablen werden in PascalCase geschrieben. <br>
+Private Variablen werden in camelCase geschrieben. <br>
+Konstanten werden in Grossbuchstaben geschrieben. <br>
+Strings werden in single quotes geschrieben.
 
 
 
 
-## Add your files
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/yxaw/front-projekt.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.com/yxaw/front-projekt/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
+<!--
 # Editing this README
 
 When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
@@ -88,3 +102,4 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+-->
