@@ -37,4 +37,4 @@ Spielzug nochmals ausgeführt
   };
   
   // Spielwürfel-Instanz erstellen
-  spielwuerfel = new Wuerfel(6);
+  const SPIELWUERFEL = new Wuerfel(6);
