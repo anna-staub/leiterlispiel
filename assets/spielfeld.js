@@ -6,9 +6,10 @@ class Spielfeld {
     // Gewinnzustand
   
     // DOM-Element (aktueller Spieler)
-    #domElementAktuellerSpieler = document.getElementById('player');
+    domElementAktuellerSpieler = document.getElementById('player');
     // aktueller Spieler
-    CurrentPlayer = 'spieler1';
+    aktuellerSpieler = 'spieler1';
+
   
     // Spielfeld-Instanz erstellen
     constructor() {
@@ -62,3 +63,4 @@ class Spielfeld {
     // Spiel beenden / zurücksetzen
    */
   }
+  

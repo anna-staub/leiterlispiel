@@ -10,7 +10,7 @@ class Spieler {
     }
     
 
-    //Startspieler setzen
+    
     // aktuelles Feld ermitteln
     // Zug ausführen
         // Würfeln
@@ -30,16 +30,16 @@ class Spieler {
 
     // Zug beenden
     zugBeenden() {
-        this.changePlayer();
+        this.spielerWechseln();
         setTimeout(() => {
           this.checkWin();
         }, 100);
       }
     
       // Spieler wechseln
-      changePlayer() {
-        this.CurrentPlayer = this.CurrentPlayer === 'spieler1' ? 'spieler2' : 'spieler1';
-        this.#domElementAktuellerSpieler.className = this.CurrentPlayer;
+      spielerWechseln() {
+        this.aktuellerSpieler = this.aktuellerSpieler === 'spieler1' ? 'spieler2' : 'spieler1';
+        this.domElementAktuellerSpieler.className = this.aktuellerSpieler;
       }
   }
 
