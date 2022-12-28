@@ -9,18 +9,21 @@ class Spieler {
       return this.#feld;
     }
 
+    // Ergebnis prüfen
+    gewinnPruefen() {
+      if (this.#feld >= 99) {
+        // Gewinner verkünden
+        alert(`${this.AktuellerSpieler} hat gewonnen!`)
+        // Spiel beenden
+      }
+    }
+
     // Spieler-Methode zugBeenden
     zugBeenden() {
       this.spielerWechseln();
       setTimeout(() => {
-        this.checkWin();
+        this.gewinnPruefen();
       }, 100);
-    }
-  
-    // Spieler-Methode Spieler wechseln
-    spielerWechseln() {
-      this.aktuellerSpieler = this.aktuellerSpieler === 'spieler1' ? 'spieler2' : 'spieler1';
-      this.domElementAktuellerSpieler.className = this.aktuellerSpieler;
     }
 
   }
@@ -38,7 +41,7 @@ class Spieler {
 
         // aktuelles Feld ermitteln
             /*  aktuellen Spieler prüfen
-                if (aktuellerSpieler = spieler1) {
+                if (AktuellerSpieler = spieler1) {
                   let standort = spieler1.GetFeld();
                 }
             */
@@ -67,7 +70,7 @@ class Spieler {
 
 
                   /* if (wurf = 6 ) {
-                    aktuellerSpieler.wuerfeln();
+                    AktuellerSpieler.wuerfeln();
                   }
                     */
 
@@ -77,7 +80,7 @@ class Spieler {
 
 
               /*
-          aktuellerSpieler.zugBeenden();
+          AktuellerSpieler.zugBeenden();
                     */
 
   //noch alle Bezeichnungen anpassen, dass sie deutsch geschrieben sind

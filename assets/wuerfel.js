@@ -32,7 +32,7 @@ Spielzug nochmals ausgeführt
             return this.wuerfeln();
         }
 */
-
+        document.getElementById('wuerfelanzeige').innerHTML = wuerfelergebnis;
     }
   };
   

@@ -8,7 +8,7 @@ class Spielfeld {
     // DOM-Element (aktueller Spieler)
     domElementAktuellerSpieler = document.getElementById('player');
     // aktueller Spieler
-    aktuellerSpieler = 'spieler1';
+    AktuellerSpieler = 'spieler1';
 
   
     // Spielfeld-Instanz erstellen
@@ -31,36 +31,12 @@ class Spielfeld {
         feld.AddToBoard(this.#domElement);
       }
     }
-  
 
-/*   das haben wir gesagt, macht der Spieler, oder?
-
-    // Zug ausführen
-    // Würfeln
-    
-      //evtl noch anpassen 
-  
-        // erneut Würfeln
-        // wenn 6 ausgegeben wird 
-    // Spielfigur bewegen
-    // Zug beenden
-    zugBeenden() {
-      this.changePlayer();
-      setTimeout(() => {
-        this.checkWin();
-      }, 100);
+    // Spieler-Methode Spieler wechseln
+    // ich bin mir nicht sicher, wo das genau hingehört.. passt das hier?
+    spielerWechseln() {
+      this.AktuellerSpieler = this.AktuellerSpieler === 'spieler1' ? 'spieler2' : 'spieler1';
+      this.domElementAktuellerSpieler.className = this.AktuellerSpieler;
     }
-  
-    // Spieler wechseln
-    changePlayer() {
-      this.CurrentPlayer = this.CurrentPlayer === 'spieler1' ? 'spieler2' : 'spieler1';
-      this.#domElementAktuellerSpieler.className = this.CurrentPlayer;
-    }
-  
-    // Spielstand prüfen
-      //Sieg feststellen / mitteilen
-  
-    // Spiel beenden / zurücksetzen
-   */
   }
   
