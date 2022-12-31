@@ -1,32 +1,53 @@
 class Spieler {
-    #feld = 0;
+  // Startposition festlegen 
+  #feld = 0;
+
+  // DOM-Element
+  #domElement = document.createElement('div');
+  // Feld
+  #parentFeld
   
-    SetFeld(id) {
-      this.#feld = id;
+  // Instanzieren der Klasse
+  constructor(startfeld, spieler) {
+    this.#parentFeld = startfeld;
+    // Class-Attribut und ID-Attribut auf div-Element setzen
+    this.#domElement.setAttribute('class', 'spieler');
+    if (spieler === 'spieler1') {
+      this.#domElement.setAttribute('id', 'spieler1');
+    } else if (spieler === 'spieler2') {
+      this.#domElement.setAttribute('id', 'spieler2');
     }
-  
-    GetFeld() {
-      return this.#feld;
-    }
-
-    // Ergebnis prüfen
-    gewinnPruefen() {
-      if (this.#feld >= 99) {
-        // Gewinner verkünden
-        alert(`${this.AktuellerSpieler} hat gewonnen!`)
-        // Spiel beenden
-      }
-    }
-
-    // Spieler-Methode zugBeenden
-    zugBeenden() {
-      this.spielerWechseln();
-      setTimeout(() => {
-        this.gewinnPruefen();
-      }, 100);
-    }
-
   }
+
+  // appendChild fehlt noch -> irgendwie muss man das noch dem Feld mit der id feld0 anhängen
+  
+
+  SetFeld(id) {
+    this.#feld = id;
+  }
+
+  GetFeld() {
+    return this.#feld;
+  }
+
+  // Ergebnis prüfen
+  gewinnPruefen() {
+    if (this.#feld >= 99) {
+      // Gewinner verkünden
+      alert(`${this.AktuellerSpieler} hat gewonnen!`)
+      // Spiel beenden
+    }
+  }
+
+  // Spieler-Methode zugBeenden
+  zugBeenden() {
+    this.spielerWechseln();
+    setTimeout(() => {
+      this.gewinnPruefen();
+    }, 100);
+  }
+
+}
     
    
     // Zug ausführen

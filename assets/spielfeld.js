@@ -4,11 +4,6 @@ class Spielfeld {
     // DOM-Element (Spielfeld)
     #domElement = document.getElementById('board');
     // Gewinnzustand
-  
-    // DOM-Element (aktueller Spieler)
-    domElementAktuellerSpieler = document.getElementById('player');
-    // aktueller Spieler
-    AktuellerSpieler = 'spieler1';
 
   
     // Spielfeld-Instanz erstellen
