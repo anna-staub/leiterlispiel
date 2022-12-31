@@ -11,6 +11,7 @@ class Feld {
   
     // Instanzieren der Klasse
     constructor(spielfeld, id) {
+      this.#parentSpielfeld = spielfeld;
       this.#id = 'feld'+id;
       this.#feldtext = id;
       // ID-Attribut auf div-Element setzen

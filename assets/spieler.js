@@ -19,8 +19,10 @@ class Spieler {
     }
   }
 
-  // appendChild fehlt noch -> irgendwie muss man das noch dem Feld mit der id feld0 anhängen
-  
+  // DOM-Element (Spieler) dem Feld hinzufügen
+  AddToFeld(feld) {
+    feld.appendChild(this.#domElement);
+  }
 
   SetFeld(id) {
     this.#feld = id;
