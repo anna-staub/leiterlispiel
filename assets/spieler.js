@@ -1,20 +1,20 @@
 class Spieler {
-  // Startposition festlegen 
-  #feld = 0;
-
+  // Feldnummer initialisieren
+  feldnummer = 0;
   // DOM-Element
   #domElement = document.createElement('div');
   // Feld
-  #parentFeld
+  #parentFeld;
   
   // Instanzieren der Klasse
-  constructor(startfeld, spieler) {
+  constructor(startfeld, spielername) {
+    this.feldnummer = this.feldnummer;
     this.#parentFeld = startfeld;
     // Class-Attribut und ID-Attribut auf div-Element setzen
     this.#domElement.setAttribute('class', 'spieler');
-    if (spieler === 'spieler1') {
+    if (spielername === 'spieler1') {
       this.#domElement.setAttribute('id', 'spieler1');
-    } else if (spieler === 'spieler2') {
+    } else if (spielername === 'spieler2') {
       this.#domElement.setAttribute('id', 'spieler2');
     }
   }
@@ -23,18 +23,19 @@ class Spieler {
   AddToFeld(feld) {
     feld.appendChild(this.#domElement);
   }
-
-  SetFeld(id) {
-    this.#feld = id;
+  // anhand der Feldnummer das Objekt im Array suchen und den Spieler ins entsprechende DOM-Element platzieren
+  SetFeld(Feld) {
+    this.feldnummer = Number(Feld.feldnummer);
+    this.AddToFeld(Feld.domElement);
   }
 
-  GetFeld() {
-    return this.#feld;
+  GetFeldNummer() {
+    return this.feldnummer;
   }
 
   // Ergebnis prüfen
   gewinnPruefen() {
-    if (this.#feld >= 99) {
+    if (this.feldnummer >= 99) {
       // Gewinner verkünden
       alert(`${this.AktuellerSpieler} hat gewonnen!`)
       // Spiel beenden
