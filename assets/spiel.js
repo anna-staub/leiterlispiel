@@ -23,6 +23,14 @@ class Spiel {
       // Landefeld des Spielers ermitteln
       // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
       this.landefeldnummer = this.aktuelleFeldnummer + this.wuerfelergebnis; 
+      if (this.landefeldnummer >= 99){
+        // this.aktuellerSpieler (DOM) in Zielfeld (DOM) platzieren
+
+        // Sieger ausrufen (spielername ist noch etwas unschön)
+        alert(this.aktuellerSpieler.spielername+' hat gewonnen!');
+
+        // Spiel zurücksetzen? (Neues Spiel initialisieren?)
+      } else {
 
       // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
       this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
@@ -56,14 +64,15 @@ class Spiel {
     }
   
   }
+}
 
-  //neues Spiel instanzieren
-  let spiel = new Spiel();
+//neues Spiel instanzieren
+let spiel = new Spiel();
 
 
-  // Methode Spielzug auslösen, sobald gewürfelt wird
-  // document.getElementById("wuerfelbutton").addEventListener('click', spiel.Spielzug); ---> geht nicht! Listener muss funktion sein, sonst pointet this aufs objekt, welches eventListener ausgelöst hat!
-  document.getElementById("wuerfelbutton").addEventListener('click', function () {spiel.Spielzug() }); // korrekt :')
+// Methode Spielzug auslösen, sobald gewürfelt wird
+// document.getElementById("wuerfelbutton").addEventListener('click', spiel.Spielzug); ---> geht nicht! Listener muss funktion sein, sonst pointet this aufs objekt, welches eventListener ausgelöst hat!
+document.getElementById("wuerfelbutton").addEventListener('click', function () {spiel.Spielzug() }); // korrekt :')
 
 
  
