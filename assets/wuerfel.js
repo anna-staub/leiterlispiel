@@ -12,7 +12,7 @@ class Wuerfel{
         wuerfelergebnis = parseInt(wuerfelergebnis);
         console.log(wuerfelergebnis);
 
-        document.getElementById("wuerfelanzeige").innerHTML = String(wuerfelergebnis);
+        document.getElementById("wuerfelanzeige").innerHTML = String('Zuletzt gewürfelte Zahl: <br>\ '+wuerfelergebnis);
         return wuerfelergebnis;
     };
 }

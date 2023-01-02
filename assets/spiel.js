@@ -10,6 +10,7 @@ class Spiel {
     let startfeld = this.spielfeld.GetFeldUeberFeldnummer(0);
     this.spieler1.SetFeld(startfeld);
     this.spieler2.SetFeld(startfeld);
+    this.aktuellerSpieler.spielerAnzeigen();
     }
 
     Spielzug() {
@@ -41,9 +42,15 @@ class Spiel {
           // ...Sieg ausrufen, Spiel zurücksetzen
           // FUNKTIONIERT NOCH NICHT, feldnummern über 99 sind undefined.
         }
+
+      // Wenn nicht 6 gewürfelt wurde wechselt der aktuelle Spieler, bei 6 bleibt er gleich.
       if (this.wuerfelergebnis != 6) {
-          // Wenn nicht 6 gewürfelt wurde Spieler wechseln, bei 6 bleibt der gleiche Spieler drann.
+          // Spieleranzeige leeren
+          this.aktuellerSpieler.spielerAusAnzeigeEntfernen();
+          //Spieler wechseln
           this.aktuellerSpieler = this.aktuellerSpieler === this.spieler1? this.spieler2 : this.spieler1;
+          // Spieleranzeige mit aktuellem Spieler füllen
+          this.aktuellerSpieler.spielerAnzeigen();
         }
   
     }
@@ -52,6 +59,7 @@ class Spiel {
 
   //neues Spiel instanzieren
   let spiel = new Spiel();
+
 
   // Methode Spielzug auslösen, sobald gewürfelt wird
   // document.getElementById("wuerfelbutton").addEventListener('click', spiel.Spielzug); ---> geht nicht! Listener muss funktion sein, sonst pointet this aufs objekt, welches eventListener ausgelöst hat!
