@@ -107,7 +107,7 @@ main {
     align-items: center;
     border: solid black 1px;
     position: sticky;
-    bottom: 0;
+    bottom: 10px;
 }
 #wuerfelfeld :hover{
     cursor: pointer;
