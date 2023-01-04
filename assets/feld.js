@@ -2,36 +2,39 @@ class Feld {
     // Markierung (Spieler-Repräsentation)
       // nicht so umsetzen, dass das Feld "weiss", welcher Spieler darauf steht, sondern dass der Spieler weiss auf welchem Feld er steht
     // Feld-ID setzen für die Unterscheidung und Referenzierung der einzelnen Felder
-    #id = '';
+    id = '';
+    feldnummer = 0;
     #feldtext = '';
     // DOM-Element
-    #domElement = document.createElement('div');
+    domElement = document.createElement('div');
     //Spielfeld
     #parentSpielfeld;
   
     // Instanzieren der Klasse
     constructor(spielfeld, id) {
       this.#parentSpielfeld = spielfeld;
-      this.#id = 'feld'+id;
+      // this.id = 'feld'+id; --> nicht als String, ist schwieriger zu ändern / addieren
+      this.id = 'feld'+id;
+      this.feldnummer = id;
       this.#feldtext = id;
       // ID-Attribut auf div-Element setzen
       // alle Felder die nicht Start oder Ziel sind
-      this.#domElement.setAttribute('id', this.#id);
+      this.domElement.setAttribute('id', this.id);
       if (id != 0 && id != 99) {
-        this.#domElement.textContent = this.#feldtext;
+        this.domElement.textContent = this.#feldtext;
       }
       // Startfeld 
       else if (id === 0) {
-        this.#domElement.textContent = 'Start';
+        this.domElement.textContent = 'Start';
       }
       // Zielfeld 
       else if (id === 99) {
-        this.#domElement.textContent = 'Ziel';
+        this.domElement.textContent = 'Ziel';
       }
     }
   
     AddToBoard(board) {
-      board.appendChild(this.#domElement);
+      board.appendChild(this.domElement);
     }
   
   }

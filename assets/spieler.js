@@ -1,46 +1,65 @@
 class Spieler {
-  // Startposition festlegen 
-  #feld = 0;
-
-  // DOM-Element
-  #domElement = document.createElement('div');
+  // Feldnummer initialisieren
+  feldnummer = 0;
+  // DOM-Element Spielfigur
+  #domElementSpielfigur = document.createElement('div');
+  // DOM-Element für Spieleranzeige
+  domElementSpieleranzeige = document.createElement('div');
   // Feld
-  #parentFeld
+  #parentFeld;
   
   // Instanzieren der Klasse
-  constructor(startfeld, spieler) {
+  constructor(startfeld, spielername) {
+    this.feldnummer = this.feldnummer;
     this.#parentFeld = startfeld;
-    // Class-Attribut und ID-Attribut auf div-Element setzen
-    this.#domElement.setAttribute('class', 'spieler');
-    if (spieler === 'spieler1') {
-      this.#domElement.setAttribute('id', 'spieler1');
-    } else if (spieler === 'spieler2') {
-      this.#domElement.setAttribute('id', 'spieler2');
+    this.spielername = spielername;
+    // Class-Attribut und ID-Attribut auf beide DOM-Elemente setzen
+    this.#domElementSpielfigur.setAttribute('class', 'spieler');
+    this.domElementSpieleranzeige.setAttribute('class', 'spieler');
+    if (this.spielername === 'spieler1') {
+      this.#domElementSpielfigur.setAttribute('id', 'spieler1');
+      this.domElementSpieleranzeige.setAttribute('id', 'spieler1');
+    } else if (this.spielername === 'spieler2') {
+      this.#domElementSpielfigur.setAttribute('id', 'spieler2');
+      this.domElementSpieleranzeige.setAttribute('id', 'spieler2');
     }
   }
 
-  // DOM-Element (Spieler) dem Feld hinzufügen
+  // DOM-Element Spielfigur dem Feld hinzufügen
   AddToFeld(feld) {
-    feld.appendChild(this.#domElement);
+    feld.appendChild(this.#domElementSpielfigur);
   }
-
-  SetFeld(id) {
-    this.#feld = id;
+  // anhand der Feldnummer das Objekt im Array suchen und den Spieler ins entsprechende DOM-Element platzieren
+  SetFeld(Feld) {
+    this.feldnummer = Number(Feld.feldnummer);
+    this.AddToFeld(Feld.domElement);
   }
-
-  GetFeld() {
-    return this.#feld;
+  // Feldnummer ermitteln 
+  GetFeldNummer() {
+    return this.feldnummer;
+  }
+  // Spieler in Spieleranzeige anzeigen
+  spielerAnzeigen(){
+    console.log(this.domElementSpieleranzeige.id);
+    document.getElementById('spieleranzeige').appendChild(this.domElementSpieleranzeige);
+  }
+  // Spieler aus Spieleranzeige entfernen
+  spielerAusAnzeigeEntfernen() {
+    document.getElementById('spieleranzeige').removeChild(this.domElementSpieleranzeige);
   }
 
   // Ergebnis prüfen
   gewinnPruefen() {
-    if (this.#feld >= 99) {
+    if (this.feldnummer >= 99) {
       // Gewinner verkünden
       alert(`${this.AktuellerSpieler} hat gewonnen!`)
       // Spiel beenden
     }
   }
 
+  /*
+  nicht mehr nötig
+  --------------------------
   // Spieler-Methode zugBeenden
   zugBeenden() {
     this.spielerWechseln();
@@ -48,7 +67,8 @@ class Spieler {
       this.gewinnPruefen();
     }, 100);
   }
-
+  -------------------------
+*/
 }
     
    

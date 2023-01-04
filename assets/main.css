@@ -36,10 +36,11 @@ main {
 }
 
 /* Spieleranzeige */
-#player {
+#spieleranzeige {
     font-size: 1em;
 }
 
+/*
 #player.spieler1::before {
     content: "Spieler 1";
     color: var(--blue-4);
@@ -49,10 +50,11 @@ main {
     content: "Spieler 2";
     color: var(--teal-4);
 }
+*/
 
 /* Spielbrett */
 #board {
-    width: 80%;
+    width: 75%;
     display: grid; 
     grid-template-columns: repeat(10, 1fr);
     gap: 6px;
@@ -77,6 +79,10 @@ main {
     width: 20px;
     height: 20px;
     overflow: visible;
+    border: none;
+}
+#board div.spieler{
+    border: none;
 }
 
 #spieler1 {
@@ -107,7 +113,9 @@ main {
     border-radius: 5%;
     margin-top: 10%;
 }
-
+#wuerfelanzeige{
+    text-align: center;
+}
 
 /* Spielregeln */
 #regelfeld {

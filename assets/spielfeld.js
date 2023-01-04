@@ -1,6 +1,6 @@
 class Spielfeld {
     // Array von Feldern
-    #felderArray = [];
+    felderArray = [];
     // DOM-Element (Spielfeld)
     #domElement = document.getElementById('board');
     // Gewinnzustand
@@ -21,12 +21,19 @@ class Spielfeld {
         } else {
           feld = new Feld(this, j);
         }
-        this.#felderArray.push(feld);
+        this.felderArray.push(feld);
         // DOM-Element (Felder) dem Spielfeld hinzufügen
         feld.AddToBoard(this.#domElement);
       }
     }
-
+    // Methode um entsprechendes Feld-Objekt anhand von feldnummer aus dem Felder-Array zu holen
+    GetFeldUeberFeldnummer(feldnummer) {
+      for (let i = 0 ; i < this.felderArray.length ; i++){
+        if (this.felderArray[i].feldnummer === feldnummer) {
+          return this.felderArray[i];
+        }
+      }
+    }
     // Spieler-Methode Spieler wechseln
     // ich bin mir nicht sicher, wo das genau hingehört.. passt das hier?
     spielerWechseln() {
