@@ -68,9 +68,13 @@ main {
     cursor: pointer;
     border: solid black 1px;
 }
-
+/* Startfeld */
 #feld0 {
-    background-color: green;
+    background-color: rgb(255 255 51);
+}
+/*Zielfeld*/
+#feld99 {
+    background-color: rgb(67, 233, 67);
 }
 
 /* Spielfiguren */
@@ -99,7 +103,6 @@ main {
     flex-direction: column;
     margin: 0 6px;
     padding: 10px;
-    display: flex;
     justify-content: center;
     align-items: center;
     border: solid black 1px;
