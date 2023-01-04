@@ -103,6 +103,8 @@ main {
     justify-content: center;
     align-items: center;
     border: solid black 1px;
+    position: sticky;
+    bottom: 0;
 }
 #wuerfelfeld :hover{
     cursor: pointer;
