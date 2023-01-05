@@ -69,6 +69,13 @@ main {
     border: solid black 1px;
 }
 /* Startfeld */
+#board div.normalesfeld{
+    background-color: lightblue;
+}
+#board div.leiterfeld{
+    background-color: coral;
+}
+
 #feld0 {
     background-color: rgb(255 255 51);
 }
