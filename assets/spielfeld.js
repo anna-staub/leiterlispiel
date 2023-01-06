@@ -17,14 +17,13 @@ class Spielfeld {
         console.log('j (Feldbeschriftung) ist: '+j);
         let feld = null;
         let konfig = SPIELFELD_LEITERKONFIG.find(konfig => konfig.id === j); // konfig ist undefined, müsste aber eigentlich das Objekt zurückgeben
-        console.log('konfig ist: '+konfig); // gibt undefined
-        let feldId; // ...wofür ist die?
-        if (konfig) { // hier müsste "konfig" den Wert "true" haben, oder? Hat aber Wert [Object object]
+        console.log('konfig ist: '+konfig); // gibt undefined bei normalem Feld oder [object Object] bei Leiterfeld
+        if (konfig) { // hier müsste "konfig" den Wert "true" haben, oder? Hat aber Wert [Object object] -> evtl. wird nicht auf true sondern auf das Vorhandensein eines Werts geprüft, weil das nachfolgende funktioniert ja
           feld = new Leiterfeld(this, j, konfig.zielfeld);
           console.log('ist feld leiterfeld? ');
           console.log(feld instanceof Leiterfeld);  // gibt true
           feld.LeiterfeldKlassieren(); 
-          console.log('zielfeld: '+feld.zielfeld) // gibt undefined
+          console.log('zielfeld: '+feld.Zielfeld)
         } else {
           feld = new Feld(this, j);
           console.log('ist feld leiterfeld? ');

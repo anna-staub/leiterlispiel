@@ -48,11 +48,11 @@ class Feld {
 
   // Klasse Leiterfeld mit Vererbung instanzieren
   class Leiterfeld extends Feld {
-    #zielfeld = '';
+    Zielfeld = '';
 
     constructor(spielfeld, id, zielfeld) {
       super(spielfeld, id);
-      this.#zielfeld = zielfeld;
+      this.Zielfeld = zielfeld;
     }
   }
   

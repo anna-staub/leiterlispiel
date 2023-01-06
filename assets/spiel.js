@@ -11,37 +11,50 @@ class Spiel {
     this.spieler1.SetFeld(startfeld);
     this.spieler2.SetFeld(startfeld);
     this.aktuellerSpieler.spielerAnzeigen();
-    }
+  }
 
-    Spielzug() {
-      // Aktuelle Feldnummer des Spielers ermitteln
-      this.aktuelleFeldnummer = this.aktuellerSpieler.GetFeldNummer();
-  
-      // Würfeln
-      this.wuerfelergebnis = this.spielwuerfel.wuerfeln();
-  
-      // Landefeld des Spielers ermitteln
-      // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
-      this.landefeldnummer = this.aktuelleFeldnummer + this.wuerfelergebnis; 
-      if (this.landefeldnummer >= 99){
-        // this.aktuellerSpieler (DOM) in Zielfeld (DOM) platzieren
+  Spielzug() {
+    // Aktuelle Feldnummer des Spielers ermitteln
+    this.aktuelleFeldnummer = this.aktuellerSpieler.GetFeldNummer();
 
-        // Sieger ausrufen (spielername ist noch etwas unschön)
-        alert(this.aktuellerSpieler.spielername+' hat gewonnen!');
+    // Würfeln
+    this.wuerfelergebnis = this.spielwuerfel.wuerfeln();
 
-        // Spiel zurücksetzen? (Neues Spiel initialisieren?)
-      } else {
+    // Landefeld des Spielers ermitteln
+    // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
+    this.landefeldnummer = this.aktuelleFeldnummer + this.wuerfelergebnis;
+    if (this.landefeldnummer >= 99){
+      // this.aktuellerSpieler (DOM) in Zielfeld (DOM) platzieren
+
+      // Sieger ausrufen (spielername ist noch etwas unschön)
+      //alert(this.aktuellerSpieler.spielername+' hat gewonnen!');
+
+      // Spiel zurücksetzen? (Neues Spiel initialisieren?)
+    } else {
 
       // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
       this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
-  
+
       // Spieler die entsprechende Feldnummer zuschreiben und Spieler-DOM-Element in entsprechendes Feld-DOM-Element platzieren
       this.aktuellerSpieler.SetFeld(this.landefeldObjekt);
-  
+
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
-      if (this.aktuelleFeldnummer === Leiterfeld) {
+      if (this.landefeldObjekt instanceof Leiterfeld) {
+        console.log('test')
+        console.log('landefeldnummer:'+this.landefeldnummer)
+        let zielfeld = '';
+        // zielfeld zum aktuellen Feld aus SPIELFELD_LEITERKONFIG herauslesen
+        SPIELFELD_LEITERKONFIG.forEach((objekt) => {
+          if (objekt.id === this.landefeldnummer) {
+            zielfeld = objekt.zielfeld;
+            return zielfeld;
+          }
+        });
+        this.landefeldnummer = zielfeld;
+        this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
+        console.log('landefeldnummer:'+this.landefeldnummer)
         // ...wird der Spieler dem Zielfeld des entsprechenden Leiterfelds angehängt.
-        this.aktuellerSpieler.AddToFeld(this.aktuelleFeldnummer);
+        this.aktuellerSpieler.SetFeld(this.landefeldObjekt); // Verzögerung einbauen, damit man sieht, dass man auf ein anderes Feld gebeamt wird.
       }
 
       // Wenn die aktuelle Feldnummer höher oder gleich 99 ist...
@@ -49,20 +62,18 @@ class Spiel {
         alert(aktuellerSpieler.spielername + ' hat gewonnen!')
           // ...Sieg ausrufen, Spiel zurücksetzen
           // FUNKTIONIERT NOCH NICHT, feldnummern über 99 sind undefined.
-        }
+      }
 
       // Wenn nicht 6 gewürfelt wurde wechselt der aktuelle Spieler, bei 6 bleibt er gleich.
       if (this.wuerfelergebnis != 6) {
-          // Spieleranzeige leeren
-          this.aktuellerSpieler.spielerAusAnzeigeEntfernen();
-          //Spieler wechseln
-          this.aktuellerSpieler = this.aktuellerSpieler === this.spieler1? this.spieler2 : this.spieler1;
-          // Spieleranzeige mit aktuellem Spieler füllen
-          this.aktuellerSpieler.spielerAnzeigen();
-        }
-  
+        // Spieleranzeige leeren
+        this.aktuellerSpieler.spielerAusAnzeigeEntfernen();
+        //Spieler wechseln
+        this.aktuellerSpieler = this.aktuellerSpieler === this.spieler1? this.spieler2 : this.spieler1;
+        // Spieleranzeige mit aktuellem Spieler füllen
+        this.aktuellerSpieler.spielerAnzeigen();
+      }
     }
-  
   }
 }
 
