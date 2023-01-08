@@ -1,6 +1,5 @@
 // Spielfeld erstellen
 class Spiel {
-  
   constructor() {
     this.spielfeld = new Spielfeld();
     this.spieler1 = new Spieler(Feld, 'spieler1');
@@ -16,35 +15,26 @@ class Spiel {
   Spielzug() {
     // Aktuelle Feldnummer des Spielers ermitteln
     this.aktuelleFeldnummer = this.aktuellerSpieler.GetFeldNummer();
-
     // Würfeln
     this.wuerfelergebnis = this.spielwuerfel.wuerfeln();
-
     // Landefeld des Spielers ermitteln
     // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
     this.landefeldnummer = this.aktuelleFeldnummer + this.wuerfelergebnis;
     if (this.landefeldnummer >= 99){
       // this.aktuellerSpieler (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99;
-
       // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
       this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
-
       // Spieler die entsprechende Feldnummer zuschreiben und Spieler-DOM-Element in entsprechendes Feld-DOM-Element platzieren
       this.aktuellerSpieler.SetFeld(this.landefeldObjekt);
-
       // Sieger ausrufen (spielername ist noch etwas unschön)
       setTimeout(() => {alert(this.aktuellerSpieler.spielername+' hat gewonnen!')}, 500);
-
       // Spiel zurücksetzen? (Neues Spiel initialisieren?)
     } else {
-
       // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
       this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
-
       // Spieler die entsprechende Feldnummer zuschreiben und Spieler-DOM-Element in entsprechendes Feld-DOM-Element platzieren
       this.aktuellerSpieler.SetFeld(this.landefeldObjekt);
-
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       if (this.landefeldObjekt instanceof Leiterfeld) {
         console.log('landefeldnummer:'+this.landefeldnummer)
@@ -58,7 +48,6 @@ class Spiel {
         });
         this.landefeldnummer = zielfeld;
         this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
-        console.log('landefeldnummer:'+this.landefeldnummer)
         // ...wird der Spieler dem Zielfeld des entsprechenden Leiterfelds angehängt.
         setTimeout(() => {this.aktuellerSpieler.SetFeld(this.landefeldObjekt)}, 500); // Würfelt man erneut bevor die Leiter benutzt wurde, wird dies übersprungen -> während time-out darf nichts anderes gemacht werden
       }
@@ -73,6 +62,7 @@ class Spiel {
         this.aktuellerSpieler.spielerAnzeigen();
       }}, 500);
     }
+    console.log('landefeldnummer:'+this.landefeldnummer)
   }
 
   spielZuruecksetzen() {
@@ -85,16 +75,13 @@ class Spiel {
     this.spieler2.SetFeld(startfeld);
     this.aktuellerSpieler.spielerAnzeigen();
   }
-
 }
 
 // neues Spiel instanzieren
 let spiel = new Spiel();
 
-
 // Methode Spielzug auslösen, sobald gewürfelt wird
-// document.getElementById("wuerfelbutton").addEventListener('click', spiel.Spielzug); ---> geht nicht! Listener muss funktion sein, sonst pointet this aufs objekt, welches eventListener ausgelöst hat!
-document.getElementById("wuerfelbutton").addEventListener('click', () => {spiel.Spielzug()}); // korrekt :')
+document.getElementById("wuerfelbutton").addEventListener('click', () => {spiel.Spielzug()});
 
 // Spiel neu starten
 document.getElementById("neuesspiel").addEventListener('click', () => {spiel.spielZuruecksetzen()})
