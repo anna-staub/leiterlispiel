@@ -35,6 +35,12 @@ main {
     justify-content: space-evenly;
 }
 
+/* Anzeige über Spielfeld*/
+#anzeige_oben {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Spieleranzeige */
 #spieleranzeige {
     font-size: 1em;

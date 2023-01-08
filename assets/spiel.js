@@ -60,7 +60,7 @@ class Spiel {
         this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
         console.log('landefeldnummer:'+this.landefeldnummer)
         // ...wird der Spieler dem Zielfeld des entsprechenden Leiterfelds angehängt.
-        setTimeout(() => {this.aktuellerSpieler.SetFeld(this.landefeldObjekt)}, 300);
+        setTimeout(() => {this.aktuellerSpieler.SetFeld(this.landefeldObjekt)}, 500); // Würfelt man erneut bevor die Leiter benutzt wurde, wird dies übersprungen -> während time-out darf nichts anderes gemacht werden
       }
 
       // Wenn nicht 6 gewürfelt wurde wechselt der aktuelle Spieler, bei 6 bleibt er gleich.
@@ -71,18 +71,30 @@ class Spiel {
         this.aktuellerSpieler = this.aktuellerSpieler === this.spieler1? this.spieler2 : this.spieler1;
         // Spieleranzeige mit aktuellem Spieler füllen
         this.aktuellerSpieler.spielerAnzeigen();
-      }}, 300);
+      }}, 500);
     }
   }
+
+  spielZuruecksetzen() {
+    if (this.aktuellerSpieler === this.spieler2) {
+      this.aktuellerSpieler.spielerAusAnzeigeEntfernen();
+      this.aktuellerSpieler = this.spieler1;
+    }
+    let startfeld = this.spielfeld.GetFeldUeberFeldnummer(0);
+    this.spieler1.SetFeld(startfeld);
+    this.spieler2.SetFeld(startfeld);
+    this.aktuellerSpieler.spielerAnzeigen();
+  }
+
 }
 
-//neues Spiel instanzieren
+// neues Spiel instanzieren
 let spiel = new Spiel();
 
 
 // Methode Spielzug auslösen, sobald gewürfelt wird
 // document.getElementById("wuerfelbutton").addEventListener('click', spiel.Spielzug); ---> geht nicht! Listener muss funktion sein, sonst pointet this aufs objekt, welches eventListener ausgelöst hat!
-document.getElementById("wuerfelbutton").addEventListener('click', function () {spiel.Spielzug() }); // korrekt :')
+document.getElementById("wuerfelbutton").addEventListener('click', () => {spiel.Spielzug()}); // korrekt :')
 
-
- 
+// Spiel neu starten
+document.getElementById("neuesspiel").addEventListener('click', () => {spiel.spielZuruecksetzen()})
