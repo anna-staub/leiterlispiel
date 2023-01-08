@@ -74,14 +74,19 @@ main {
     cursor: pointer;
     border: solid black 1px;
 }
-/* Startfeld */
-#board div.normalesfeld{
-    background-color: lightblue;
+
+/* Feldfarben */
+.normalesfeld{
+    background-color: none;
 }
-#board div.leiterfeld{
+#feld2, #feld12, #feld22, #feld32, #feld40, #feld50, #feld59, #feld74, #feld90, #feld94 {
     background-color: coral;
 }
+#feld5, #feld14,  #feld16, #feld34, #feld36, #feld52, #feld54, #feld62, #feld82, #feld87 {
+    background-color: lightgreen;
+}
 
+/* Startfeld */
 #feld0 {
     background-color: rgb(255 255 51);
 }
