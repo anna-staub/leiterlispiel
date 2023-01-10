@@ -6,11 +6,12 @@ class Spieleranzeige {
         this.spiel = spiel;
         // Class-Attribut und ID-Attribut auf DOM-Element setzen
         this.domElementSpieleranzeige.setAttribute('class', 'spieler');
-        this.domElementSpieleranzeige.setAttribute('id', this.spiel.aktuellerSpieler.spielername); // momentan wird immer nur spieler1 dargestellt
+        this.domElementSpieleranzeige.setAttribute('id', this.spiel.aktuellerSpieler.spielername);
     }
 
     // Spieler in Spieleranzeige anzeigen
     spielerAnzeigen(){
+        this.domElementSpieleranzeige.setAttribute('id', this.spiel.aktuellerSpieler.spielername);
         console.log('Aktueller Spieler: '+ this.domElementSpieleranzeige.id);
         document.getElementById('spieleranzeige').appendChild(this.domElementSpieleranzeige);
     }

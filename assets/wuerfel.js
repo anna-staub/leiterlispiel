@@ -9,6 +9,7 @@ class Wuerfel{
         wuerfelergebnis = parseInt(wuerfelergebnis);
         console.log('Würfelergebnis: '+wuerfelergebnis);
 
+        // eigene Methode dafür erstellen
         document.getElementById("wuerfelanzeige").innerHTML = String('Zuletzt gewürfelte Zahl: <br>\ '+wuerfelergebnis);
         return wuerfelergebnis;
     };
