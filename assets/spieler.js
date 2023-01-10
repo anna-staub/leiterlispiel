@@ -41,10 +41,10 @@ class Spieler {
   // Spieler in Spieleranzeige anzeigen
   spielerAnzeigen(){
     console.log('Aktueller Spieler: '+this.domElementSpieleranzeige.id);
-    document.getElementById('spieleranzeige').appendChild(this.domElementSpieleranzeige);
+    document.getElementById('spieleranzeige').appendChild(this.domElementSpieleranzeige);  //umplatzieren; Anzeige und Spieler trennen
   }
   // Spieler aus Spieleranzeige entfernen
   spielerAusAnzeigeEntfernen() {
-    document.getElementById('spieleranzeige').removeChild(this.domElementSpieleranzeige);
+    document.getElementById('spieleranzeige').removeChild(this.domElementSpieleranzeige);  //umplatzieren
   }
 }
