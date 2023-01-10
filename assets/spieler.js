@@ -3,6 +3,8 @@ class Spieler {
   feldnummer = 0;
   // DOM-Element Spielfigur
   #domElementSpielfigur = document.createElement('div');
+  // DOM-Element für Spieleranzeige
+  domElementSpieleranzeige = document.createElement('div');
   // Feld
   #parentFeld;
   
