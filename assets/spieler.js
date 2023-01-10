@@ -3,8 +3,6 @@ class Spieler {
   feldnummer = 0;
   // DOM-Element Spielfigur
   #domElementSpielfigur = document.createElement('div');
-  // DOM-Element für Spieleranzeige
-  domElementSpieleranzeige = document.createElement('div');
   // Feld
   #parentFeld;
   
@@ -13,15 +11,12 @@ class Spieler {
     this.feldnummer = this.feldnummer;
     this.#parentFeld = startfeld;
     this.spielername = spielername;
-    // Class-Attribut und ID-Attribut auf beide DOM-Elemente setzen
+    // Class-Attribut und ID-Attribut auf DOM-Element setzen
     this.#domElementSpielfigur.setAttribute('class', 'spieler');
-    this.domElementSpieleranzeige.setAttribute('class', 'spieler');
     if (this.spielername === 'spieler1') {
       this.#domElementSpielfigur.setAttribute('id', 'spieler1');
-      this.domElementSpieleranzeige.setAttribute('id', 'spieler1');
     } else if (this.spielername === 'spieler2') {
       this.#domElementSpielfigur.setAttribute('id', 'spieler2');
-      this.domElementSpieleranzeige.setAttribute('id', 'spieler2');
     }
   }
 
@@ -37,14 +32,5 @@ class Spieler {
   // Feldnummer ermitteln 
   GetFeldNummer() {
     return this.feldnummer;
-  }
-  // Spieler in Spieleranzeige anzeigen
-  spielerAnzeigen(){
-    console.log('Aktueller Spieler: '+this.domElementSpieleranzeige.id);
-    document.getElementById('spieleranzeige').appendChild(this.domElementSpieleranzeige);  //umplatzieren; Anzeige und Spieler trennen
-  }
-  // Spieler aus Spieleranzeige entfernen
-  spielerAusAnzeigeEntfernen() {
-    document.getElementById('spieleranzeige').removeChild(this.domElementSpieleranzeige);  //umplatzieren
   }
 }

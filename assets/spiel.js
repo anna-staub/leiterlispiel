@@ -9,7 +9,8 @@ class Spiel {
     let startfeld = this.spielfeld.GetFeldUeberFeldnummer(0);
     this.spieler1.SetFeld(startfeld);
     this.spieler2.SetFeld(startfeld);
-    this.aktuellerSpieler.spielerAnzeigen();
+    this.spieleranzeige = new Spieleranzeige(this);
+    this.spieleranzeige.spielerAnzeigen();
   }
 
   Spielzug() {
@@ -55,11 +56,11 @@ class Spiel {
       // Wenn nicht 6 gewürfelt wurde wechselt der aktuelle Spieler, bei 6 bleibt er gleich.
       setTimeout(() => {if (this.wuerfelergebnis != 6) {
         // Spieleranzeige leeren
-        this.aktuellerSpieler.spielerAusAnzeigeEntfernen();
+        this.spieleranzeige.spielerAusAnzeigeEntfernen();
         //Spieler wechseln
         this.aktuellerSpieler = this.aktuellerSpieler === this.spieler1? this.spieler2 : this.spieler1;
         // Spieleranzeige mit aktuellem Spieler füllen
-        this.aktuellerSpieler.spielerAnzeigen();
+        this.spieleranzeige.spielerAnzeigen();
       }}, 500);
     }
     console.log('landefeldnummer:'+this.landefeldnummer)
