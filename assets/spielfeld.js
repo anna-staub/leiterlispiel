@@ -16,7 +16,7 @@ class Spielfeld {
         let feld = null;
         let konfig = SPIELFELD_LEITERKONFIG.find(konfig => konfig.id === j);
         // console.log('konfig ist: '+konfig); // gibt undefined bei normalem Feld oder [object Object] bei Leiterfeld
-        if (konfig) { // hier müsste "konfig" den Wert "true" haben, oder? Hat aber Wert [Object object] -> evtl. wird nicht auf true sondern auf das Vorhandensein eines Werts geprüft, weil das nachfolgende funktioniert ja
+        if (konfig) { // prüfen, ob ein Wert vorhanden ist oder nicht
           feld = new Leiterfeld(this, j, konfig.zielfeld);
           // console.log('ist feld leiterfeld? ');
           // console.log(feld instanceof Leiterfeld);  // gibt true

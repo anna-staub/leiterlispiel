@@ -50,7 +50,7 @@ class Spiel {
         this.landefeldnummer = zielfeld;
         this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
         // ...wird der Spieler dem Zielfeld des entsprechenden Leiterfelds angehängt.
-        setTimeout(() => {this.aktuellerSpieler.SetFeld(this.landefeldObjekt)}, 500); // Würfelt man erneut bevor die Leiter benutzt wurde, wird dies übersprungen -> während time-out darf nichts anderes gemacht werden
+        setTimeout(() => {this.aktuellerSpieler.SetFeld(this.landefeldObjekt)}, 500);
       }
 
       // Wenn nicht 6 gewürfelt wurde wechselt der aktuelle Spieler, bei 6 bleibt er gleich.
@@ -82,7 +82,13 @@ class Spiel {
 let spiel = new Spiel();
 
 // Methode Spielzug auslösen, sobald gewürfelt wird
-document.getElementById("wuerfelbutton").addEventListener('click', () => {spiel.Spielzug()});
+document.getElementById("wuerfelbutton").addEventListener('click', () => {
+  // Würfel während des Spielzugs disablen
+  document.getElementById("wuerfelbutton").setAttribute('disabled', '');
+  spiel.Spielzug()
+  // Würfel nach Spielzug wieder enablen
+  setTimeout(() => {document.getElementById("wuerfelbutton").removeAttribute('disabled')}, 500);
+});
 
 // Spiel neu starten
 document.getElementById("neuesspiel").addEventListener('click', () => {spiel.spielZuruecksetzen()})
