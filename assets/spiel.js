@@ -68,13 +68,13 @@ class Spiel {
 
   spielZuruecksetzen() {
     if (this.aktuellerSpieler === this.spieler2) {
-      this.aktuellerSpieler.spielerAusAnzeigeEntfernen();
+      this.spieleranzeige.spielerAusAnzeigeEntfernen();
       this.aktuellerSpieler = this.spieler1;
     }
     let startfeld = this.spielfeld.GetFeldUeberFeldnummer(0);
     this.spieler1.SetFeld(startfeld);
     this.spieler2.SetFeld(startfeld);
-    this.aktuellerSpieler.spielerAnzeigen();
+    this.spieleranzeige.spielerAnzeigen();
   }
 }
 
