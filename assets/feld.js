@@ -1,6 +1,4 @@
 class Feld {
-    // Markierung (Spieler-Repräsentation)
-      // nicht so umsetzen, dass das Feld "weiss", welcher Spieler darauf steht, sondern dass der Spieler weiss auf welchem Feld er steht
     // Feld-ID setzen für die Unterscheidung und Referenzierung der einzelnen Felder
     id = '';
     feldnummer = 0;
@@ -32,20 +30,28 @@ class Feld {
         this.domElement.textContent = 'Ziel';
       }
     }
+    
+    // DOM-Element einer Klasse zuweisen
+    NormalesFeldKlassieren() {
+      this.domElement.setAttribute('class', 'normalesfeld')
+    }
+
+    LeiterfeldKlassieren() {
+      this.domElement.setAttribute('class', 'leiterfeld');
+    }
   
     AddToBoard(board) {
       board.appendChild(this.domElement);
     }
-  
   }
-  
+
   // Klasse Leiterfeld mit Vererbung instanzieren
   class Leiterfeld extends Feld {
-    #zielfeld = '';
-  
+    Zielfeld = '';
+
     constructor(spielfeld, id, zielfeld) {
       super(spielfeld, id);
-      this.#zielfeld = zielfeld;
+      this.Zielfeld = zielfeld;
     }
   }
   

@@ -20,8 +20,10 @@
             </header>
 
             <main>
-                <p>Willkommen beim Leiterlispiel</p>
-                <p>An der Reihe ist: <span id="spieleranzeige"></span></p>
+                <div id="anzeige_oben">
+                    <p>An der Reihe ist: <span id="spieleranzeige"></span></p>
+                    <button type="button" id="neuesspiel">Neues Spiel</button>
+                </div>
                 <!-- Sektion mit Spielfeld und Würfelfeld -->
                 <section id="game_area">
                     <!-- Spielbrett mit Spielfeldern -->
@@ -47,6 +49,7 @@
     <script src="assets/wuerfel.js"></script>
     <script src="assets/feld.js"></script>
     <script src="assets/spieler.js"></script>
+    <script src="assets/spieleranzeige.js"></script>
     <script src="assets/spiel.js"></script>
     </body>
 </html>

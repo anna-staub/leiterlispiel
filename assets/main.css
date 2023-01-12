@@ -35,22 +35,16 @@ main {
     justify-content: space-evenly;
 }
 
+/* Anzeige über Spielfeld*/
+#anzeige_oben {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Spieleranzeige */
 #spieleranzeige {
     font-size: 1em;
 }
-
-/*
-#player.spieler1::before {
-    content: "Spieler 1";
-    color: var(--blue-4);
-}
-
-#player.spieler2::before {
-    content: "Spieler 2";
-    color: var(--teal-4);
-}
-*/
 
 /* Spielbrett */
 #board {
@@ -69,8 +63,24 @@ main {
     border: solid black 1px;
 }
 
+/* Feldfarben */
+.normalesfeld{
+    background-color: none;
+}
+#feld2, #feld12, #feld22, #feld32, #feld40, #feld50, #feld59, #feld74, #feld90, #feld94 {
+    background-color: coral;
+}
+#feld5, #feld14,  #feld16, #feld34, #feld36, #feld52, #feld54, #feld62, #feld82, #feld87 {
+    background-color: lightgreen;
+}
+
+/* Startfeld */
 #feld0 {
-    background-color: green;
+    background-color: rgb(255 255 51);
+}
+/*Zielfeld*/
+#feld99 {
+    background-color: rgb(67, 233, 67);
 }
 
 /* Spielfiguren */
@@ -99,10 +109,11 @@ main {
     flex-direction: column;
     margin: 0 6px;
     padding: 10px;
-    display: flex;
     justify-content: center;
     align-items: center;
     border: solid black 1px;
+    position: sticky;
+    bottom: 10px;
 }
 #wuerfelfeld :hover{
     cursor: pointer;
