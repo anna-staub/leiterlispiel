@@ -12,7 +12,7 @@ class Spieleranzeige {
     // Spieler in Spieleranzeige anzeigen
     spielerAnzeigen(){
         this.domElementSpieleranzeige.setAttribute('id', this.spiel.aktuellerSpieler.spielername);
-        console.log('Aktueller Spieler: '+ this.domElementSpieleranzeige.id);
+        if (debug_mode) {console.log('Aktueller Spieler: '+ this.domElementSpieleranzeige.id);}
         document.getElementById('spieleranzeige').appendChild(this.domElementSpieleranzeige);
     }
     // Spieler aus Spieleranzeige entfernen

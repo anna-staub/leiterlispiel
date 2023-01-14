@@ -65,7 +65,7 @@ main {
 
 /* Feldfarben */
 .normalesfeld{
-    background-color: none;
+    background-color: transparent;
 }
 #feld2, #feld12, #feld22, #feld32, #feld40, #feld50, #feld59, #feld74, #feld90, #feld94 {
     background-color: coral;

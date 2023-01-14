@@ -7,7 +7,7 @@ class Wuerfel{
         let wuerfelergebnis = Math.ceil(Math.random()*this.Augenzahl);
 
         wuerfelergebnis = parseInt(wuerfelergebnis);
-        console.log('Würfelergebnis: '+wuerfelergebnis);
+        if (debug_mode) {console.log('Würfelergebnis: '+wuerfelergebnis);}
 
         // eigene Methode dafür erstellen
         document.getElementById("wuerfelanzeige").innerHTML = String('Zuletzt gewürfelte Zahl: <br>\ '+wuerfelergebnis);
