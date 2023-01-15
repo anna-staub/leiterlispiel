@@ -11,8 +11,8 @@ class Spielfeld {
         if (Math.floor(i/10) % 2 === 0) {
          j = Math.floor(i / 10) * 10 + (9 - i % 10);
         } 
-        // console.log('i (Platz im Array) ist: '+i);
-        // console.log('j (Feldbeschriftung) ist: '+j);
+        // i = Platz im Array
+        // J = Feldbeschriftung
         let feld = null;
         let konfig = SPIELFELD_LEITERKONFIG.find(konfig => konfig.id === j);
         // console.log('konfig ist: '+konfig); // gibt undefined bei normalem Feld oder [object Object] bei Leiterfeld
