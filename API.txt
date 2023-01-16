@@ -1,0 +1,572 @@
+openapi: 3.0.3
+info:
+  title: Leiterlispiel - OpenAPI 3.0
+  description: |-
+    This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+
+    _If you're looking for the Swagger 2.0/OAS 2.0 version of Petstore, then click [here](https://editor.swagger.io/?url=https://petstore.swagger.io/v2/swagger.yaml). Alternatively, you can load via the `Edit > Load Petstore OAS 2.0` menu option!_
+    
+    Some useful links:
+    - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
+    - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
+  termsOfService: http://swagger.io/terms/
+
+  
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: ---
+tags:
+  - name: spiel
+  - name: spieler
+  - name: spieleranzeige
+  - name: wuerfel
+paths:
+  /spiel:
+    put: 
+      tags:
+        - spiel
+      summary: Existierendes Spiel updaten
+      description: Existierendes Spiel updaten
+      operationId: updateSpiel
+      requestBody:
+        description: Existierendes Spiel updaten
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Spiel'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spiel'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spiel wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+
+    post:
+      tags:
+        - spiel
+      summary: Neues Spiel erstellen
+      description: Neues Spiel erstellen
+      operationId: addSpiel
+      requestBody:
+        description: Neues Spiel erstellen
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Spiel'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spiel'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spiel wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+          
+    get:
+      tags:
+        - spiel
+      summary: Spiel laden
+      description: Spiel laden
+      operationId: getSpiel
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spiel'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spiel wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+
+  /spieler
+    get:
+      tags:
+        - spieler
+      summary: Spieler laden
+      description: Spieler laden
+      operationId: getSpieler
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spieler'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spieler wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+
+    post:
+      tags:
+        - spieler
+      summary: Spieler hinzufügen
+      description: Spieler hinzufügen
+      operationId: addSpieler
+      requestBody:
+        description: Spieler hinzufügen
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Spieler'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spieler'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spiel wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+          
+  /spieler/{spielername}
+   get:
+      tags:
+        - spieler
+      summary: Spieler mit Hilfe von spielername laden
+      description: Lädt spezifischen Spieler
+      operationId: getSpielerBySpielername
+      parameters:
+        - name: spielername
+          in: path
+          description: Name des Spielers, der geladen wird
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spieler'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spieler wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+          
+    put:
+      tags:
+        - spieler
+      summary: Spieler updaten
+      description: Spieler updaten
+      operationId: updateSpieler
+      parameters:
+        - name: spielername
+          in: path
+          description: Name des Spielers, der geupdated wird
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Existierenden Spieler updaten
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Spieler'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spieler'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spieler wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+          
+  /spieleranzeige
+    put: 
+      tags:
+        - spieleranzeige
+      summary: Existierende Spieleranzeige updaten
+      description: Existierende Spieleranzeige updaten
+      operationId: updateSpieleranzeige
+      requestBody:
+        description: Existierende Spieleranzeige updaten
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Spieleranzeige'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spieleranzeige'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spieleranzeige wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+
+    post:
+      tags:
+        - spieleranzeige
+      summary: Neue Spieleranzeige erstellen
+      description: Neue Spieleranzeige erstellen
+      operationId: addSpieleranzeige
+      requestBody:
+        description: Neue Spieleranzeige erstellen
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Spieleranzeige'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spieleranzeige'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spieleranzeige wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+          
+    get:
+      tags:
+        - spieleranzeige
+      summary: Spieleranzeige laden
+      description: Spieleranzeige laden
+      operationId: getSpieleranzeige
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Spieleranzeige'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Spieleranzeige wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+
+  /wuerfel
+    put: 
+      tags:
+        - wuerfel
+      summary: Existierenden Wuerfel updaten
+      description: Existierenden Würfel updaten
+      operationId: updateWuerfel
+      requestBody:
+        description: Existierenden Wuerfel updaten
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wuerfel'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wuerfel'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Wuerfel wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+
+    post:
+      tags:
+        - wuerfel
+      summary: Neuen Wuerfel erstellen
+      description: Neuen Wuerfel erstellen
+      operationId: addWuerfel
+      requestBody:
+        description: Neuen Wuerfel erstellen
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wuerfel'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wuerfel'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Wuerfel wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+          
+    get:
+      tags:
+        - wuerfel
+      summary: Wuerfel laden
+      description: Wuerfel laden
+      operationId: getWuerfel
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wuerfel'          
+        '400':
+          description: Fehlerhafte Anfrage
+        '404':
+          description: Wuerfel wurde nicht gefunden
+        '405':
+          description: Unerlaubte Methode
+  
+ 
+components:
+  schemas:
+    Spiel:
+      type: object
+      properties:
+        aktuellerSpieler:
+          type: object?
+          example: spieler1
+        petId:
+          type: integer
+          format: int64
+          example: 198772
+        quantity:
+          type: integer
+          format: int32
+          example: 7
+        shipDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          description: Order Status
+          example: approved
+          enum:
+            - placed
+            - approved
+            - delivered
+        complete:
+          type: boolean
+      xml:
+        name: order
+        
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        username:
+          type: string
+          example: fehguy
+        address:
+          type: array
+          xml:
+            name: addresses
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Address'
+      xml:
+        name: customer
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 437 Lytton
+        city:
+          type: string
+          example: Palo Alto
+        state:
+          type: string
+          example: CA
+        zip:
+          type: string
+          example: '94301'
+      xml:
+        name: address
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Dogs
+      xml:
+        name: category
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        username:
+          type: string
+          example: theUser
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+        phone:
+          type: string
+          example: '12345'
+        userStatus:
+          type: integer
+          description: User Status
+          format: int32
+          example: 1
+      xml:
+        name: user
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+      xml:
+        name: tag
+    Pet:
+      required:
+        - name
+        - photoUrls
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        name:
+          type: string
+          example: doggie
+        category:
+          $ref: '#/components/schemas/Category'
+        photoUrls:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            type: string
+            xml:
+              name: photoUrl
+        tags:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/Tag'
+        status:
+          type: string
+          description: pet status in the store
+          enum:
+            - available
+            - pending
+            - sold
+      xml:
+        name: pet
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+  requestBodies:
+    Pet:
+      description: Pet object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Pet'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Pet'
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header

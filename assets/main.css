@@ -138,6 +138,9 @@ main {
     text-align: center;
 }
 
+details{
+    margin: 10px 0;
+}
 /* Spielregeln */
 #regelfeld {
     display: flex;
