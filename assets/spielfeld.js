@@ -14,21 +14,41 @@ class Spielfeld {
         // i = Platz im Array
         // J = Feldbeschriftung
         let feld = null;
+
+        // Prüfen, ob ein Objekt mit j als id im Leiterkonfig-Array vorhanden ist
         let konfig = SPIELFELD_LEITERKONFIG.find(konfig => konfig.id === j);
-        // console.log('konfig ist: '+konfig); // gibt undefined bei normalem Feld oder [object Object] bei Leiterfeld
-        if (konfig) { // prüfen, ob ein Wert vorhanden ist oder nicht
+        if (debug_mode) {console.log('konfig ist: '+konfig);} // gibt undefined bei normalem Feld oder [object Object] bei Leiterfeld
+
+        // Wenn ein Objekt mit j als id im Leiterkonfig-Array vorhanden ist, wird das neue Feld als Leiterfeld instanziert.
+        if (konfig) { // gibt true oder false
           feld = new Leiterfeld(this, j, konfig.zielfeld);
-          // console.log('ist feld leiterfeld? ');
-          // console.log(feld instanceof Leiterfeld);  // gibt true
-          feld.LeiterfeldKlassieren(); 
-          // console.log('zielfeld: '+feld.Zielfeld)
+          if (debug_mode) {console.log('ist feld leiterfeld? ');}
+          if (debug_mode) {console.log(feld instanceof Leiterfeld);}  // gibt true
+          if (debug_mode) {console.log('zielfeld: '+feld.Zielfeld);}
+
+          // Leiterfeld der Hoch- oder Runter-Klasse zuordnen
+          if (j > konfig.zielfeld) {
+            if (debug_mode) {console.log('leiterfeld runter');}
+            feld.LeiterfeldRunterKlassieren();
+
+          } else if (j < konfig.zielfeld) {
+            if (debug_mode) {console.log('leiterfeld hoch');}
+            feld.LeiterfeldHochKlassieren();
+          }
+          // Zugehöriges Zielfeld ins Leiterfeld schreiben
+          feld.domElement.innerHTML+='<br />go to '+konfig.zielfeld;    
+
         } else {
+          // Normales Feld instanzieren
           feld = new Feld(this, j);
-          // console.log('ist feld leiterfeld? ');
-          // console.log(feld instanceof Leiterfeld); // gibt false
+          if (debug_mode) {console.log('ist feld leiterfeld? ');}
+          if (debug_mode) {console.log(feld instanceof Leiterfeld);} // gibt false
           feld.NormalesFeldKlassieren();
         }
+
+        // Feld dem Array hinzufügen
         this.felderArray.push(feld);
+
         // DOM-Element (Felder) dem Spielfeld hinzufügen
         feld.AddToBoard(this.#domElement);
       }

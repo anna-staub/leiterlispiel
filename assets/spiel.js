@@ -80,7 +80,7 @@ class Spiel {
   }
 }
 // Debug Modus zum deaktivieren von console.logs
-let debug_mode = false;
+let debug_mode = true;
 
 // neues Spiel instanzieren
 let spiel = new Spiel();

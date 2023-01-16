@@ -58,19 +58,25 @@ main {
     aspect-ratio: 1/1;
     cursor: pointer;
     border: solid black 1px;
+    font-size: 12px;
 }
 
 /* Feldfarben */
 .normalesfeld{
     background-color: transparent;
 }
-#feld2, #feld12, #feld22, #feld32, #feld40, #feld50, #feld59, #feld74, #feld90, #feld94 {
+
+#feld2, #feld12, #feld40, #feld50, #feld74, .leiterfeld_runter{
     background-color: coral;
 }
-#feld5, #feld14,  #feld16, #feld34, #feld36, #feld52, #feld54, #feld62, #feld82, #feld87 {
+
+#feld14, #feld36, #feld54, #feld82, #feld87, .leiterfeld_hoch{
     background-color: lightgreen;
 }
 
+.leiterfeld{
+    background-color: lavender;
+}
 /* Startfeld */
 #feld0 {
     background-color: rgb(255 255 51);

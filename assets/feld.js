@@ -39,6 +39,13 @@ class Feld {
     LeiterfeldKlassieren() {
       this.domElement.setAttribute('class', 'leiterfeld');
     }
+    
+    LeiterfeldRunterKlassieren() {
+      this.domElement.setAttribute('class', 'leiterfeld_runter');
+    }
+    LeiterfeldHochKlassieren() {
+      this.domElement.setAttribute('class', 'leiterfeld_hoch');
+    }
   
     AddToBoard(board) {
       board.appendChild(this.domElement);
