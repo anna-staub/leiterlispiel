@@ -17,8 +17,9 @@ class Spiel {
 
     // Aktuelle Feldnummer des Spielers ermitteln
     this.aktuelleFeldnummer = this.aktuellerSpieler.GetFeldNummer();
-    // Würfeln
+    // Würfeln und Resultat anzeigen
     this.wuerfelergebnis = this.spielwuerfel.wuerfeln();
+    this.spielwuerfel.wuerfelergebnisAusgeben(this.wuerfelergebnis);
     // Landefeld des Spielers ermitteln
     // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
     this.landefeldnummer = this.aktuelleFeldnummer + this.wuerfelergebnis;
@@ -79,7 +80,7 @@ class Spiel {
   }
 }
 // Debug Modus zum deaktivieren von console.logs
-let debug_mode = false;
+let debug_mode = true;
 
 // neues Spiel instanzieren
 let spiel = new Spiel();

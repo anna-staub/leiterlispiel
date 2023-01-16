@@ -22,7 +22,7 @@ body > #spiel > header h1 {
 }
 
 main {
-    width: 90vw;
+    width: 80vw;
     max-width: 1000px;
     margin: 1em auto;
 }
@@ -32,7 +32,7 @@ main {
 #game_area{
     display: flex;
     align-items: flex-end;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 /* Anzeige über Spielfeld*/
@@ -41,10 +41,7 @@ main {
     justify-content: space-between;
 }
 
-/* Spieleranzeige */
-#spieleranzeige {
-    font-size: 1em;
-}
+
 
 /* Spielbrett */
 #board {
@@ -52,7 +49,7 @@ main {
     display: grid; 
     grid-template-columns: repeat(10, 1fr);
     gap: 6px;
-    margin-top: 1em;
+    margin-top: 6px
 }
 /* Spielfelder */
 #board div {
@@ -61,19 +58,25 @@ main {
     aspect-ratio: 1/1;
     cursor: pointer;
     border: solid black 1px;
+    font-size: 12px;
 }
 
 /* Feldfarben */
 .normalesfeld{
     background-color: transparent;
 }
-#feld2, #feld12, #feld22, #feld32, #feld40, #feld50, #feld59, #feld74, #feld90, #feld94 {
+
+#feld2, #feld12, #feld40, #feld50, #feld74, .leiterfeld_runter{
     background-color: coral;
 }
-#feld5, #feld14,  #feld16, #feld34, #feld36, #feld52, #feld54, #feld62, #feld82, #feld87 {
+
+#feld14, #feld36, #feld54, #feld82, #feld87, .leiterfeld_hoch{
     background-color: lightgreen;
 }
 
+.leiterfeld{
+    background-color: lavender;
+}
 /* Startfeld */
 #feld0 {
     background-color: rgb(255 255 51);
@@ -103,6 +106,13 @@ main {
     background-color: red;
 }
 
+/* Spieleranzeige */
+#spieleranzeige {
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
 /* Wuerfelfeld */
 #wuerfelfeld {
     display: flex;
@@ -137,8 +147,6 @@ main {
     align-items: center;
     text-align: justify;
 }
-
-
 }
 
 /* Unter minimaler Bildschirmbreite */
@@ -149,6 +157,5 @@ main {
     #spiel{
         display: none;
     }
-    
-    }
+}
 
