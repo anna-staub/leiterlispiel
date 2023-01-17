@@ -1,8 +1,8 @@
 class Feld {
     // Feld-ID setzen für die Unterscheidung und Referenzierung der einzelnen Felder
-    id = '';
-    feldnummer = 0;
+    #id = '';
     #feldtext = '';
+    feldnummer = 0;
     // DOM-Element
     domElement = document.createElement('div');
     //Spielfeld
@@ -12,12 +12,12 @@ class Feld {
     constructor(spielfeld, id) {
       this.#parentSpielfeld = spielfeld;
       // this.id = 'feld'+id; --> nicht als String, ist schwieriger zu ändern / addieren
-      this.id = 'feld'+id;
+      this.#id = 'feld'+id;
       this.feldnummer = id;
       this.#feldtext = id;
       // ID-Attribut auf div-Element setzen
       // alle Felder die nicht Start oder Ziel sind
-      this.domElement.setAttribute('id', this.id);
+      this.domElement.setAttribute('id', this.#id);
       if (id != 0 && id != 99) {
         this.domElement.textContent = this.#feldtext;
       }
@@ -39,7 +39,7 @@ class Feld {
     LeiterfeldKlassieren() {
       this.domElement.setAttribute('class', 'leiterfeld');
     }
-    
+
     LeiterfeldRunterKlassieren() {
       this.domElement.setAttribute('class', 'leiterfeld_runter');
     }

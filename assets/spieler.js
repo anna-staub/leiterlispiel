@@ -1,6 +1,6 @@
 class Spieler {
-  // Feldnummer initialisieren
-  feldnummer = 0;
+  // Feldnummer des Spielers initialisieren
+  #spielerFeldnummer = 0;
   // DOM-Element Spielfigur
   #domElementSpielfigur = document.createElement('div');
   // Feld
@@ -8,7 +8,7 @@ class Spieler {
   
   // Instanzieren der Klasse
   constructor(startfeld, spielername) {
-    this.feldnummer = this.feldnummer;
+    this.#spielerFeldnummer = this.#spielerFeldnummer;
     this.#parentFeld = startfeld;
     this.spielername = spielername;
     // Class-Attribut und ID-Attribut auf DOM-Element setzen
@@ -27,11 +27,11 @@ class Spieler {
   // anhand der Feldnummer das Objekt im Array suchen und den Spieler ins entsprechende DOM-Element platzieren
   // AddToFeld wieder rausnehmen und beide Methoden einzeln aufrufen im spiel.js
   SetFeld(Feld) {
-    this.feldnummer = Number(Feld.feldnummer);
+    this.#spielerFeldnummer = Number(Feld.feldnummer);
     this.AddToFeld(Feld.domElement);
   }
-  // Feldnummer ermitteln 
-  GetFeldNummer() {
-    return this.feldnummer;
+  // Feldnummer des Spielers ermitteln 
+  GetSpielerFeldNummer() {
+    return this.#spielerFeldnummer;
   }
 }
