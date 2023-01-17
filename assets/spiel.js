@@ -1,6 +1,9 @@
 // Spielfeld erstellen
 class Spiel {
-  constructor() {
+  #spielId = 0;
+
+  constructor(spielId) {
+    this.#spielId = spielId;
     this.spielfeld = new Spielfeld();
     this.spieler1 = new Spieler(Feld, 'spieler1');
     this.spieler2 = new Spieler(Feld, 'spieler2');
@@ -90,7 +93,7 @@ class Spiel {
 let debug_mode = true;
 
 // neues Spiel instanzieren
-let spiel = new Spiel();
+let spiel = new Spiel(1);
 
 
 // Methode Spielzug auslösen, sobald gewürfelt wird
