@@ -1,52 +1,72 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Swagger Petstore - OpenAPI 3.0",
-    "description": "This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about\nSwagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!\nYou can now help us improve the API whether it's by making changes to the definition itself or to the code.\nThat way, with time, we can improve the API in general, and expose some of the new features in OAS3.\n\n_If you're looking for the Swagger 2.0/OAS 2.0 version of Petstore, then click [here](https://editor.swagger.io/?url=https://petstore.swagger.io/v2/swagger.yaml). Alternatively, you can load via the `Edit > Load Petstore OAS 2.0` menu option!_\n\nSome useful links:\n- [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)\n- [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)",
+    "title": "Swagger Leiterlispiel - OpenAPI 3.0",
+    "description": "TODO\n\nSome useful links:\n- [Repository Leiterlispiel](https://gitlab.com/yxaw/front-projekt)\n- [The source API definition for the Leiterlispiel](https://gitlab.com/yxaw/front-projekt/-/blob/main/documents/Gruppe_C_Schnittstelle.json)",
     "termsOfService": "http://swagger.io/terms/",
-    "contact": {
-      "email": "apiteam@swagger.io"
-    },
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.11"
-  },
-  "externalDocs": {
-    "description": "Find out more about Swagger",
-    "url": "http://swagger.io"
+    "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "https://petstore3.swagger.io/api/v3"
+      "url": "https://todo.swagger.io/api/v3"
     }
   ],
   "tags": [
     {
       "name": "Spiel",
-      "description": "Everything about your Pets",
-      "externalDocs": {
-        "description": "Find out more",
-        "url": "http://swagger.io"
-      }
+      "description": "TODO"
     },
     {
-      "name": "store",
-      "description": "Access to Petstore orders",
-      "externalDocs": {
-        "description": "Find out more about our store",
-        "url": "http://swagger.io"
-      }
+      "name": "Spielfigur",
+      "description": "TODO"
     },
     {
-      "name": "user",
-      "description": "Operations about user"
+      "name": "User",
+      "description": "TODO"
     }
   ],
   "paths": {
     "/Spiel": {
+      "post": {
+        "tags": [
+          "Spiel"
+        ],
+        "summary": "Neues Spiel erstellen",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Spiel"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Spiel"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Unerlaubte Methode"
+          }
+        }
+      },
       "put": {
+        "summary": "Update Spiel",
+        "tags": [
+          "Spiel"
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -80,15 +100,19 @@
         }
       }
     },
-    "/Spiel/{spielid}": {
+    "/Spiel/{spielId}": {
       "get": {
+        "summary": "Find Spiel by spielId",
+        "tags": [
+          "Spiel"
+        ],
         "parameters": [
           {
-            "name": "spielid",
+            "name": "spielId",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer"
             }
           }
         ],
@@ -113,13 +137,378 @@
             "description": "Unerlaubte Methode"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Spiel"
+        ],
+        "summary": "Spiel löschen",
+        "parameters": [
+          {
+            "name": "spielId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "Spiel wurde nicht gefunden"
+          }
+        }
+      }
+    },
+    "/Spielfigur": {
+      "post": {
+        "tags": [
+          "Spielfigur"
+        ],
+        "summary": "Neue Spielfigur erstellen",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Spielfigur"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Spielfigur"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Unerlaubte Methode"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Spielfigur",
+        "tags": [
+          "Spielfigur"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Spielfigur"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Spielfigur"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "Spielfigur wurde nicht gefunden"
+          },
+          "405": {
+            "description": "Unerlaubte Methode"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Spielfigur"
+        ],
+        "summary": "Spielfigur löschen",
+        "responses": {
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "Spielfigur wurde nicht gefunden"
+          }
+        }
+      }
+    },
+    "/Spiel/{spielId}/Spielfigur": {
+      "get": {
+        "summary": "Find Spielfigur in Spiel",
+        "tags": [
+          "Spielfigur"
+        ],
+        "parameters": [
+          {
+            "name": "spielId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Spielfigur"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "Spiel wurde nicht gefunden"
+          },
+          "405": {
+            "description": "Unerlaubte Methode"
+          }
+        }
+      }
+    },
+    "/Spielfigur/{spielfigurId}": {
+      "get": {
+        "summary": "Find Spielfigur by spielfigurId",
+        "tags": [
+          "Spielfigur"
+        ],
+        "parameters": [
+          {
+            "name": "spielfigurId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Spielfigur"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "Spiel wurde nicht gefunden"
+          },
+          "405": {
+            "description": "Unerlaubte Methode"
+          }
+        }
+      }
+    },
+    "/User": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Neuen User erstellen",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Unerlaubte Methode"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update User",
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "User wurde nicht gefunden"
+          },
+          "405": {
+            "description": "Unerlaubte Methode"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "User löschen",
+        "responses": {
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "User wurde nicht gefunden"
+          }
+        }
+      }
+    },
+    "/User/{userId}": {
+      "get": {
+        "summary": "Find User by userId",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "User wurde nicht gefunden"
+          },
+          "405": {
+            "description": "Unerlaubte Methode"
+          }
+        }
       }
     }
   },
   "components": {
     "schemas": {
       "Spiel": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "spielId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1
+          },
+          "wuerfelergebnis": {
+            "type": "integer",
+            "format": "int32",
+            "example": 5
+          },
+          "aktuellerSpielerId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 7
+          }
+        }
+      },
+      "Spielfigur": {
+        "type": "object",
+        "properties": {
+          "spielfigurId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1
+          },
+          "feldnummer": {
+            "type": "integer",
+            "format": "int32",
+            "example": 5
+          },
+          "spielId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 7
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 7
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "spielername": {
+            "type": "string",
+            "example": "Testspieler"
+          },
+          "userid": {
+            "type": "integer",
+            "format": "int32",
+            "example": 5
+          }
+        }
       }
     }
   }
