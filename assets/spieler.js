@@ -1,4 +1,5 @@
 class Spieler {
+  #spielerId = 0;
   // Feldnummer des Spielers initialisieren
   #spielerFeldnummer = 0;
   // DOM-Element Spielfigur
@@ -7,7 +8,8 @@ class Spieler {
   #parentFeld;
   
   // Instanzieren der Klasse
-  constructor(startfeld, spielername) {
+  constructor(startfeld, spielername, spielerId) {
+    this.spielerId = spielerId;
     this.#spielerFeldnummer = this.#spielerFeldnummer;
     this.#parentFeld = startfeld;
     this.spielername = spielername;

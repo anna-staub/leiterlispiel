@@ -5,8 +5,8 @@ class Spiel {
   constructor(spielId) {
     this.#spielId = spielId;
     this.spielfeld = new Spielfeld();
-    this.spieler1 = new Spieler(Feld, 'spieler1');
-    this.spieler2 = new Spieler(Feld, 'spieler2');
+    this.spieler1 = new Spieler(Feld, 'spieler1', 1);
+    this.spieler2 = new Spieler(Feld, 'spieler2', 2);
     this.spielwuerfel = new Wuerfel(6);
     this.aktuellerSpieler = this.spieler1;
     let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
