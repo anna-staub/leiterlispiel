@@ -66,17 +66,14 @@ main {
     background-color: transparent;
 }
 
-#feld2, #feld12, #feld40, #feld50, #feld74, .leiterfeld_runter{
+.leiterfeld_runter{
     background-color: coral;
 }
 
-#feld14, #feld36, #feld54, #feld82, #feld87, .leiterfeld_hoch{
+.leiterfeld_hoch{
     background-color: lightgreen;
 }
 
-.leiterfeld{
-    background-color: lavender;
-}
 /* Startfeld */
 #feld0 {
     background-color: rgb(255 255 51);

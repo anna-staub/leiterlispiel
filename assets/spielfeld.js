@@ -15,9 +15,13 @@ class Spielfeld {
         // J = Feldbeschriftung
         let feld = null;
 
-        // Prüfen, ob ein Objekt mit j als id im Leiterkonfig-Array vorhanden ist
+        // Prüfen, ob ein Objekt mit j als id im Leiterkonfig-Array vorhanden ist (Leiter-Start)
         let konfig = SPIELFELD_LEITERKONFIG.find(konfig => konfig.id === j);
+        // Prüfen, ob ein Objekt mit j als zielfeld im Leiterkonfig-Array vorhanden ist (Leiter-Ziel)
+        let landekonfig = SPIELFELD_LEITERKONFIG.find(landekonfig => landekonfig.zielfeld === j);
+
         if (debug_mode) {console.log('konfig ist: '+konfig);} // gibt undefined bei normalem Feld oder [object Object] bei Leiterfeld
+        if (debug_mode) {console.log('landekonfig ist: '+landekonfig);} // gibt undefined bei normalem Feld oder [object Object] bei Leiterfeld
 
         // Wenn ein Objekt mit j als id im Leiterkonfig-Array vorhanden ist, wird das neue Feld als Leiterfeld instanziert.
         if (konfig) { // gibt true oder false
@@ -30,7 +34,6 @@ class Spielfeld {
           if (j > konfig.zielfeld) {
             if (debug_mode) {console.log('leiterfeld runter');}
             feld.LeiterfeldRunterKlassieren();
-
           } else if (j < konfig.zielfeld) {
             if (debug_mode) {console.log('leiterfeld hoch');}
             feld.LeiterfeldHochKlassieren();
@@ -44,6 +47,16 @@ class Spielfeld {
           if (debug_mode) {console.log('ist feld leiterfeld? ');}
           if (debug_mode) {console.log(feld instanceof Leiterfeld);} // gibt false
           feld.NormalesFeldKlassieren();
+          // Wenn das Feld ein Leiterzielfeld ist, erhält es die entsprechende Klasse
+          if (landekonfig) {
+            if (landekonfig.zielfeld < landekonfig.id) {
+              if (debug_mode){console.log('Zielfeld is grösser als ID')}
+            feld.LeiterfeldRunterKlassieren();
+          } else if (landekonfig.zielfeld > landekonfig.id){
+            if (debug_mode){console.log('Zielfeld is kleiner als ID')}
+              feld.LeiterfeldHochKlassieren();
+          }
+        }
         }
 
         // Feld dem Array hinzufügen

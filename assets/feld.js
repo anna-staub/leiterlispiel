@@ -39,7 +39,7 @@ class Feld {
     LeiterfeldKlassieren() {
       this.domElement.setAttribute('class', 'leiterfeld');
     }
-    
+
     LeiterfeldRunterKlassieren() {
       this.domElement.setAttribute('class', 'leiterfeld_runter');
     }
