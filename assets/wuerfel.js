@@ -11,7 +11,7 @@ class Wuerfel{
     };
 
     wuerfelergebnisAusgeben(zahl) {
-        document.getElementById("wuerfelanzeige").innerHTML = String('Zuletzt gewürfelte Zahl: <br>\ '+zahl);
+        document.getElementById('wuerfelanzeige').innerHTML = String('Zuletzt gewürfelte Zahl: <br>\ '+zahl);
     }
 }
 

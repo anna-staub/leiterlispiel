@@ -21,17 +21,17 @@ class Spieler {
   }
 
   // DOM-Element Spielfigur dem Feld hinzufügen
-  AddToFeld(feld) {
+  addToFeld(feld) {
     feld.appendChild(this.#domElementSpielfigur);
   }
   // anhand der Feldnummer das Objekt im Array suchen und den Spieler ins entsprechende DOM-Element platzieren
   // AddToFeld wieder rausnehmen und beide Methoden einzeln aufrufen im spiel.js
-  SetFeld(Feld) {
+  setFeld(Feld) {
     this.#spielerFeldnummer = Number(Feld.feldnummer);
-    this.AddToFeld(Feld.domElement);
+    this.addToFeld(Feld.domElement);
   }
   // Feldnummer des Spielers ermitteln 
-  GetSpielerFeldNummer() {
+  getSpielerFeldNummer() {
     return this.#spielerFeldnummer;
   }
 }

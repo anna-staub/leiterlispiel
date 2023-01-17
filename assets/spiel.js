@@ -6,17 +6,17 @@ class Spiel {
     this.spieler2 = new Spieler(Feld, 'spieler2');
     this.spielwuerfel = new Wuerfel(6);
     this.aktuellerSpieler = this.spieler1;
-    let startfeld = this.spielfeld.GetFeldUeberFeldnummer(0);
-    this.spieler1.SetFeld(startfeld);
-    this.spieler2.SetFeld(startfeld);
+    let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
+    this.spieler1.setFeld(startfeld);
+    this.spieler2.setFeld(startfeld);
     this.spieleranzeige = new Spieleranzeige(this);
     this.spieleranzeige.spielerAnzeigen();
   }
 
-  Spielzug() {
+  spielzug() {
 
     // Aktuelle Feldnummer des Spielers ermitteln
-    this.aktuelleSpielerFeldnummer = this.aktuellerSpieler.GetSpielerFeldNummer();
+    this.aktuelleSpielerFeldnummer = this.aktuellerSpieler.getSpielerFeldNummer();
     // Würfeln und Resultat anzeigen
     this.wuerfelergebnis = this.spielwuerfel.wuerfeln();
     this.spielwuerfel.wuerfelergebnisAusgeben(this.wuerfelergebnis);
@@ -27,17 +27,17 @@ class Spiel {
       // this.aktuellerSpieler (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99;
       // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
-      this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
+      this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
       // Spieler die entsprechende Feldnummer zuschreiben und Spieler-DOM-Element in entsprechendes Feld-DOM-Element platzieren
-      this.aktuellerSpieler.SetFeld(this.landefeldObjekt);
+      this.aktuellerSpieler.setFeld(this.landefeldObjekt);
       // Sieger ausrufen (spielername ist noch etwas unschön)
       setTimeout(() => {alert(this.aktuellerSpieler.spielername+' hat gewonnen!')}, 500);
       // Spiel zurücksetzen? (Neues Spiel initialisieren?)
     } else {
       // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
-      this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
+      this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
       // Spieler die entsprechende Feldnummer zuschreiben und Spieler-DOM-Element in entsprechendes Feld-DOM-Element platzieren
-      this.aktuellerSpieler.SetFeld(this.landefeldObjekt);
+      this.aktuellerSpieler.setFeld(this.landefeldObjekt);
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       if (this.landefeldObjekt instanceof Leiterfeld) {
         if (debug_mode) {console.log('Leiter-Start:'+this.landefeldnummer);}
@@ -51,9 +51,9 @@ class Spiel {
         });
         this.landefeldnummer = zielfeld;
         if (debug_mode) {console.log('Leiter-Ende:'+this.landefeldnummer);}
-        this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
+        this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
         // ...wird der Spieler dem Zielfeld des entsprechenden Leiterfelds angehängt.
-        setTimeout(() => {this.aktuellerSpieler.SetFeld(this.landefeldObjekt)}, 500);
+        setTimeout(() => {this.aktuellerSpieler.setFeld(this.landefeldObjekt)}, 500);
       }
 
       // Wenn nicht 6 gewürfelt wurde wechselt der aktuelle Spieler, bei 6 bleibt er gleich.
@@ -74,9 +74,9 @@ class Spiel {
       this.spieleranzeige.spielerAusAnzeigeEntfernen();
       this.aktuellerSpieler = this.spieler1;
     }
-    let startfeld = this.spielfeld.GetFeldUeberFeldnummer(0);
-    this.spieler1.SetFeld(startfeld);
-    this.spieler2.SetFeld(startfeld);
+    let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
+    this.spieler1.setFeld(startfeld);
+    this.spieler2.setFeld(startfeld);
     this.spieleranzeige.spielerAnzeigen();
   }
 }
@@ -88,13 +88,13 @@ let spiel = new Spiel();
 
 
 // Methode Spielzug auslösen, sobald gewürfelt wird
-document.getElementById("wuerfelbutton").addEventListener('click', () => {
+document.getElementById('wuerfelbutton').addEventListener('click', () => {
   // Würfel während des Spielzugs disablen
-  document.getElementById("wuerfelbutton").setAttribute('disabled', '');
-  spiel.Spielzug()
+  document.getElementById('wuerfelbutton').setAttribute('disabled', '');
+  spiel.spielzug()
   // Würfel nach Spielzug wieder enablen
-  setTimeout(() => {document.getElementById("wuerfelbutton").removeAttribute('disabled')}, 500);
+  setTimeout(() => {document.getElementById('wuerfelbutton').removeAttribute('disabled')}, 500);
 });
 
 // Spiel neu starten
-document.getElementById("neuesspiel").addEventListener('click', () => {spiel.spielZuruecksetzen()})
+document.getElementById('neuesspiel').addEventListener('click', () => {spiel.spielZuruecksetzen()})

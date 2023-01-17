@@ -33,10 +33,10 @@ class Spielfeld {
           // Leiterfeld der Hoch- oder Runter-Klasse zuordnen
           if (j > konfig.zielfeld) {
             if (debug_mode) {console.log('leiterfeld runter');}
-            feld.LeiterfeldRunterKlassieren();
+            feld.leiterfeldRunterKlassieren();
           } else if (j < konfig.zielfeld) {
             if (debug_mode) {console.log('leiterfeld hoch');}
-            feld.LeiterfeldHochKlassieren();
+            feld.leiterfeldHochKlassieren();
           }
           // Zugehöriges Zielfeld ins Leiterfeld schreiben
           feld.domElement.innerHTML+='<br />go to '+konfig.zielfeld;    
@@ -46,15 +46,15 @@ class Spielfeld {
           feld = new Feld(this, j);
           if (debug_mode) {console.log('ist feld leiterfeld? ');}
           if (debug_mode) {console.log(feld instanceof Leiterfeld);} // gibt false
-          feld.NormalesFeldKlassieren();
+          feld.normalesFeldKlassieren();
           // Wenn das Feld ein Leiterzielfeld ist, erhält es die entsprechende Klasse
           if (landekonfig) {
             if (landekonfig.zielfeld < landekonfig.id) {
               if (debug_mode){console.log('Zielfeld is grösser als ID')}
-            feld.LeiterfeldRunterKlassieren();
+            feld.leiterfeldRunterKlassieren();
           } else if (landekonfig.zielfeld > landekonfig.id){
             if (debug_mode){console.log('Zielfeld is kleiner als ID')}
-              feld.LeiterfeldHochKlassieren();
+              feld.leiterfeldHochKlassieren();
           }
         }
         }
@@ -63,11 +63,11 @@ class Spielfeld {
         this.#felderArray.push(feld);
 
         // DOM-Element (Felder) dem Spielfeld hinzufügen
-        feld.AddToBoard(this.#domElement);
+        feld.addToBoard(this.#domElement);
       }
     }
     // Methode um entsprechendes Feld-Objekt anhand von Feldnummer aus dem Felder-Array zu holen
-    GetFeldUeberFeldnummer(feldnummer) {
+    getFeldUeberFeldnummer(feldnummer) {
       for (let i = 0 ; i < this.#felderArray.length ; i++){
         if (this.#felderArray[i].feldnummer === feldnummer) {
           return this.#felderArray[i];

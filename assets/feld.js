@@ -11,10 +11,11 @@ class Feld {
     // Instanzieren der Klasse
     constructor(spielfeld, id) {
       this.#parentSpielfeld = spielfeld;
-      // this.id = 'feld'+id; --> nicht als String, ist schwieriger zu ändern / addieren
+      // id's in HTML/CSS dürfen nicht mit einer Zahl beginnen, deshalb 'feld'+
       this.#id = 'feld'+id;
       this.feldnummer = id;
       this.#feldtext = id;
+
       // ID-Attribut auf div-Element setzen
       // alle Felder die nicht Start oder Ziel sind
       this.domElement.setAttribute('id', this.#id);
@@ -32,33 +33,28 @@ class Feld {
     }
     
     // DOM-Element einer Klasse zuweisen
-    NormalesFeldKlassieren() {
+    normalesFeldKlassieren() {
       this.domElement.setAttribute('class', 'normalesfeld')
     }
-
-    LeiterfeldKlassieren() {
-      this.domElement.setAttribute('class', 'leiterfeld');
-    }
-
-    LeiterfeldRunterKlassieren() {
+    leiterfeldRunterKlassieren() {
       this.domElement.setAttribute('class', 'leiterfeld_runter');
     }
-    LeiterfeldHochKlassieren() {
+    leiterfeldHochKlassieren() {
       this.domElement.setAttribute('class', 'leiterfeld_hoch');
     }
-  
-    AddToBoard(board) {
+    // DOM-Element dem Spielfeld hinzufügen
+    addToBoard(board) {
       board.appendChild(this.domElement);
     }
   }
 
   // Klasse Leiterfeld mit Vererbung instanzieren
   class Leiterfeld extends Feld {
-    Zielfeld = '';
+    zielfeld = '';
 
     constructor(spielfeld, id, zielfeld) {
       super(spielfeld, id);
-      this.Zielfeld = zielfeld;
+      this.zielfeld = zielfeld;
     }
   }
   

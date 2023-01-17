@@ -44,8 +44,10 @@ work-in-progress
 
 ## Coding guidelines
 Bezeichnungen werden deutsch geschrieben. <br>
-Public Variablen werden in PascalCase geschrieben. <br>
-Private Variablen, Funktionen und Methoden beginnen mit einem # und werden in camelCase geschrieben. <br>
+Properties von Klassen wo immer möglich privat. <br>
+Public Variablen, Methoden sowie Funktionen werden in camelCase geschrieben. <br>
+Private Variablen und Methoden werden ebenfalls in camel Case geschrieben, beginnen aber zusätzlich mit einem #. <br>
+Klassenbezeichnungen werden in PascalCase geschrieben. <br>
 Konstanten werden in Grossbuchstaben geschrieben. <br>
 Strings werden in single quotes geschrieben.
 
