@@ -16,13 +16,13 @@ class Spiel {
   Spielzug() {
 
     // Aktuelle Feldnummer des Spielers ermitteln
-    this.aktuelleFeldnummer = this.aktuellerSpieler.GetFeldNummer();
+    this.aktuelleSpielerFeldnummer = this.aktuellerSpieler.GetSpielerFeldNummer();
     // Würfeln und Resultat anzeigen
     this.wuerfelergebnis = this.spielwuerfel.wuerfeln();
     this.spielwuerfel.wuerfelergebnisAusgeben(this.wuerfelergebnis);
     // Landefeld des Spielers ermitteln
     // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
-    this.landefeldnummer = this.aktuelleFeldnummer + this.wuerfelergebnis;
+    this.landefeldnummer = this.aktuelleSpielerFeldnummer + this.wuerfelergebnis;
     if (this.landefeldnummer >= 99){
       // this.aktuellerSpieler (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99;
@@ -40,7 +40,7 @@ class Spiel {
       this.aktuellerSpieler.SetFeld(this.landefeldObjekt);
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       if (this.landefeldObjekt instanceof Leiterfeld) {
-        if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
+        if (debug_mode) {console.log('Leiter-Start:'+this.landefeldnummer);}
         let zielfeld = '';
         // zielfeld zum aktuellen Feld aus SPIELFELD_LEITERKONFIG herauslesen
         SPIELFELD_LEITERKONFIG.forEach((objekt) => {
@@ -50,6 +50,7 @@ class Spiel {
           }
         });
         this.landefeldnummer = zielfeld;
+        if (debug_mode) {console.log('Leiter-Ende:'+this.landefeldnummer);}
         this.landefeldObjekt = this.spielfeld.GetFeldUeberFeldnummer(this.landefeldnummer);
         // ...wird der Spieler dem Zielfeld des entsprechenden Leiterfelds angehängt.
         setTimeout(() => {this.aktuellerSpieler.SetFeld(this.landefeldObjekt)}, 500);
@@ -65,7 +66,7 @@ class Spiel {
         this.spieleranzeige.spielerAnzeigen();
       }}, 500);
     }
-    if (debug_mode) {console.log('TESTlandefeldnummer:'+this.landefeldnummer);}
+    if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
   }
 
   spielZuruecksetzen() {

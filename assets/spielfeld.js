@@ -1,6 +1,6 @@
 class Spielfeld {
     // Array von Feldern
-    felderArray = [];
+    #felderArray = [];
     // DOM-Element (Spielfeld)
     #domElement = document.getElementById('board');
   
@@ -60,7 +60,7 @@ class Spielfeld {
         }
 
         // Feld dem Array hinzufügen
-        this.felderArray.push(feld);
+        this.#felderArray.push(feld);
 
         // DOM-Element (Felder) dem Spielfeld hinzufügen
         feld.AddToBoard(this.#domElement);
@@ -68,9 +68,9 @@ class Spielfeld {
     }
     // Methode um entsprechendes Feld-Objekt anhand von Feldnummer aus dem Felder-Array zu holen
     GetFeldUeberFeldnummer(feldnummer) {
-      for (let i = 0 ; i < this.felderArray.length ; i++){
-        if (this.felderArray[i].feldnummer === feldnummer) {
-          return this.felderArray[i];
+      for (let i = 0 ; i < this.#felderArray.length ; i++){
+        if (this.#felderArray[i].feldnummer === feldnummer) {
+          return this.#felderArray[i];
         }
       }
     }
