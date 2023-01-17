@@ -8,7 +8,9 @@ class Spiel {
     this.aktuellerSpieler = this.spieler1;
     let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
     this.spieler1.setFeld(startfeld);
+    this.spieler1.addToFeld(startfeld.domElement);
     this.spieler2.setFeld(startfeld);
+    this.spieler2.addToFeld(startfeld.domElement);
     this.spieleranzeige = new Spieleranzeige(this);
     this.spieleranzeige.spielerAnzeigen();
   }
@@ -30,6 +32,7 @@ class Spiel {
       this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
       // Spieler die entsprechende Feldnummer zuschreiben und Spieler-DOM-Element in entsprechendes Feld-DOM-Element platzieren
       this.aktuellerSpieler.setFeld(this.landefeldObjekt);
+      this.aktuellerSpieler.addToFeld(this.landefeldObjekt.domElement);
       // Sieger ausrufen (spielername ist noch etwas unschön)
       setTimeout(() => {alert(this.aktuellerSpieler.spielername+' hat gewonnen!')}, 500);
       // Spiel zurücksetzen? (Neues Spiel initialisieren?)
@@ -38,6 +41,7 @@ class Spiel {
       this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
       // Spieler die entsprechende Feldnummer zuschreiben und Spieler-DOM-Element in entsprechendes Feld-DOM-Element platzieren
       this.aktuellerSpieler.setFeld(this.landefeldObjekt);
+      this.aktuellerSpieler.addToFeld(this.landefeldObjekt.domElement);
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       if (this.landefeldObjekt instanceof Leiterfeld) {
         if (debug_mode) {console.log('Leiter-Start:'+this.landefeldnummer);}
@@ -53,7 +57,7 @@ class Spiel {
         if (debug_mode) {console.log('Leiter-Ende:'+this.landefeldnummer);}
         this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
         // ...wird der Spieler dem Zielfeld des entsprechenden Leiterfelds angehängt.
-        setTimeout(() => {this.aktuellerSpieler.setFeld(this.landefeldObjekt)}, 500);
+        setTimeout(() => {this.aktuellerSpieler.setFeld(this.landefeldObjekt); this.aktuellerSpieler.addToFeld(this.landefeldObjekt.domElement);}, 500);
       }
 
       // Wenn nicht 6 gewürfelt wurde wechselt der aktuelle Spieler, bei 6 bleibt er gleich.
@@ -76,7 +80,9 @@ class Spiel {
     }
     let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
     this.spieler1.setFeld(startfeld);
+    this.spieler1.addToFeld(startfeld.domElement);
     this.spieler2.setFeld(startfeld);
+    this.spieler2.addToFeld(startfeld.domElement);
     this.spieleranzeige.spielerAnzeigen();
   }
 }
