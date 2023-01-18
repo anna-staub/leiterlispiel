@@ -479,10 +479,14 @@
             "format": "int32",
             "example": 1
           },
+          "farbe": {
+            "type": "string",
+            "example": "rot"
+          },
           "feldnummer": {
             "type": "integer",
             "format": "int32",
-            "example": 5
+            "example": 25
           },
           "spielId": {
             "type": "integer",
