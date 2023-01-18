@@ -5,8 +5,8 @@ class Spiel {
   constructor(spielId) {
     this.#spielId = spielId;
     this.spielfeld = new Spielfeld();
-    this.spieler1 = new Spieler(Feld, 'spieler1', 1);
-    this.spieler2 = new Spieler(Feld, 'spieler2', 2);
+    this.spieler1 = new Spieler(Feld, 'spieler1', 1); // provisorisch fixe Id gesetzt, wird später noch zu automatisch generierter Id geändert
+    this.spieler2 = new Spieler(Feld, 'spieler2', 2); // provisorisch fixe Id gesetzt, wird später noch zu automatisch generierter Id geändert
     this.spielwuerfel = new Wuerfel(6);
     this.aktuellerSpieler = this.spieler1;
     let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
@@ -93,7 +93,7 @@ class Spiel {
 let debug_mode = true;
 
 // neues Spiel instanzieren
-let spiel = new Spiel(1);
+let spiel = new Spiel(1); // provisorisch fixe Id gesetzt, wird später noch zu automatisch generierter Id geändert
 
 
 // Methode Spielzug auslösen, sobald gewürfelt wird

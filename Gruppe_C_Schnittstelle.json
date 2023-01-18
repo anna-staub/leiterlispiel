@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Swagger Leiterlispiel - OpenAPI 3.0",
-    "description": "TODO\n\nSome useful links:\n- [Repository Leiterlispiel](https://gitlab.com/yxaw/front-projekt)\n- [The source API definition for the Leiterlispiel](https://gitlab.com/yxaw/front-projekt/-/blob/main/documents/Gruppe_C_Schnittstelle.json)",
+    "description": "Dies ist eine Schnittstellendefinition für ein Leiterlispiel.\n\n- [Repository Leiterlispiel](https://gitlab.com/yxaw/front-projekt)\n- [Link zur Leiterlispiel-Schnittstellendefinition](https://gitlab.com/yxaw/front-projekt/-/blob/main/documents/Gruppe_C_Schnittstelle.json)",
     "termsOfService": "http://swagger.io/terms/",
     "license": {
       "name": "Apache 2.0",
@@ -17,25 +17,22 @@
   ],
   "tags": [
     {
-      "name": "Spiel",
-      "description": "TODO"
+      "name": "Spiel"
     },
     {
-      "name": "Spielfigur",
-      "description": "TODO"
+      "name": "Spielfigur"
     },
     {
-      "name": "User",
-      "description": "TODO"
+      "name": "User"
     }
   ],
   "paths": {
     "/Spiel": {
       "post": {
+        "summary": "Neues Spiel erstellen",
         "tags": [
           "Spiel"
         ],
-        "summary": "Neues Spiel erstellen",
         "requestBody": {
           "content": {
             "application/json": {
@@ -102,7 +99,7 @@
     },
     "/Spiel/{spielId}": {
       "get": {
-        "summary": "Find Spiel by spielId",
+        "summary": "Spiel anhand von spielId finden",
         "tags": [
           "Spiel"
         ],
@@ -139,10 +136,10 @@
         }
       },
       "delete": {
+        "summary": "Spiel anhand von spielId löschen",
         "tags": [
           "Spiel"
         ],
-        "summary": "Spiel löschen",
         "parameters": [
           {
             "name": "spielId",
@@ -165,10 +162,10 @@
     },
     "/Spielfigur": {
       "post": {
+        "summary": "Neue Spielfigur erstellen",
         "tags": [
           "Spielfigur"
         ],
-        "summary": "Neue Spielfigur erstellen",
         "requestBody": {
           "content": {
             "application/json": {
@@ -231,25 +228,11 @@
             "description": "Unerlaubte Methode"
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "Spielfigur"
-        ],
-        "summary": "Spielfigur löschen",
-        "responses": {
-          "400": {
-            "description": "Fehlerhafte Anfrage"
-          },
-          "404": {
-            "description": "Spielfigur wurde nicht gefunden"
-          }
-        }
       }
     },
     "/Spiel/{spielId}/Spielfigur": {
       "get": {
-        "summary": "Find Spielfigur in Spiel",
+        "summary": "Spielfiguren in spezifischem Spiel finden",
         "tags": [
           "Spielfigur"
         ],
@@ -284,11 +267,35 @@
             "description": "Unerlaubte Methode"
           }
         }
+      },
+      "delete": {
+        "summary": "Spielfiguren aus spezifischem Spiel löschen",
+        "tags": [
+          "Spielfigur"
+        ],
+        "parameters": [
+          {
+            "name": "spielId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "Spielfigur wurde nicht gefunden"
+          }
+        }
       }
     },
     "/Spielfigur/{spielfigurId}": {
       "get": {
-        "summary": "Find Spielfigur by spielfigurId",
+        "summary": "Spielfigur anhand von spielfigurId finden",
         "tags": [
           "Spielfigur"
         ],
@@ -323,14 +330,38 @@
             "description": "Unerlaubte Methode"
           }
         }
+      },
+      "delete": {
+        "summary": "Spielfigur anhand von spielfigurId löschen",
+        "tags": [
+          "Spielfigur"
+        ],
+        "parameters": [
+          {
+            "name": "spielfigurId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "Spielfigur wurde nicht gefunden"
+          }
+        }
       }
     },
     "/User": {
       "post": {
+        "summary": "Neuen User erstellen",
         "tags": [
           "User"
         ],
-        "summary": "Neuen User erstellen",
         "requestBody": {
           "content": {
             "application/json": {
@@ -393,25 +424,11 @@
             "description": "Unerlaubte Methode"
           }
         }
-      },
-      "delete": {
-        "tags": [
-          "User"
-        ],
-        "summary": "User löschen",
-        "responses": {
-          "400": {
-            "description": "Fehlerhafte Anfrage"
-          },
-          "404": {
-            "description": "User wurde nicht gefunden"
-          }
-        }
       }
     },
     "/User/{userId}": {
       "get": {
-        "summary": "Find User by userId",
+        "summary": "User anhand von userId finden",
         "tags": [
           "User"
         ],
@@ -446,6 +463,30 @@
             "description": "Unerlaubte Methode"
           }
         }
+      },
+      "delete": {
+        "summary": "User anhand von userId löschen",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
+          "404": {
+            "description": "User wurde nicht gefunden"
+          }
+        }
       }
     }
   },
@@ -464,7 +505,7 @@
             "format": "int32",
             "example": 5
           },
-          "aktuellerSpielerId": {
+          "aktuelleSpielfigurId": {
             "type": "integer",
             "format": "int32",
             "example": 7
