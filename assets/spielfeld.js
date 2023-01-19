@@ -39,7 +39,7 @@ class Spielfeld {
             feld.leiterfeldHochKlassieren();
           }
           // Zugehöriges Zielfeld ins Leiterfeld schreiben
-          feld.domElement.innerHTML+='<br /><br />gehe zu '+konfig.zielfeld;    
+          feld.domElement.innerHTML+='<br />gehe zu '+konfig.zielfeld;    
 
         } else {
           // Normales Feld instanzieren
