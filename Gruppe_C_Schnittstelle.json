@@ -54,6 +54,9 @@
               }
             }
           },
+          "400": {
+            "description": "Fehlerhafte Anfrage"
+          },
           "405": {
             "description": "Unerlaubte Methode"
           }
@@ -186,6 +189,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Fehlerhafte Anfrage"
           },
           "405": {
             "description": "Unerlaubte Methode"
@@ -382,6 +388,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Fehlerhafte Anfrage"
           },
           "405": {
             "description": "Unerlaubte Methode"
