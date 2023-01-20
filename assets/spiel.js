@@ -1,6 +1,7 @@
 // Spielfeld erstellen
 class Spiel {
   #spielId = 0;
+  #gewinner = '';
 
   constructor(spielId) {
     this.#spielId = spielId;
@@ -37,7 +38,12 @@ class Spiel {
       this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
       this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
       // Sieger ausrufen (spielfigurname ist noch etwas unschön)
-      setTimeout(() => {alert(this.aktuelleSpielfigur.spielfigurname+' hat gewonnen!')}, 500);
+      if (this.aktuelleSpielfigur.spielfigurname === 'spielfigur1') {
+        this.#gewinner = 'blau';
+      } else {
+        this.#gewinner = 'rot';
+      }
+      setTimeout(() => {alert(this.#gewinner+' hat gewonnen!')}, 500);
       // Spiel zurücksetzen? (Neues Spiel initialisieren?)
     } else {
       // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen

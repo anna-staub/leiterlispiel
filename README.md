@@ -45,7 +45,7 @@ work-in-progress
 Bezeichnungen werden deutsch geschrieben. <br>
 Properties von Klassen wo immer möglich privat. <br>
 Public Variablen, Methoden sowie Funktionen werden in camelCase geschrieben. <br>
-Private Variablen und Methoden werden ebenfalls in camel Case geschrieben, beginnen aber zusätzlich mit einem #. <br>
+Private Variablen und Methoden werden ebenfalls in camelCase geschrieben, beginnen aber zusätzlich mit einem #. <br>
 Klassenbezeichnungen werden in PascalCase geschrieben. <br>
 Konstanten werden in Grossbuchstaben geschrieben. <br>
 Strings werden in single quotes geschrieben.
