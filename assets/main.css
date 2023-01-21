@@ -1,152 +1,145 @@
 @import "https://unpkg.com/open-props";
 @import "https://unpkg.com/open-props/normalize.min.css";
 
-/* Ab minimaler Bildschirmbreite */
-@media (min-width:780px) {
+/* Für alle Bildschirmbreiten*/
 
-#smallscreen{
-    display: none;
-}
-#spiel{
-    display: block;
-}
-
-body > #spiel > header {
+.header {
     padding: 1em;
     border-bottom: 1px solid var(--yellow-4);
 }
 
-body > #spiel > header h1 {
-    max-width: 600px;
-    margin: auto;
-}
 
-main {
-    width: 80vw;
-    max-width: 1000px;
-    margin: 1em auto;
-}
+/* Ab minimaler Bildschirmbreite */
+@media (min-width:780px) {
 
+    #smallscreen{
+        display: none;
+    }
+    #spiel{
+        display: block;
+    }
+    h1 {
+        max-width: 600px;
+        margin: auto;
+    }
+    main {
+        width: 80vw;
+        max-width: 1000px;
+        margin: 1em auto;
+    }
 
-/* Sektion mit Spielfeld und Würfelfeld*/
-#game_area{
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-}
+    /* Anzeige über Spielfeld*/
+    #anzeige_oben {
+        display: flex;
+        justify-content: space-between;
+    }
 
-/* Anzeige über Spielfeld*/
-#anzeige_oben {
-    display: flex;
-    justify-content: space-between;
-}
+    /* Sektion mit Spielfeld und Würfelfeld*/
+    #game_area{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    /* Spielbrett */
+    #board {
+        width: 75%;
+        display: grid; 
+        grid-template-columns: repeat(10, 1fr);
+        gap: 6px;
+        margin-top: 6px
+    }
+    /* Spielfelder */
+    #board div {
+        position: relative;
+        display: block;
+        aspect-ratio: 1/1;
+        cursor: pointer;
+        border: solid black 1px;
+        font-size: 12px;
+    }
 
+    /* Feldfarben */
+    .normalesfeld{
+        background-color: transparent;
+    }
+    .leiterfeld_runter{
+        background-color: coral;
+    }
+    .leiterfeld_hoch{
+        background-color: lightgreen;
+    }
+    /* Startfeld */
+    #feld0 {
+        background-color: rgb(255 255 51);
+    }
+    /*Zielfeld*/
+    #feld99 {
+        background-color: rgb(67, 233, 67);
+    }
 
+    /* Spielfiguren */
+    .spielfigur {
+        border-radius: 50px;
+        width: 20px;
+        height: 20px;
+        overflow: visible;
+        border: none;
+    }
+    #board div.spielfigur{
+        border: none;
+    }
 
-/* Spielbrett */
-#board {
-    width: 75%;
-    display: grid; 
-    grid-template-columns: repeat(10, 1fr);
-    gap: 6px;
-    margin-top: 6px
-}
-/* Spielfelder */
-#board div {
-    position: relative;
-    display: block;
-    aspect-ratio: 1/1;
-    cursor: pointer;
-    border: solid black 1px;
-    font-size: 12px;
-}
+    #spielfigur1 {
+        background-color: blue;
+    }
 
-/* Feldfarben */
-.normalesfeld{
-    background-color: transparent;
-}
+    #spielfigur2 {
+        background-color: red;
+    }
 
-.leiterfeld_runter{
-    background-color: coral;
-}
+    /* Wuerfelfeld */
+    #wuerfelfeld {
+        display: flex;
+        flex-direction: column;
+        margin: 0 6px;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        border: solid black 1px;
+        position: sticky;
+        bottom: 10px;
+    }
+    /* Spielfiguranzeige */
+    #spielfiguranzeige {
+        font-size: 1em;
+        display: flex;
+        justify-content: center;
+        margin: 5px;
+    }
+    /* Wuerfelanzeige*/
+    #wuerfelanzeige{
+        text-align: center;
+    }
+    #wuerfelbutton{
+        padding: 5px;
+        border: solid black 1px;
+        border-radius: 5%;
+        margin-top: 10%;
+    }
 
-.leiterfeld_hoch{
-    background-color: lightgreen;
-}
-
-/* Startfeld */
-#feld0 {
-    background-color: rgb(255 255 51);
-}
-/*Zielfeld*/
-#feld99 {
-    background-color: rgb(67, 233, 67);
-}
-
-/* Spielfiguren */
-.spielfigur {
-    border-radius: 50px;
-    width: 20px;
-    height: 20px;
-    overflow: visible;
-    border: none;
-}
-#board div.spielfigur{
-    border: none;
-}
-
-#spielfigur1 {
-    background-color: blue;
-}
-
-#spielfigur2 {
-    background-color: red;
-}
-
-/* Spielfiguranzeige */
-#spielfiguranzeige {
-    font-size: 1em;
-    display: flex;
-    justify-content: center;
-    margin: 5px;
-}
-/* Wuerfelfeld */
-#wuerfelfeld {
-    display: flex;
-    flex-direction: column;
-    margin: 0 6px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    border: solid black 1px;
-    position: sticky;
-    bottom: 10px;
-}
-#wuerfelfeld :hover{
-    cursor: pointer;
-}
-#wuerfelbutton{
-    padding: 5px;
-    border: solid black 1px;
-    border-radius: 5%;
-    margin-top: 10%;
-}
-#wuerfelanzeige{
-    text-align: center;
-}
-
-details{
-    margin: 10px 0;
-}
-/* Spielregeln */
-#regelfeld {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    justify-content: center;
-    align-items: center;
-    text-align: justify;
-}
+    /* Details mit Spielregeln*/
+    details{
+        margin: 10px 0;
+    }
+    /* Spielregeln */
+    #regelfeld {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: justify;
+    }
 }
 
 /* Unter minimaler Bildschirmbreite */
@@ -154,8 +147,10 @@ details{
     #smallscreen{
         display: block;
     }
+    p {
+        margin: 3%;
+    }
     #spiel{
         display: none;
     }
 }
-

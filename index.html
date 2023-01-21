@@ -9,15 +9,17 @@
     <body>
         <!-- Meldung, die angezeigt wird unter minimaler Bildschirmbreite-->
         <div id="smallscreen">
-            <h1>Oh no...</h1>
-            <p>Dein Browserfenster ist zu klein! Um das Spiel zu spielen, vergrössere es bitte auf mindestens 780 Pixel in der Breite!</p>
+            <div class ="header">
+                <h1>Oh nein...</h1>
+            </div>
+            <p>Dein Browserfenster ist zu klein! Um das Spiel zu spielen, vergrössere dein Browserfenster bitte auf mindestens 780 Pixel in der Breite!</p>
         </div>
 
         <!-- Spiel, welches angezeigt wird ab minimaler Bildschirmbreite -->
         <div id="spiel">
-            <header>
+            <div class ="header">
                 <h1>Leiterlispiel</h1>
-            </header>
+            </div>
 
             <main>
                 <div id="anzeige_oben">
@@ -29,7 +31,9 @@
                     <div id="board"></div>
                     <!-- Würfelfeld -->
                     <div id ="wuerfelfeld">
-                        <p>An der Reihe ist: <span id="spielfiguranzeige"></span></p>
+                        <p>An der Reihe ist:
+                            <span id="spielfiguranzeige"></span>
+                        </p>
                         <div id="wuerfelanzeige">Zuletzt gewürfelte Zahl:</div>
                         <button type="button" id="wuerfelbutton">Würfeln</button>
                     </div>
