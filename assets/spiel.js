@@ -96,7 +96,7 @@ class Spiel {
   }
 }
 // Debug Modus zum deaktivieren von console.logs
-let debug_mode = true;
+let debug_mode = false;
 
 // neues Spiel instanzieren
 let spiel = new Spiel(1); // provisorisch fixe Id gesetzt, wird später noch zu automatisch generierter Id geändert
