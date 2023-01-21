@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <title>Leiterlispiel</title>
+        <link rel="stylesheet" type="text/css" href="assets/main.css">
+        <title></title>
+    </head>
+    <body>
+        <!-- Meldung, die angezeigt wird unter minimaler Bildschirmbreite-->
+        <div id="smallscreen">
+            <div class ="header">
+                <h1>Oh nein...</h1>
+            </div>
+            <p>Dein Browserfenster ist zu klein! Um das Spiel zu spielen, vergrössere dein Browserfenster bitte auf mindestens 780 Pixel in der Breite!</p>
+        </div>
+
+        <!-- Spiel, welches angezeigt wird ab minimaler Bildschirmbreite -->
+        <div id="spiel">
+            <div class ="header">
+                <h1>Leiterlispiel</h1>
+            </div>
+
+            <main>
+                <div id="anzeige_oben">
+                    <button type="button" id="neuesspiel">Neues Spiel</button>
+                </div>
+                <!-- Sektion mit Spielfeld und Würfelfeld -->
+                <section id="game_area">
+                    <!-- Spielbrett mit Spielfeldern -->
+                    <div id="board"></div>
+                    <!-- Würfelfeld -->
+                    <div id ="wuerfelfeld">
+                        <p>An der Reihe ist:
+                            <span id="spielfiguranzeige"></span>
+                        </p>
+                        <div id="wuerfelanzeige">Zuletzt gewürfelte Zahl:</div>
+                        <button type="button" id="wuerfelbutton">Würfeln</button>
+                    </div>
+                </section>
+
+                <details>
+                    <summary>Spielregeln</summary>
+                    <section id="regelfeld">
+                        <h2>Spielregeln</h2>
+                        <p> Es treten 2 Spieler gegeneinander an, die abwechselnd zum Zug kommen. Gewürfelt wird mit einem Klick auf den Würfel-Button.
+                            Der Spieler am Zug darf um die gewürfelte Anzahl auf den nummerierten Feldern vorrücken. Wird eine 6 gewürfelt, 
+                            darf der gleiche Spieler nach Abschluss des Zuges erneut würfeln. Landet ein Spieler auf einem roten Teleporter wird er um einige Felder zurückteleportiert, 
+                            auf einem grünen Teleporter wird er um einige Felder nach vorne teleportiert. Der Spieler, der zuerst das Zielfeld erreicht oder darüber hinausfährt, gewinnt.</p>
+                    </section>
+                </details>
+                <br/>
+            </main>
+        </div>
+
+
+    <script src="assets/spielfeld.js"></script>
+    <script src="assets/wuerfel.js"></script>
+    <script src="assets/feld.js"></script>
+    <script src="assets/spielfigur.js"></script>
+    <script src="assets/spielfiguranzeige.js"></script>
+    <script src="assets/spiel.js"></script>
+    </body>
+</html>

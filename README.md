@@ -8,8 +8,7 @@ Zeitraum: HS22 + FS23<br>
 
 ## Projektidee
 
-Wir verfolgen das Ziel, ein Leiterspiel zu programmieren. Das Spielfeld soll aus hundert Feldern bestehen. Dabei ist das erste Feld gleichzeitig auch das Startfeld und das letzte Feld das Zielfeld. Im Spiel sind die nummerierten Spielfelder mit Leitern verbunden, die man je nachdem hochklettern kann, um den Weg abzukürzen, oder runterklettern muss, um somit einen Teil des Weges erneut zurückzulegen. Mit einem 
-sechsseitigen Würfel wird bestimmt, wie weit die Spielfigur fahren darf. Würfelt man die Zahl sechs, darf man einen zusätzlichen Zug ausführen. Der Spieler, der als erstes das Zielfeld erreicht oder darüber hinaus fährt, gewinnt.
+Wir verfolgen das Ziel, ein Leiterspiel zu programmieren. Das Spielfeld soll aus hundert Feldern bestehen. Dabei ist das erste Feld gleichzeitig auch das Startfeld und das letzte Feld das Zielfeld. Im Spiel sind die nummerierten Spielfelder mit Leitern verbunden, die man je nachdem hochklettern kann, um den Weg abzukürzen, oder runterklettern muss, um somit einen Teil des Weges erneut zurückzulegen. Mit einem Würfel wird bestimmt, wie weit die Spielfigur fahren darf. Würfelt man die Zahl sechs, darf man einen zusätzlichen Zug ausführen. Der Spieler, der als erstes das Zielfeld erreicht oder darüber hinaus fährt, gewinnt.
 
 ## Projektmanagement
 
@@ -44,8 +43,10 @@ work-in-progress
 
 ## Coding guidelines
 Bezeichnungen werden deutsch geschrieben. <br>
-Public Variablen werden in PascalCase geschrieben. <br>
-Private Variablen werden in camelCase geschrieben. <br>
+Properties von Klassen wo immer möglich privat. <br>
+Public Variablen, Methoden sowie Funktionen werden in camelCase geschrieben. <br>
+Private Variablen und Methoden werden ebenfalls in camelCase geschrieben, beginnen aber zusätzlich mit einem #. <br>
+Klassenbezeichnungen werden in PascalCase geschrieben. <br>
 Konstanten werden in Grossbuchstaben geschrieben. <br>
 Strings werden in single quotes geschrieben.
 
