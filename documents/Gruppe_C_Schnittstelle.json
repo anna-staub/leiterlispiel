@@ -267,7 +267,7 @@
             "description": "Fehlerhafte Anfrage"
           },
           "404": {
-            "description": "Spiel wurde nicht gefunden"
+            "description": "Spielfigur wurde nicht gefunden"
           },
           "405": {
             "description": "Unerlaubte Methode"
@@ -330,7 +330,7 @@
             "description": "Fehlerhafte Anfrage"
           },
           "404": {
-            "description": "Spiel wurde nicht gefunden"
+            "description": "Spielfigur wurde nicht gefunden"
           },
           "405": {
             "description": "Unerlaubte Methode"
