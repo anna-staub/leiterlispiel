@@ -6,11 +6,11 @@ class Feld {
     // DOM-Element
     domElement = document.createElement('div');
     //Spielfeld
-    #parentSpielfeld;
+    #elternSpielfeld;
   
     // Instanzieren der Klasse
     constructor(spielfeld, id) {
-      this.#parentSpielfeld = spielfeld;
+      this.#elternSpielfeld = spielfeld;
       // id's in HTML/CSS dürfen nicht mit einer Zahl beginnen, deshalb 'feld'+
       this.#id = 'feld'+id;
       this.feldnummer = id;

@@ -5,13 +5,13 @@ class Spielfigur {
   // DOM-Element Spielfigur
   #domElementSpielfigur = document.createElement('div');
   // Feld
-  #parentFeld;
+  #elternFeld;
   
   // Instanzieren der Klasse
   constructor(startfeld, spielfigurname, spielfigurId) {
     this.spielfigurId = spielfigurId;
     this.#spielfigurFeldnummer = this.#spielfigurFeldnummer;
-    this.#parentFeld = startfeld;
+    this.#elternFeld = startfeld;
     this.spielfigurname = spielfigurname;
     // Class-Attribut und ID-Attribut auf DOM-Element setzen
     this.#domElementSpielfigur.setAttribute('class', 'spielfigur');
