@@ -69,5 +69,5 @@ class Feld {
     {id: 59, zielfeld: 40},
     {id: 62, zielfeld: 82},
     {id: 90, zielfeld: 50},
-    {id: 94, zielfeld: 74}
+    {id: 96, zielfeld: 76}
   ];
