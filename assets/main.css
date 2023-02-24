@@ -12,10 +12,10 @@
 /* Ab minimaler Bildschirmbreite */
 @media (min-width:780px) {
 
-    #smallscreen{
+    #smallscreen {
         display: none;
     }
-    #spiel{
+    #spiel {
         display: block;
     }
     h1 {
@@ -35,7 +35,7 @@
     }
 
     /* Sektion mit Spielfeld und Würfelfeld*/
-    #game_area{
+    #game_area {
         display: flex;
         align-items: flex-end;
         justify-content: space-between;
@@ -46,26 +46,25 @@
         display: grid; 
         grid-template-columns: repeat(10, 1fr);
         gap: 6px;
-        margin-top: 6px
+        margin-top: 6px;
     }
     /* Spielfelder */
     #board div {
         position: relative;
         display: block;
         aspect-ratio: 1/1;
-        cursor: pointer;
         border: solid black 1px;
         font-size: 12px;
     }
 
     /* Feldfarben */
-    .normalesfeld{
+    .normalesfeld {
         background-color: transparent;
     }
-    .leiterfeld_runter{
+    .leiterfeld_runter {
         background-color: coral;
     }
-    .leiterfeld_hoch{
+    .leiterfeld_hoch {
         background-color: lightgreen;
     }
     /* Startfeld */
@@ -85,7 +84,7 @@
         overflow: visible;
         border: none;
     }
-    #board div.spielfigur{
+    #board div.spielfigur {
         border: none;
     }
 
@@ -117,18 +116,22 @@
         margin: 5px;
     }
     /* Wuerfelanzeige*/
-    #wuerfelanzeige{
+    #wuerfelanzeige {
         text-align: center;
     }
-    #wuerfelbutton{
+    #wuerfelbutton {
         padding: 5px;
         border: solid black 1px;
         border-radius: 5%;
         margin-top: 10%;
     }
+    #wuerfelbutton:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
 
     /* Details mit Spielregeln*/
-    details{
+    details {
         margin: 10px 0;
     }
     /* Spielregeln */
