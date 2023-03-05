@@ -12,7 +12,7 @@
   },
   "servers": [
     {
-      "url": "https://todo.swagger.io/api/v3"
+      "url": "https://343505-29.web.fhgr.ch/api/leiterlispiel/"
     }
   ],
   "tags": [
