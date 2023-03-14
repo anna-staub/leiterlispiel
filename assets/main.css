@@ -61,12 +61,19 @@
     .normalesfeld {
         background-color: transparent;
     }
-    .leiterfeld_runter {
+    .leiterfeld_runter_start {
+        background-color: rgb(245, 186, 165);
+    }
+    .leiterfeld_runter_ende {
         background-color: coral;
     }
-    .leiterfeld_hoch {
+    .leiterfeld_hoch_start {
+        background-color: rgb(197, 243, 197);
+    }
+    .leiterfeld_hoch_ende {
         background-color: lightgreen;
     }
+
     /* Startfeld */
     #feld0 {
         background-color: rgb(255 255 51);

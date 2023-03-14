@@ -33,10 +33,10 @@ class Spielfeld {
           // Leiterfeld der Hoch- oder Runter-Klasse zuordnen
           if (j > konfig.zielfeld) {
             if (debug_mode) {console.log('leiterfeld runter');}
-            feld.leiterfeldRunterKlassieren();
+            feld.leiterfeldRunterStartKlassieren();
           } else if (j < konfig.zielfeld) {
             if (debug_mode) {console.log('leiterfeld hoch');}
-            feld.leiterfeldHochKlassieren();
+            feld.leiterfeldHochStartKlassieren();
           }
           // Zugehöriges Zielfeld ins Leiterfeld schreiben
           feld.domElement.innerHTML+='<br />gehe zu '+konfig.zielfeld;    
@@ -51,10 +51,10 @@ class Spielfeld {
           if (landekonfig) {
             if (landekonfig.zielfeld < landekonfig.id) {
               if (debug_mode){console.log('Zielfeld is grösser als ID')}
-            feld.leiterfeldRunterKlassieren();
+            feld.leiterfeldRunterEndeKlassieren();
           } else if (landekonfig.zielfeld > landekonfig.id){
             if (debug_mode){console.log('Zielfeld is kleiner als ID')}
-              feld.leiterfeldHochKlassieren();
+              feld.leiterfeldHochEndeKlassieren();
           }
         }
         }

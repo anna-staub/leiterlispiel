@@ -36,11 +36,17 @@ class Feld {
     normalesFeldKlassieren() {
       this.domElement.setAttribute('class', 'normalesfeld')
     }
-    leiterfeldRunterKlassieren() {
-      this.domElement.setAttribute('class', 'leiterfeld_runter');
+    leiterfeldRunterStartKlassieren() {
+      this.domElement.setAttribute('class', 'leiterfeld_runter_start');
     }
-    leiterfeldHochKlassieren() {
-      this.domElement.setAttribute('class', 'leiterfeld_hoch');
+    leiterfeldRunterEndeKlassieren() {
+      this.domElement.setAttribute('class', 'leiterfeld_runter_ende');
+    }
+    leiterfeldHochStartKlassieren() {
+      this.domElement.setAttribute('class', 'leiterfeld_hoch_start');
+    }
+    leiterfeldHochEndeKlassieren() {
+      this.domElement.setAttribute('class', 'leiterfeld_hoch_ende');
     }
     // DOM-Element dem Spielfeld hinzufügen
     addToBoard(board) {
