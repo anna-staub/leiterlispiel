@@ -112,7 +112,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -248,7 +248,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -285,7 +285,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -311,7 +311,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -348,7 +348,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -447,7 +447,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -484,7 +484,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -505,9 +505,8 @@
         "type": "object",
         "properties": {
           "spielId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 1
+            "type": "string",
+            "example": "abc-123"
           },
           "wuerfelergebnis": {
             "type": "integer",
@@ -515,9 +514,8 @@
             "example": 5
           },
           "aktuelleSpielfigurId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 7
+            "type": "string",
+            "example": "abc-123"
           }
         }
       },
@@ -525,9 +523,8 @@
         "type": "object",
         "properties": {
           "spielfigurId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 1
+            "type": "string",
+            "example": "abc-123"
           },
           "farbe": {
             "type": "string",
@@ -539,14 +536,12 @@
             "example": 25
           },
           "spielId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 7
+            "type": "string",
+            "example": "abc-123"
           },
           "userId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 7
+            "type": "string",
+            "example": "abc-123"
           }
         }
       },
@@ -558,9 +553,8 @@
             "example": "Testspieler"
           },
           "userid": {
-            "type": "integer",
-            "format": "int32",
-            "example": 5
+            "type": "string",
+            "example": "abc-123"
           }
         }
       }
