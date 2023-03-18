@@ -1,4 +1,4 @@
-// Spielfeld erstellen
+// ! Spielfeld erstellen
 class Spiel {
   #spielId = 0;
   #gewinner = '';
@@ -6,8 +6,8 @@ class Spiel {
   constructor(spielId) {
     this.#spielId = spielId;
     this.spielfeld = new Spielfeld();
-    this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', 1); // provisorisch fixe Id gesetzt, wird später noch zu automatisch generierter Id geändert
-    this.spielfigur2 = new Spielfigur(Feld, 'spielfigur2', 2); // provisorisch fixe Id gesetzt, wird später noch zu automatisch generierter Id geändert
+    this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', 1); // ! spielfigurId von Server holen und hier mitgeben // ! spielfigurname durch userId ersetzen
+    this.spielfigur2 = new Spielfigur(Feld, 'spielfigur2', 2); // ! spielfigurId von Server holen und hier mitgeben // ! spielfigurname durch userId ersetzen
     this.spielwuerfel = new Wuerfel(6);
     this.aktuelleSpielfigur = this.spielfigur1;
     let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
@@ -23,7 +23,7 @@ class Spiel {
     // Aktuelle Feldnummer der Spielfigur ermitteln
     this.aktuelleSpielfigurFeldnummer = this.aktuelleSpielfigur.getSpielfigurFeldNummer();
     // Würfeln und Resultat anzeigen
-    this.wuerfelergebnis = this.spielwuerfel.wuerfeln();
+    this.wuerfelergebnis = this.spielwuerfel.wuerfeln(); // ! Würfelergebnis speichern
     this.spielwuerfel.wuerfelergebnisAusgeben(this.wuerfelergebnis);
     // Landefeld der Spielfigur ermitteln
     // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
@@ -54,6 +54,7 @@ class Spiel {
       this.spielerWechseln();
     }
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
+    // ! Spiel und Spielfigur speichern
   }
 
   aufLeiterfeldPruefen() {
@@ -120,7 +121,9 @@ class Spiel {
 let debug_mode = false;
 
 // neues Spiel instanzieren
-let spiel = new Spiel(1); // provisorisch fixe Id gesetzt, wird später noch zu automatisch generierter Id geändert
+let spiel = new Spiel(1); // ! Id von Server holen und hier mitgeben
+// ! Spiel ein erstes Mal an den Server schicken
+// ! Spielfigur ein erstes Mal an den Server schicken, spielId mitgeben (Kann man das auch im Constructor machen nachdem sie erstellt wurde?)
 
 // Methode Spielzug auslösen, sobald gewürfelt wird
 document.getElementById('wuerfelbutton').addEventListener('click', () => {

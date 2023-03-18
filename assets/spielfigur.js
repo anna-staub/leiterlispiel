@@ -9,10 +9,11 @@ class Spielfigur {
   
   // Instanzieren der Klasse
   constructor(startfeld, spielfigurname, spielfigurId) {
-    this.spielfigurId = spielfigurId;
+    this.#spielfigurId = spielfigurId;
     this.#spielfigurFeldnummer = this.#spielfigurFeldnummer;
     this.#elternFeld = startfeld;
-    this.spielfigurname = spielfigurname;
+    this.spielfigurname = spielfigurname; // ! spielfigurname durch userid ersetzen
+    // ! Wenn die spielId bei der spielfigur mitgegeben wird, müsste man die spielId hier dann mitgeben/speichern?
     // Class-Attribut und ID-Attribut auf DOM-Element setzen
     this.#domElementSpielfigur.setAttribute('class', 'spielfigur');
     if (this.spielfigurname === 'spielfigur1') {
