@@ -35,4 +35,7 @@ class Spielfigur {
   addToFeld(Feld) {
     Feld.appendChild(this.#domElementSpielfigur);
   }
+
+  // ! Methode Spielfigur erstellen (POST spielfigur um Id zu erhalten) ?
+ 
 }
