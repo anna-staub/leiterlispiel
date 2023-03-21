@@ -1,6 +1,6 @@
 // ! Spielfeld erstellen
 class Spiel {
-  #spielId = 0;
+  #spielId = '';
   #gewinner = '';
 
   constructor(spielId) {
@@ -121,7 +121,7 @@ class Spiel {
 let debug_mode = false;
 
 // neues Spiel instanzieren
-let spiel = new Spiel(1); // ! Id von Server holen und hier mitgeben
+let spiel = new Spiel('1'); // ! Id von Server holen und hier mitgeben
 // ! Spiel ein erstes Mal an den Server schicken
 // ! Spielfigur ein erstes Mal an den Server schicken, spielId mitgeben (Kann man das auch im Constructor machen nachdem sie erstellt wurde?)
 

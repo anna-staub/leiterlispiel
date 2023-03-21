@@ -1,5 +1,5 @@
 class Spielfigur {
-  #spielfigurId = 0;
+  #spielfigurId = '';
   // Feldnummer der Spielfigur initialisieren
   #spielfigurFeldnummer = 0;
   // DOM-Element Spielfigur
