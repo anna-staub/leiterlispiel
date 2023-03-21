@@ -154,6 +154,9 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "Kein Inhalt vorhanden"
+          },
           "400": {
             "description": "Fehlerhafte Anfrage"
           },
@@ -290,6 +293,9 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "Kein Inhalt vorhanden"
+          },
           "400": {
             "description": "Fehlerhafte Anfrage"
           },
@@ -353,6 +359,9 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "Kein Inhalt vorhanden"
+          },
           "400": {
             "description": "Fehlerhafte Anfrage"
           },
@@ -489,6 +498,9 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "Kein Inhalt vorhanden"
+          },
           "400": {
             "description": "Fehlerhafte Anfrage"
           },
