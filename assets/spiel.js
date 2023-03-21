@@ -11,38 +11,45 @@ class Spiel {
       this.init();
     } else {
       // ganzes Spiel von Server laden und auch init aber mit existierenden Werten
-      this.laden();
+      this.spielLaden();
     }
   }
   
   init(spiel = { // wenn spiel null ist, wird das nach dem = eingefüllt, d. h. das Objekt (Default-Wert)
-    spielfiguren: []
+    spielid: this.#spielId,
+    wuerfelergebnis: null,
+    // aktuelleSpielfigurId: ?,
+    spielfiguren: [ // Beispielinhalt: {spielfigurId: '123-abc', farbe:'rot', ...}
+    ]
   }) {
     this.spielfeld = new Spielfeld();
+    this.spielwuerfel = new Wuerfel(6);
+    let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
+    this.spielfiguranzeige = new Spielfiguranzeige(this);
+    this.spielfiguranzeige.spielfigurAnzeigen();
 
     
     // dieser Teil muss noch ins init rein
-
     // mit foreach über spielfiguren iterieren
-    this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', spiel.spielfiguren[0].spielfigurId); // ! spielfigurname durch username
-    this.spielwuerfel = new Wuerfel(6);
-    this.aktuelleSpielfigur = this.spielfigur1;
-    let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
+    this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', spiel.spielfiguren[0].spielfigurId); // ! spielfigurname durch username ersetzen
     this.spielfigur1.setFeld(startfeld);
     this.spielfigur1.addToFeld(startfeld.domElement);
     this.spielfigur2.setFeld(startfeld);
     this.spielfigur2.addToFeld(startfeld.domElement);
-    this.spielfiguranzeige = new Spielfiguranzeige(this);
-    this.spielfiguranzeige.spielfigurAnzeigen();
+    this.aktuelleSpielfigur = this.spielfigur1;
   }
 
   // Funktion bei neuem Spiel ohne Spielfiguren mit id des users, dass spielfigurId mit id erstellt wird, die der userId entspricht
     // Spielfigur erstellen und dem Spiel zuweisen (speichern) -> vor dem speichern nochmals das Spiel laden, damit nichts überschrieben wird
 
-  laden() {
+  spielLaden() {
     API.GET('spiel', this.#spielId).then(spiel => {
       this.init(spiel);
     });
+  }
+
+  spielSpeichern() {
+    API.PUT('spiel', spiel); // ! stimmt das so?
   }
 
   spielzug() {
