@@ -17,10 +17,15 @@
     }
     #spiel {
         display: block;
+        background-color: black;
     }
-    h1 {
+    h1,h2 {
         max-width: 600px;
         margin: auto;
+        color: #cccccc;
+    }
+    p {
+        color: white;
     }
     main {
         width: 80vw;
@@ -53,8 +58,9 @@
         position: relative;
         display: block;
         aspect-ratio: 1/1;
-        border: solid black 1px;
+        border: solid #cccccc 1px;
         font-size: 12px;
+        color: white;
     }
 
     /* Feldfarben */
@@ -62,25 +68,25 @@
         background-color: transparent;
     }
     .leiterfeld_runter_start {
-        background-color: rgb(245, 186, 165);
+        background-color: rgb(224, 210, 16);
     }
     .leiterfeld_runter_ende {
-        background-color: coral;
+        background-color: rgb(158, 148, 12);
     }
     .leiterfeld_hoch_start {
-        background-color: rgb(197, 243, 197);
+        background-color: rgb(31, 114, 31);
     }
     .leiterfeld_hoch_ende {
-        background-color: lightgreen;
+        background-color: rgb(15, 65, 15);
     }
 
     /* Startfeld */
     #feld0 {
-        background-color: rgb(255 255 51);
+        background-color: #7c7b7b;
     }
     /*Zielfeld*/
     #feld99 {
-        background-color: rgb(67, 233, 67);
+        background-color: #7c7b7b;
     }
 
     /* Spielfiguren */
@@ -111,7 +117,7 @@
         padding: 10px;
         justify-content: center;
         align-items: center;
-        border: solid black 1px;
+        border: solid #cccccc 1px;
         position: sticky;
         bottom: 10px;
     }
@@ -125,10 +131,11 @@
     /* Wuerfelanzeige*/
     #wuerfelanzeige {
         text-align: center;
+        color: white;
     }
     #wuerfelbutton {
         padding: 5px;
-        border: solid black 1px;
+        border: solid #cccccc 1px;
         border-radius: 5%;
         margin-top: 10%;
     }
@@ -140,6 +147,7 @@
     /* Details mit Spielregeln*/
     details {
         margin: 10px 0;
+        background-color: rgb(41, 41, 41);
     }
     /* Spielregeln */
     #regelfeld {
