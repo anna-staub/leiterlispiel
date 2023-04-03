@@ -12,8 +12,8 @@ class Spielfigur {
     this.#spielfigurId = spielfigurId;
     this.#spielfigurFeldnummer = this.#spielfigurFeldnummer;
     this.#elternFeld = startfeld;
-    this.spielfigurname = spielfigurname; // ! spielfigurname durch userid ersetzen
-    // ! Wenn die spielId bei der spielfigur mitgegeben wird, müsste man die spielId hier dann mitgeben/speichern?
+    this.spielfigurname = spielfigurname;
+
     // Class-Attribut und ID-Attribut auf DOM-Element setzen
     this.#domElementSpielfigur.setAttribute('class', 'spielfigur');
     if (this.spielfigurname === 'spielfigur1') {
@@ -35,7 +35,5 @@ class Spielfigur {
   addToFeld(Feld) {
     Feld.appendChild(this.#domElementSpielfigur);
   }
-
-  // ! Methode Spielfigur erstellen (POST spielfigur um Id zu erhalten) ?
  
 }
