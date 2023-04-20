@@ -2,8 +2,10 @@
 import Panel from './Panel.js';
 
 // Komponente Profile exportieren
-// Der Komponente wird die Property animal übergeben, auf deren Wert dadurch zugegriffen werden kann.
+// Der Komponente wird die Property animal als Parameter übergeben, auf die dadurch zugegriffen werden kann.
 export default function Profile({ animal }) {
+  // Inhalt der Komponente Profile
+  // Hier werden die Komponenten Header, Avater, Panel und Description in der Komponente Profile verschachtelt.
   return (
     <section className='box'>
         <Header animal={animal} />
@@ -16,7 +18,7 @@ export default function Profile({ animal }) {
 }
 
 // Definieren der Komponente Header
-// Hier wird der  Wert der Property animal.name in ein <h1>-Tag geschrieben.
+// Hier wird der Wert von animal.name in ein <h1>-Tag geschrieben.
 function Header({ animal }) {
   return <h1>{animal.name}</h1>;
 }
@@ -35,7 +37,7 @@ function Avatar({ animal }) {
 }
 
 // Definieren der Komponente Description
-// Hier wird der Wert der Property animal.description in ein <p>-Tag geschrieben.
+// Hier wird der Wert von animal.description in ein <p>-Tag geschrieben.
 function Description({ animal }) {
     return <p>{animal.description}</p>;
 }

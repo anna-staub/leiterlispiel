@@ -8,6 +8,6 @@ Die App enthält Kästchen mit verschiedenen Tieren. Die Beschreibung der Tiere 
 
 ## Komponenten
 
-Panel: 
-App: 
-Profile: 
+App: oberste Komponente, enthält alle anderen Komponenten
+Profile: enthält die Komponenten Header, Avatar, Panel und Description
+Panel: diese Komponente ermöglich das ein- und ausklappen der Description
