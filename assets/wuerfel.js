@@ -16,7 +16,7 @@ class Wuerfel{
     spezialWuerfeln(min, max) {
         let wuerfelergebnis = Math.round(Math.random() * (max - min) + min); 
         wuerfelergebnis = parseInt(wuerfelergebnis);
-        if (debug_mode) {console.log('Würfelergebnis: '+wuerfelergebnis);}
+        if (debug_mode) {console.log('Spezialwürfelergebnis: '+wuerfelergebnis);}
         return wuerfelergebnis;
       }
 }
