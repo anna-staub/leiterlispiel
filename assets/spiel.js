@@ -56,6 +56,43 @@ class Spiel {
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
   }
 
+  spezialspielzug() {
+    // Aktuelle Feldnummer der Spielfigur ermitteln
+    this.aktuelleSpielfigurFeldnummer = this.aktuelleSpielfigur.getSpielfigurFeldNummer();
+    // Würfeln und Resultat anzeigen
+    this.wuerfelergebnis = this.spielwuerfel.spezialWuerfeln(-5,10); // ! Würfelergebnis speichern
+    this.spielwuerfel.wuerfelergebnisAusgeben(this.wuerfelergebnis);
+    // Landefeld der Spielfigur ermitteln
+    // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
+    this.landefeldnummer = this.aktuelleSpielfigurFeldnummer + this.wuerfelergebnis;
+    if (this.landefeldnummer >= 99){
+      // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
+      this.landefeldnummer = 99 - (this.landefeldnummer - 99);
+      // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
+      this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
+      // Spielfigur die entsprechende Feldnummer zuschreiben und Spielfigur-DOM-Element in entsprechendes Feld-DOM-Element platzieren
+      this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
+      this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
+      if (this.landefeldnummer == 99) {
+        this.siegAusrufen(this.landefeldnummer);
+        // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
+      } else {
+        this.aufLeiterfeldPruefen();
+        this.spielerWechseln();
+      }
+    } else {
+      // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
+      this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
+      // Spielfigur die entsprechende Feldnummer zuschreiben und Spielfigur-DOM-Element in entsprechendes Feld-DOM-Element platzieren
+      this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
+      this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
+      // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
+      this.aufLeiterfeldPruefen();
+      this.spielerWechseln();
+    }
+    if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
+  }
+
   aufLeiterfeldPruefen() {
     if (this.landefeldObjekt instanceof Leiterfeld) {
       if (debug_mode) {console.log('Leiter-Start:'+this.landefeldnummer);}
@@ -129,6 +166,15 @@ document.getElementById('wuerfelbutton').addEventListener('click', () => {
   spiel.spielzug()
   // Würfel nach Spielzug wieder enablen
   setTimeout(() => {document.getElementById('wuerfelbutton').removeAttribute('disabled')}, 500);
+});
+
+// Methode Spezialzug auslösen, sobald gewürfelt wird
+document.getElementById('spezialwuerfelbutton').addEventListener('click', () => {
+  // Würfel während des Spielzugs disablen
+  document.getElementById('spezialwuerfelbutton').setAttribute('disabled', '');
+  spiel.spezialspielzug()
+  // Würfel nach Spielzug wieder enablen
+  setTimeout(() => {document.getElementById('spezialwuerfelbutton').removeAttribute('disabled')}, 500);
 });
 
 // Spiel neu starten
