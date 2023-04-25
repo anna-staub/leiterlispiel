@@ -144,6 +144,17 @@
         cursor: not-allowed;
     }
 
+    #spezialwuerfelbutton {
+        padding: 5px;
+        border: solid #cccccc 1px;
+        border-radius: 5%;
+        margin-top: 10%;
+    }
+    #spezialwuerfelbutton:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+    }
+
     /* Details mit Spielregeln*/
     details {
         margin: 10px 0;
