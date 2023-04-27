@@ -65,7 +65,10 @@ class Spiel {
     // Landefeld der Spielfigur ermitteln
     // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
     this.landefeldnummer = this.aktuelleSpielfigurFeldnummer + this.wuerfelergebnis;
-    if (this.landefeldnummer >= 99){
+    if (this.landefeldnummer <0) {
+      this.landefeldnummer = 0   
+    } 
+    if (this.landefeldnummer >= 99) {
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99 - (this.landefeldnummer - 99);
       // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
