@@ -157,39 +157,42 @@ class Spiel {
   }
 }
 // Debug Modus zum deaktivieren von console.logs
-let debug_mode = false;
+let debug_mode = true;
 
 // neues Spiel instanzieren
 let spiel = new Spiel();
 
 // Methode Spielzug auslösen, sobald gewürfelt wird
-document.getElementById('wuerfelbutton').addEventListener('click', () => {
-  // Würfel während des Spielzugs disablen
-  wuerfelSperren()
-  spiel.spielzug()
-  // Würfel nach Spielzug wieder enablen
-  wuerfelEntsperren()
+let wuerfelbuttons = document.querySelectorAll('button.wuerfelbuttonklasse');
+wuerfelbuttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    // Würfel während des Spielzugs disablen
+    wuerfelSperren()
+    if (button.id === 'wuerfelbutton') {
+      spiel.spielzug();
+    } else if (button.id === 'spezialwuerfelbutton') {
+      spiel.spezialspielzug();
+    }
+    // Würfel nach Spielzug wieder enablen
+    wuerfelEntsperren()
+  });
 });
 
-// Methode Spezialzug auslösen, sobald gewürfelt wird
-document.getElementById('spezialwuerfelbutton').addEventListener('click', () => {
-  // Würfel während des Spielzugs disablen
-  wuerfelSperren()
-  spiel.spezialspielzug()
-  // Würfel nach Spielzug wieder enablen
-  wuerfelEntsperren()
-});
 
 // Spiel neu starten
 document.getElementById('neuesspiel').addEventListener('click', () => {spiel.spielZuruecksetzen()})
 
 
 function wuerfelSperren() {
-  document.getElementById('wuerfelbutton').setAttribute('disabled', '');
-  document.getElementById('spezialwuerfelbutton').setAttribute('disabled', '');
+  wuerfelbuttons.forEach((button) => {
+    button.setAttribute('disabled', '')
+  });
 }
 
 function  wuerfelEntsperren() {
-  setTimeout(() => {document.getElementById('spezialwuerfelbutton').removeAttribute('disabled')}, 500);
-  setTimeout(() => {document.getElementById('wuerfelbutton').removeAttribute('disabled')}, 500);
+  setTimeout(() => {
+    wuerfelbuttons.forEach((button) => {
+      button.removeAttribute('disabled')
+    });
+  }, 500);
 }
