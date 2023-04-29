@@ -163,7 +163,7 @@ let debug_mode = true;
 let spiel = new Spiel();
 
 // Methode Spielzug auslösen, sobald gewürfelt wird
-let wuerfelbuttons = document.querySelectorAll('button.wuerfelbuttonklasse');
+let wuerfelbuttons = document.querySelectorAll('#wuerfelfeld button');
 wuerfelbuttons.forEach((button) => {
   button.addEventListener('click', () => {
     // Würfel während des Spielzugs disablen
