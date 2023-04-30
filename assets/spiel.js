@@ -8,6 +8,7 @@ class Spiel {
     this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', 1);
     this.spielfigur2 = new Spielfigur(Feld, 'spielfigur2', 2);
     this.spielwuerfel = new Wuerfel(6);
+    // zu Testzwecken: this.spielwuerfel = new Wuerfel(1);
     this.aktuelleSpielfigur = this.spielfigur1;
     // Aktuelle Feldnummer der Spielfigur ermitteln
     let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
@@ -31,11 +32,8 @@ class Spiel {
     if (this.landefeldnummer >= 99){
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99 - (this.landefeldnummer - 99);
-      // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
-      this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
-      // Spielfigur die entsprechende Feldnummer zuschreiben und Spielfigur-DOM-Element in entsprechendes Feld-DOM-Element platzieren
-      this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
-      this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
+      this.spielfigurPlatzieren();
+      // Sind diese Zeilen nicht eigentlich unnötig? Wenn man über 99 hinausfährt ist es nicht möglich, dass man am Ende des Zuges auf 99 landet. / 30.4.2023, Anna
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
         // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
@@ -44,13 +42,21 @@ class Spiel {
         this.spielerWechseln();
       }
     } else {
-      // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
-      this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
-      // Spielfigur die entsprechende Feldnummer zuschreiben und Spielfigur-DOM-Element in entsprechendes Feld-DOM-Element platzieren
-      this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
-      this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
+      this.spielfigurPlatzieren();
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
+      // Spezialfeld für Spielfigurentausch prüfen
+      if (this.landefeldnummer == 55) {
+        this.spielfigurPlatzieren();
+      // Abfragen, ob getauscht werden soll
+      this.tauschfeldAbfragen();
+      // Falls Abfrage true ergibt: Tausch durchführen (funktioniert noch nicht / timing)
+      if (this.tauschfeldAbfragen == true) {
+        if (debug_mode) {console.log('Tausch durchführen');}
+        this.tauschDurchfuehren();
+      }
+      }
+      // in jedem Fall: Spieler wechseln
       this.spielerWechseln();
     }
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
@@ -66,16 +72,13 @@ class Spiel {
     // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
     this.landefeldnummer = this.aktuelleSpielfigurFeldnummer + this.wuerfelergebnis;
     if (this.landefeldnummer <0) {
-      this.landefeldnummer = 0   
-    } 
-    if (this.landefeldnummer >= 99) {
+      this.landefeldnummer = 0
+      this.spielfigurPlatzieren();
+      this.spielerWechseln();   
+    } else if (this.landefeldnummer >= 99) {
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99 - (this.landefeldnummer - 99);
-      // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
-      this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
-      // Spielfigur die entsprechende Feldnummer zuschreiben und Spielfigur-DOM-Element in entsprechendes Feld-DOM-Element platzieren
-      this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
-      this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
+      this.spielfigurPlatzieren();
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
         // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
@@ -84,16 +87,19 @@ class Spiel {
         this.spielerWechseln();
       }
     } else {
-      // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
-      this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
-      // Spielfigur die entsprechende Feldnummer zuschreiben und Spielfigur-DOM-Element in entsprechendes Feld-DOM-Element platzieren
-      this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
-      this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
+      this.spielfigurPlatzieren();
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
       this.spielerWechseln();
     }
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
+  }
+
+  // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum testen Würfel(1) noch enablen)
+  spielzug54() {
+    this.landefeldnummer = 54;
+    this.spielfigurPlatzieren();
+    this.spielerWechseln();
   }
 
   aufLeiterfeldPruefen() {
@@ -118,7 +124,38 @@ class Spiel {
       // ...wird die Spielfigur dem Zielfeld des entsprechenden Leiterfelds angehängt.
       setTimeout(() => {this.aktuelleSpielfigur.setFeld(this.landefeldObjekt); this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);}, 500);
   }
+
+  spielfigurPlatzieren() {
+    // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
+    this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
+    // Spielfigur die entsprechende Feldnummer zuschreiben und Spielfigur-DOM-Element in entsprechendes Feld-DOM-Element platzieren
+    this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
+    this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
+  }
   
+  tauschfeldAbfragen() {
+    console.log('Du bist auf dem Tauschfeld gelandet.');
+    if (window.confirm('Möchtest du mit der gegnerischen Spielfigur Platz tauschen?')) {
+      console.log('Figuren tauschen!');
+      return true;      
+    } else{
+      console.log('Figuren NICHT tauschen');
+      return false;
+    }
+  }
+
+  tauschDurchfuehren() {
+    let positionAlt = this.aktuelleSpielfigurFeldnummer;
+    let positionNeu;
+    if (this.aktuelleSpielfigur === this.spielfigur1) {
+      positionNeu = this.spielfigur2.getSpielfigurFeldNummer();
+    } else {
+     positionNeu = this.spielfigur1.getSpielfigurFeldNummer();
+    }
+    console.log('Alte Position = '+positionAlt+'. Neue Position = '+positionNeu);
+    // aktuelleSpielfigur dem Feld mit der Feldnummer positionNeu zuweisen
+    // andere Spielfigur dem Feld mit der Feldnummer positionAlt zuweisen
+  }
   spielerWechseln() {
     // Wenn nicht 6 gewürfelt wurde wechselt die aktuelle Spielfigur, bei 6 bleibt er gleich.
     setTimeout(() => {if (this.wuerfelergebnis != 6) {
@@ -176,6 +213,11 @@ wuerfelbuttons.forEach((button) => {
     // Würfel nach Spielzug wieder enablen
     wuerfelEntsperren()
   });
+});
+
+// Auslöser, um Spielfigur direkt auf Feld 54 setzen
+document.getElementById('zuFeld55').addEventListener('click', () => {
+  spiel.spielzug54();
 });
 
 
