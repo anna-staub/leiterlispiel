@@ -18,44 +18,31 @@
         <!-- Spiel, welches angezeigt wird ab minimaler Bildschirmbreite -->
         <div id="spiel">
             <div class ="header">
-                <h1>Leiterlispiel</h1>
+                <h2>Willkommen beim Leiterlispiel!</h2>
             </div>
 
             <main>
-                <div id="anzeige_oben">
-                    <button type="button" id="neuesspiel">Neues Spiel</button>
-                </div>
-                <!-- Sektion mit Spielfeld und Würfelfeld -->
-                <section id="game_area">
-                    <!-- Spielbrett mit Spielfeldern -->
-                    <div id="board"></div>
-                    <!-- Testbutton um auf Feld 55 zu gelangen-->
-                    <button type="button" id="zuFeld55">Gehe zu Feld 55</button>
-                    <!-- Würfelfeld -->
-                    <div id ="wuerfelfeld">
-                        <p>An der Reihe ist:
-                            <span id="spielfiguranzeige"></span>
-                        </p>
-                        <div id="wuerfelanzeige">Zuletzt gewürfelte Zahl:</div>
-                        <button type="button" id="wuerfelbutton">Würfeln</button>
-                        <button type="button" id="spezialwuerfelbutton">Spezialwurf</button>
-                    </div>
-                </section>
-
-                <details>
-                    <summary>Spielregeln</summary>
-                    <section id="regelfeld">
-                        <h2>Spielregeln</h2>
-                        <p> Es treten 2 Spieler gegeneinander an, die abwechselnd zum Zug kommen. Mit einem Klick auf den Würfel-Button, wird mit einem gewöhnlichen 6-seitigen Spielwürfel gewürfelt. 
-                            Beim Klick auf den Spezialwurf-Button können die Zahlen -5 bis 10 gewürfelt werden. Man kann also mit einem Wurf weiter kommen, 
-                            muss aber eventuell auch zurückfahren oder bleibt bei einer 0 auf dem aktuellen Feld stehen. 
-                            Der Spieler am Zug darf um die gewürfelte Anzahl auf den nummerierten Feldern vor (oder zurück) fahren. Wird eine 6 gewürfelt, 
-                            darf der gleiche Spieler nach Abschluss des Zuges erneut würfeln. Landet ein Spieler auf einem roten Teleporter wird er um einige Felder zurückteleportiert, 
-                            auf einem grünen Teleporter wird er um einige Felder nach vorne teleportiert. Das Zielfeld muss genau getroffen werden. Wird eine zu hohe Zahl gewürfelt, 
-                            muss um die überzählige Anzahl Felder zurückgefahren werden. Der Spieler der zuerst direkt auf dem Zielfeld landet, gewinnt.
+                <div>
+                    <section id="addspieler1">
+                        <input placeholder="Name von Spieler 1">
+                        <select>
+                            <option value="0">rot</option>
+                            <option value="1">blau</option>
+                            <option value="2">grün</option>
+                            <option value="3">gelb</option>
+                        </select>
                     </section>
-                </details>
-                <br/>
+                    <section id="addspieler2">
+                        <input placeholder="Name von Spieler 2">
+                        <select>
+                            <option value="0">blau</option>
+                            <option value="1">rot</option>
+                            <option value="2">grün</option>
+                            <option value="3">gelb</option>
+                        </select>
+                    </section>
+                </div>
+                <div><button id="start"><a href="spiel.html">Spiel starten</a></button></div> <!-- Button/Link disablen wenn noch nicht alles richtig ausgefüllt wurde -->
             </main>
         </div>
 

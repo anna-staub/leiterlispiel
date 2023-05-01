@@ -2,44 +2,53 @@
 @import "https://unpkg.com/open-props/normalize.min.css";
 
 /* Für alle Bildschirmbreiten*/
-
 .header {
     padding: 1em;
     border-bottom: 1px solid var(--yellow-4);
 }
-
+body {
+    background-color: black;
+}
+h1,h2 {
+    max-width: 650px;
+    margin: auto;
+    color: #cccccc;
+}
+p {
+    color: white;
+}
+main {
+    width: 80vw;
+    max-width: 1200px;
+    margin: 1em auto;
+}
 
 /* Ab minimaler Bildschirmbreite */
 @media (min-width:780px) {
-
     #smallscreen {
         display: none;
     }
     #spiel {
         display: block;
-        background-color: black;
-    }
-    h1,h2 {
-        max-width: 600px;
-        margin: auto;
-        color: #cccccc;
-    }
-    p {
-        color: white;
-    }
-    main {
-        width: 80vw;
-        max-width: 1200px;
-        margin: 1em auto;
     }
 
     /* Anzeige über Spielfeld*/
     #anzeige_oben {
         display: flex;
-        justify-content: space-between;
+    }
+    #nochmalspielen {
+        margin-right: 8px;;
     }
 
-    /* Sektion mit Spielfeld und Würfelfeld*/
+    /* Startseite */
+    #addspieler1 {
+        margin-bottom: 5px;
+    }
+    #start {
+        margin-top: 5px;;
+    }
+
+    /* Sektion mit Spielfeld und Würfelfeld */
     #game_area {
         display: flex;
         align-items: flex-end;
@@ -84,7 +93,7 @@
     #feld0 {
         background-color: #7c7b7b;
     }
-    /*Zielfeld*/
+    /* Zielfeld */
     #feld99 {
         background-color: #7c7b7b;
     }
@@ -100,11 +109,9 @@
     #board div.spielfigur {
         border: none;
     }
-
     #spielfigur1 {
         background-color: blue;
     }
-
     #spielfigur2 {
         background-color: red;
     }
@@ -128,7 +135,7 @@
         justify-content: center;
         margin: 5px;
     }
-    /* Wuerfelanzeige*/
+    /* Wuerfelanzeige */
     #wuerfelanzeige {
         text-align: center;
         color: white;
@@ -143,7 +150,6 @@
         background-color: #cccccc;
         cursor: not-allowed;
     }
-
     #spezialwuerfelbutton {
         padding: 5px;
         border: solid #cccccc 1px;
@@ -155,7 +161,7 @@
         cursor: not-allowed;
     }
 
-    /* Details mit Spielregeln*/
+    /* Details mit Spielregeln */
     details {
         margin: 10px 0;
         background-color: rgb(41, 41, 41);

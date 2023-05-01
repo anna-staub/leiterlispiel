@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <title>Leiterlispiel</title>
+        <link rel="stylesheet" type="text/css" href="assets/main.css">
+        <title></title>
+    </head>
+    <body>
+        <!-- Meldung, die angezeigt wird unter minimaler Bildschirmbreite-->
+        <div id="smallscreen">
+            <div class ="header">
+                <h1>Oh nein...</h1>
+            </div>
+            <p>Dein Browserfenster ist zu klein! Um das Spiel zu spielen, vergrössere dein Browserfenster bitte auf mindestens 780 Pixel in der Breite!</p>
+        </div>
+
+        <!-- Spiel, welches angezeigt wird ab minimaler Bildschirmbreite -->
+        <div id="spiel">
+            <div class ="header">
+                <h1>Leiterlispiel</h1>
+            </div>
+
+            <main>
+                <div id="anzeige_oben">
+                    <button type="button" id="nochmalspielen">Nochmal spielen</button>
+                    <button type="button" id="neuesspiel"><a href="index.html">Neues Spiel</a></button>
+                </div>
+                <!-- Sektion mit Spielfeld und Würfelfeld -->
+                <section id="game_area">
+                    <!-- Spielbrett mit Spielfeldern -->
+                    <div id="board"></div>
+                    <!-- Testbutton um auf Feld 55 zu gelangen-->
+                    <button type="button" id="zuFeld55">Gehe zu Feld 55</button>
+                    <!-- Würfelfeld -->
+                    <div id ="wuerfelfeld">
+                        <p>An der Reihe ist:
+                            <span id="spielfiguranzeige"></span>
+                        </p>
+                        <div id="wuerfelanzeige">Zuletzt gewürfelte Zahl:</div>
+                        <button type="button" id="wuerfelbutton">Würfeln</button>
+                        <button type="button" id="spezialwuerfelbutton">Spezialwurf</button>
+                    </div>
+                </section>
+
+                <details>
+                    <summary>Spielregeln</summary>
+                    <section id="regelfeld">
+                        <h2>Spielregeln</h2>
+                        <p> Es treten 2 Spieler gegeneinander an, die abwechselnd zum Zug kommen. Mit einem Klick auf den Würfel-Button, wird mit einem gewöhnlichen 6-seitigen Spielwürfel gewürfelt. 
+                            Beim Klick auf den Spezialwurf-Button können die Zahlen -5 bis 10 gewürfelt werden. Man kann also mit einem Wurf weiter kommen, 
+                            muss aber eventuell auch zurückfahren oder bleibt bei einer 0 auf dem aktuellen Feld stehen. 
+                            Der Spieler am Zug darf um die gewürfelte Anzahl auf den nummerierten Feldern vor (oder zurück) fahren. Wird eine 6 gewürfelt, 
+                            darf der gleiche Spieler nach Abschluss des Zuges erneut würfeln. Landet ein Spieler auf einem roten Teleporter wird er um einige Felder zurückteleportiert, 
+                            auf einem grünen Teleporter wird er um einige Felder nach vorne teleportiert. Das Zielfeld muss genau getroffen werden. Wird eine zu hohe Zahl gewürfelt, 
+                            muss um die überzählige Anzahl Felder zurückgefahren werden. Der Spieler der zuerst direkt auf dem Zielfeld landet, gewinnt.
+                    </section>
+                </details>
+                <br/>
+            </main>
+        </div>
+
+
+    <script src="assets/storage.js"></script>
+    <script src="assets/spielfeld.js"></script>
+    <script src="assets/wuerfel.js"></script>
+    <script src="assets/feld.js"></script>
+    <script src="assets/spielfigur.js"></script>
+    <script src="assets/spielfiguranzeige.js"></script>
+    <script src="assets/spiel.js"></script>
+    </body>
+</html>

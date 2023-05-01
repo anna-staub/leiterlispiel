@@ -221,8 +221,8 @@ document.getElementById('zuFeld55').addEventListener('click', () => {
 });
 
 
-// Spiel neu starten
-document.getElementById('neuesspiel').addEventListener('click', () => {spiel.spielZuruecksetzen()})
+// Spiel neu starten (mit den selben Spielern)
+document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()})
 
 
 function wuerfelSperren() {
