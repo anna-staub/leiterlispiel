@@ -41,11 +41,18 @@ main {
     }
 
     /* Startseite */
-    #addspieler1 {
+    .addspieler {
         margin-bottom: 5px;
     }
-    #start {
-        margin-top: 5px;;
+    #addspieler1 {
+        margin-top: 5px;
+    }
+    #spielerauswahl {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Sektion mit Spielfeld und Würfelfeld */

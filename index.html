@@ -22,37 +22,32 @@
             </div>
 
             <main>
-                <div>
-                    <section id="addspieler1">
-                        <input placeholder="Name von Spieler 1">
-                        <select>
-                            <option value="0">rot</option>
-                            <option value="1">blau</option>
-                            <option value="2">grün</option>
-                            <option value="3">gelb</option>
+                <div id="spielerauswahl">
+                    <p>Gebt eure Spielernamen ein und wählt eine Farbe für eure Spielfiguren.</p>
+                    <section class="addspieler" id="addspieler1">
+                        <input id="name1" type="text" placeholder="Name von Spieler 1">
+                        <select id="selektor1">
+                            <option value="red">rot</option>
+                            <option value="blue">blau</option>
+                            <option value="green">grün</option>
+                            <option value="yellow">gelb</option>
                         </select>
                     </section>
-                    <section id="addspieler2">
-                        <input placeholder="Name von Spieler 2">
-                        <select>
-                            <option value="0">blau</option>
-                            <option value="1">rot</option>
-                            <option value="2">grün</option>
-                            <option value="3">gelb</option>
+                    <section class="addspieler" id="addspieler2">
+                        <input id="name2" type="text" placeholder="Name von Spieler 2">
+                        <select id="selektor2"> <!-- Spieler2 darf nicht die selbe Farbe wie Spieler1 auswählen können -->
+                            <option value="blue">blau</option>
+                            <option value="red">rot</option>
+                            <option value="green">grün</option>
+                            <option value="yellow">gelb</option>
                         </select>
                     </section>
+                    <button id="start"><a href="spiel.html">Spiel starten</a></button> <!-- Button/Link disablen wenn noch nicht alles richtig ausgefüllt wurde -->
                 </div>
-                <div><button id="start"><a href="spiel.html">Spiel starten</a></button></div> <!-- Button/Link disablen wenn noch nicht alles richtig ausgefüllt wurde -->
             </main>
         </div>
 
-
     <script src="assets/storage.js"></script>
-    <script src="assets/spielfeld.js"></script>
-    <script src="assets/wuerfel.js"></script>
-    <script src="assets/feld.js"></script>
-    <script src="assets/spielfigur.js"></script>
-    <script src="assets/spielfiguranzeige.js"></script>
-    <script src="assets/spiel.js"></script>
+    <script src="assets/startseite.js"></script>
     </body>
 </html>
