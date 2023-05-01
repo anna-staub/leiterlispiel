@@ -1,12 +1,12 @@
 // Wert aus Namensfeld1 in LocalStorage speichern
 let name1 = document.getElementById('name1');
-name1.addEventListener('change', () => {
+name1.addEventListener('input', () => {
     StorageService.set('name1', name1.value);
 });
 
 // Wert aus Namensfeld2 in LocalStorage speichern
 let name2 = document.getElementById('name2');
-name2.addEventListener('change', () => {
+name2.addEventListener('input', () => {
     StorageService.set('name2', name2.value);
 });
 
@@ -21,3 +21,11 @@ let selektor2 = document.getElementById('selektor2');
 selektor2.addEventListener('change', () => {
     StorageService.set('farbe2', selektor2.value);
 });
+
+function disableSpielstart() {
+    document.getElementById('spielstarten').setAttribute('disabled', '');
+}
+
+function enableSpielstart() {
+    document.getElementById('spielstarten').removeAttribute('disabled');
+}
