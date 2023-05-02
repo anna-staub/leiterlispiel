@@ -216,7 +216,7 @@ wuerfelbuttons.forEach((button) => {
 });
 
 // Auslöser, um Spielfigur direkt auf Feld 54 setzen
-document.getElementById('zuFeld55').addEventListener('click', () => {
+document.getElementById('zuFeld54').addEventListener('click', () => {
   spiel.spielzug54();
 });
 

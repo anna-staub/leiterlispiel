@@ -6,7 +6,7 @@
     padding: 1em;
     border-bottom: 1px solid var(--yellow-4);
 }
-body {
+html {
     background-color: black;
 }
 h1,h2 {
