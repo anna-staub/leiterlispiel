@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Beispielseite</h1>
+    <section>
+
+        <div id = "ausgabe">
+            <svg height="200" width="1000">
+                <!--<circle id="kreis1" cx="250" cy="100" r="40" stroke="black" fill="none"></circle>
+                <circle id="kreis2"cx="550" cy="100" r="40" stroke="black" fill="none"></circle>-->
+            </svg>
+        </div>
+
+
+        <div id = "eingabe">
+            <label for="farben1">Welche Farbe soll Kreis 1 haben?</label>
+            <select name="farben1" id="farben1">
+                <option value="none">---</option>
+                <option value="red">Rot</option>
+                <option value="green">Grün</option>
+                <option value="yellow">Gelb</option>
+                <option value="blue">Blau</option>
+                <option value="purple">Violett</option>
+            </select>
+            <button id="farben1bestaetigen">Bestätigen</button>
+
+            <label for="farben2">Welche Farbe soll Kreis 2 haben?</label>
+            <select name="farben2" id="farben2">
+                <option value="none">---</option>
+                <option value="red">Rot</option>
+                <option value="green">Grün</option>
+                <option value="yellow">Gelb</option>
+                <option value="blue">Blau</option>
+                <option value="purple">Violett</option>
+            </select>
+            <button id="farben2bestaetigen">Bestätigen</button>
+        </div>
+    </section>
+
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="text/JavaScript">
+        d3.select("svg")
+            .append("circle")
+            .attr("id", "kreis1")
+            .attr("cx", 250)
+            .attr("cy", 100)
+            .attr("r", 40)
+            .style("stroke", "black")
+            .style("fill", "none");
+        d3.select("svg")
+        .append("circle")
+            .attr("id", "kreis2")
+            .attr("cx", 550)
+            .attr("cy", 100)
+            .attr("r", 40)
+            .style("stroke", "black")
+            .style("fill", "none");
+
+        let farbwahl1 = document.getElementById("farben1");
+        let button1 = document.getElementById("farben1bestaetigen");
+        let farbe1 ;
+        button1.onclick = (event) => {
+            farbe1 = farbwahl1.value;
+            console.log(farbe1);
+            d3.select("#kreis1")
+                .style("fill", farbe1);
+        };
+        
+
+        let farbwahl2 = document.getElementById("farben2");
+        let button2 = document.getElementById("farben2bestaetigen");
+        let farbe2 ;
+        button2.onclick = (event) => {
+            farbe2 = farbwahl2.value;
+            console.log(farbe2);
+            d3.select("#kreis2")
+                .style("fill", farbe2);
+        };
+    </script>
+</body>
+</html>
