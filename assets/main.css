@@ -121,12 +121,6 @@ main {
     #board div.spielfigur {
         border: none;
     }
-    #spielfigur1 {
-        background-color: blue;
-    }
-    #spielfigur2 {
-        background-color: red;
-    }
 
     /* Wuerfelfeld */
     #wuerfelfeld {

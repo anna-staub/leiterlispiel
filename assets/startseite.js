@@ -29,3 +29,14 @@ function disableSpielstart() {
 function enableSpielstart() {
     document.getElementById('spielstarten').removeAttribute('disabled');
 }
+
+function eingabenPruefen(form) {
+    form.action ='';
+    if (selektor1.value === 'leer' | selektor2.value === 'leer' | selektor1.value === selektor2.value | name1.value === '' | name2.value === '' | name1.value === name2.value) {
+        window.alert('ACHTUNG! \nDie Namen und Farben der Spieler*innen dürfen weder leer noch identisch sein. Bitte korrigiert eure Eingaben.');
+    }
+    else {
+        form.action='spiel.html';
+    }
+    return false;
+}   
