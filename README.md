@@ -30,11 +30,11 @@ Der Ordner documents beinhaltet zugehörige Dokumentationen
 
 ### abgabe-prototyp
 
-Branch zur Abgabe des Prototyps und allen zugehörigen assets. 
+Branch zur Abgabe des Prototyps und allen zugehörigen assets am Ende des HS22. 
 
 ### abgabe-projekt
 
-Branch zur Abgabe des fertigen Projekts mit allen zugehörigen assets am Ende des FS22
+Branch zur Abgabe des fertigen Projekts mit allen zugehörigen assets am Ende des FS23
 
 ### develop
 
