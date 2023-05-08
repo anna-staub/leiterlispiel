@@ -51,7 +51,7 @@ class Spiel {
       // Abfragen, ob getauscht werden soll
       this.tauschfeldAbfragen();
       // Falls Abfrage true ergibt: Tausch durchführen (funktioniert noch nicht / timing)
-      if (this.tauschfeldAbfragen == true) {
+      if (this.tauschfeldAbfragen) {
         if (debug_mode) {console.log('Tausch durchführen');}
         this.tauschDurchfuehren();
       }
@@ -154,8 +154,17 @@ class Spiel {
     }
     console.log('Alte Position = '+positionAlt+'. Neue Position = '+positionNeu);
     // aktuelleSpielfigur dem Feld mit der Feldnummer positionNeu zuweisen
+    this.landefeldnummer=positionNeu;
+    this.spielfigurPlatzieren();
+    // Spielfigur wechseln
+    this.spielerWechseln();
     // andere Spielfigur dem Feld mit der Feldnummer positionAlt zuweisen
+    this.landefeldnummer=positionAlt;
+    this.spielfigurPlatzieren();
+    // Spielfigur wechseln
+    this.spielerWechseln();
   }
+  
   spielerWechseln() {
     // Wenn nicht 6 gewürfelt wurde wechselt die aktuelle Spielfigur, bei 6 bleibt er gleich.
     setTimeout(() => {if (this.wuerfelergebnis != 6) {
