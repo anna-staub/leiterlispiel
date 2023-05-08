@@ -8,18 +8,21 @@ class Spielfigur {
   #elternFeld;
   
   // Instanzieren der Klasse
-  constructor(startfeld, spielfigurname, spielfigurId) {
+  constructor(startfeld, spielfigurname, spielfigurId, spielfigurfarbe) {
     this.#spielfigurId = spielfigurId;
     this.#spielfigurFeldnummer = this.#spielfigurFeldnummer;
     this.#elternFeld = startfeld;
     this.spielfigurname = spielfigurname;
+    this.spielfigurfarbe = spielfigurfarbe;
 
     // Class-Attribut und ID-Attribut auf DOM-Element setzen
     this.#domElementSpielfigur.setAttribute('class', 'spielfigur');
     if (this.spielfigurname === 'spielfigur1') {
       this.#domElementSpielfigur.setAttribute('id', 'spielfigur1');
+      this.#domElementSpielfigur.setAttribute("style", "background-color:"+this.spielfigurfarbe)
     } else if (this.spielfigurname === 'spielfigur2') {
       this.#domElementSpielfigur.setAttribute('id', 'spielfigur2');
+      this.#domElementSpielfigur.setAttribute("style", "background-color:"+this.spielfigurfarbe)
     }
   }
 
