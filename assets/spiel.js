@@ -5,8 +5,8 @@ class Spiel {
   constructor() {
     // Speicher auslesen
     this.spielfeld = new Spielfeld();
-    this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', 1);
-    this.spielfigur2 = new Spielfigur(Feld, 'spielfigur2', 2);
+    this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', 1, gespeicherteFarbe1, gespeicherterName1);
+    this.spielfigur2 = new Spielfigur(Feld, 'spielfigur2', 2, gespeicherteFarbe2, gespeicherterName2);
     this.spielwuerfel = new Wuerfel(6);
     // zu Testzwecken: this.spielwuerfel = new Wuerfel(1);
     this.aktuelleSpielfigur = this.spielfigur1;
@@ -170,12 +170,8 @@ class Spiel {
   
   siegAusrufen(landefeldnummer) {
     if (landefeldnummer == 99){
-      // Sieger ausrufen (spielfigurname ist noch etwas unschön)
-      if (this.aktuelleSpielfigur.spielfigurname === 'spielfigur1') {
-        this.#gewinner = 'blau';
-      } else {
-        this.#gewinner = 'rot';
-      }
+      // Sieger ausrufen 
+      this.#gewinner=this.aktuelleSpielfigur.spielername;
       setTimeout(() => {alert(this.#gewinner+' hat gewonnen!')}, 500);
     }
   }

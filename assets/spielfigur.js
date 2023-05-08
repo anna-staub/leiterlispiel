@@ -8,12 +8,13 @@ class Spielfigur {
   #elternFeld;
   
   // Instanzieren der Klasse
-  constructor(startfeld, spielfigurname, spielfigurId, spielfigurfarbe) {
+  constructor(startfeld, spielfigurname, spielfigurId, spielfigurfarbe, spielername) {
     this.#spielfigurId = spielfigurId;
     this.#spielfigurFeldnummer = this.#spielfigurFeldnummer;
     this.#elternFeld = startfeld;
     this.spielfigurname = spielfigurname;
     this.spielfigurfarbe = spielfigurfarbe;
+    this.spielername = spielername;
 
     // Class-Attribut und ID-Attribut auf DOM-Element setzen
     this.#domElementSpielfigur.setAttribute('class', 'spielfigur');
