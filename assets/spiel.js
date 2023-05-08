@@ -1,6 +1,6 @@
 // ! Spielfeld erstellen
 class Spiel {
-  #gewinner = null;
+  #gewinner = null; 
 
   constructor() {
     // Speicher auslesen
@@ -195,6 +195,11 @@ class Spiel {
 }
 // Debug Modus zum deaktivieren von console.logs
 let debug_mode = true;
+
+let gespeicherterName1 = StorageService.get('name1');
+let gespeicherterName2 = StorageService.get('name2');
+let gespeicherteFarbe1 = StorageService.get('farbe1');
+let gespeicherteFarbe2 = StorageService.get('farbe2');
 
 // neues Spiel instanzieren
 let spiel = new Spiel();

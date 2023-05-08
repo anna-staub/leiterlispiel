@@ -1,12 +1,12 @@
 class StorageService {
     static set(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
+        sessionStorage.setItem(key, JSON.stringify(data));
     }
 
     static get(key) {
         let result = null;
-        if (localStorage.getItem(key)) {
-            result = JSON.parse(localStorage.getItem(key));
+        if (sessionStorage.getItem(key)) {
+            result = JSON.parse(sessionStorage.getItem(key));
         }
         return result;
     }

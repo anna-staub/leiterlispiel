@@ -85,6 +85,11 @@ main {
     }
     .leiterfeld_runter_start {
         background-color: rgb(224, 210, 16);
+        /*
+        background-image: url("./images/xyz.png");
+        background-size: 40%;
+        background-position: bottom;
+        */
     }
     .leiterfeld_runter_ende {
         background-color: rgb(158, 148, 12);
