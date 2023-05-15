@@ -11,3 +11,9 @@ class StorageService {
         return result;
     }
 }
+
+function spielstandSpeichern(figurname, feld, wuerfel, zahl, aktuellerSpieler) {
+    StorageService.set(figurname, feld);
+    StorageService.set(wuerfel, zahl);
+    StorageService.set(aktuellerSpieler, figurname);
+}

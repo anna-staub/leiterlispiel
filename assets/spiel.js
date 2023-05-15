@@ -24,7 +24,7 @@ class Spiel {
     // Aktuelle Feldnummer der Spielfigur ermitteln
     this.aktuelleSpielfigurFeldnummer = this.aktuelleSpielfigur.getSpielfigurFeldNummer();
     // Würfeln und Resultat anzeigen
-    this.wuerfelergebnis = this.spielwuerfel.wuerfeln(); // ! Würfelergebnis speichern
+    this.wuerfelergebnis = this.spielwuerfel.wuerfeln();
     this.spielwuerfel.wuerfelergebnisAusgeben(this.wuerfelergebnis);
     // Landefeld der Spielfigur ermitteln
     // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
@@ -33,12 +33,12 @@ class Spiel {
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99 - (this.landefeldnummer - 99);
       this.spielfigurPlatzieren();
-      // Sind diese Zeilen nicht eigentlich unnötig? Wenn man über 99 hinausfährt ist es nicht möglich, dass man am Ende des Zuges auf 99 landet. / 30.4.2023, Anna
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
         // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
       } else {
         this.aufLeiterfeldPruefen();
+        spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'am Zug ist');
         this.spielerWechseln();
       }
     } else {
@@ -56,6 +56,7 @@ class Spiel {
         this.tauschDurchfuehren();
       }
       }
+      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Zug von');
       // in jedem Fall: Spieler wechseln
       this.spielerWechseln();
     }
@@ -74,6 +75,7 @@ class Spiel {
     if (this.landefeldnummer <0) {
       this.landefeldnummer = 0
       this.spielfigurPlatzieren();
+      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Zug von');
       this.spielerWechseln();   
     } else if (this.landefeldnummer >= 99) {
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
@@ -84,12 +86,14 @@ class Spiel {
         // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
       } else {
         this.aufLeiterfeldPruefen();
+        spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Zug von');
         this.spielerWechseln();
       }
     } else {
       this.spielfigurPlatzieren();
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
+      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Zug von');
       this.spielerWechseln();
     }
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}

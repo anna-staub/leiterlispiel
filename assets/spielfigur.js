@@ -39,5 +39,4 @@ class Spielfigur {
   addToFeld(Feld) {
     Feld.appendChild(this.#domElementSpielfigur);
   }
- 
 }
