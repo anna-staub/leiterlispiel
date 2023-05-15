@@ -3,22 +3,33 @@ class Spiel {
   #gewinner = null;
 
   constructor() {
-    // Speicher auslesen
     this.spielfeld = new Spielfeld();
-    let feldVonFigur1 = Number(StorageService.get('spielfigur1'));
-    let feldVonFigur2 = Number(StorageService.get('spielfigur2'));
+    // Speicher auslesen und in Variablen speichern
+    let feldVonFigur1 = Number(StorageService.get('spielfigur1')); // wenn der Wert null ist, wird er mit Number() zu 0 umgewandelt
+    let feldVonFigur2 = Number(StorageService.get('spielfigur2')); // wenn der Wert null ist, wird er mit Number() zu 0 umgewandelt
     let letzterWurf = StorageService.get('letzter Wurf');
     let letzterSpieler = StorageService.get('letzter Spieler');
-    // TODO: gespeicherte Werte einpflegen
+    // Spielfiguren und Würfel instanzieren
     this.spielfigur1 = new Spielfigur('spielfigur1', 1, gespeicherteFarbe1, gespeicherterName1);
     this.spielfigur2 = new Spielfigur('spielfigur2', 2, gespeicherteFarbe2, gespeicherterName2);
     this.spielwuerfel = new Wuerfel(6);
+    // zuletzt gewürfelte Zahl anzeigen wenn im Speicher vorhanden
+    if(letzterWurf != null) {
+      this.spielwuerfel.wuerfelergebnisAusgeben(letzterWurf);
+    }
     // zu Testzwecken: this.spielwuerfel = new Wuerfel(1);
-    this.aktuelleSpielfigur = this.spielfigur1;
-    // Aktuelle Feldnummer der Spielfigur ermitteln
-    let startfeld = this.spielfeld.getFeldUeberFeldnummer(0);
+    // Spielfigur bestimmen, welche am Zug ist
+    if((letzterSpieler == 'spielfigur2' && letzterWurf == '6') | (letzterSpieler == 'spielfigur1' && letzterWurf != '6' && letzterWurf != '')) {
+      this.aktuelleSpielfigur = this.spielfigur2;
+    } else {
+      this.aktuelleSpielfigur = this.spielfigur1;
+    }
+    // gespeicherte Feldnummer von spielfigur1 verwenden wenn vorhanden -> wenn nicht vorhanden ist der Wert 0 (siehe Erklärung bei let feldVonFigur1)
+    let startfeld = this.spielfeld.getFeldUeberFeldnummer(feldVonFigur1);
     this.spielfigur1.setFeld(startfeld);
     this.spielfigur1.addToFeld(startfeld.domElement);
+    // gespeicherte Feldnummer von spielfigur2 verwenden wenn vorhanden (analog zu spielfigur1)
+    startfeld = this.spielfeld.getFeldUeberFeldnummer(feldVonFigur2);
     this.spielfigur2.setFeld(startfeld);
     this.spielfigur2.addToFeld(startfeld.domElement);
     this.spielfiguranzeige = new Spielfiguranzeige(this);
@@ -195,6 +206,12 @@ class Spiel {
   }
 
   spielZuruecksetzen() {
+    // gespeicherte Feldnummer der Spielfiguren und letzter Wurf korrigieren
+    StorageService.set('spielfigur1', 0);
+    StorageService.set('spielfigur2', 0);
+    StorageService.set('letzter Wurf', '');
+    this.spielwuerfel.wuerfelergebnisAusgeben('');
+    // Startspieler festlegen
     if (this.aktuelleSpielfigur === this.spielfigur2) {
       this.spielfiguranzeige.spielfigurAusAnzeigeEntfernen();
       this.aktuelleSpielfigur = this.spielfigur1;
