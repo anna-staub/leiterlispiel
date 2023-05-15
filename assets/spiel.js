@@ -234,17 +234,3 @@ document.getElementById('zuFeld54').addEventListener('click', () => {
 // Spiel neu starten (mit den selben Spielern)
 document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()})
 
-
-function wuerfelSperren() {
-  wuerfelbuttons.forEach((button) => {
-    button.setAttribute('disabled', '')
-  });
-}
-
-function  wuerfelEntsperren() {
-  setTimeout(() => {
-    wuerfelbuttons.forEach((button) => {
-      button.removeAttribute('disabled')
-    });
-  }, 500);
-}

@@ -21,3 +21,18 @@ class Wuerfel{
       }
 }
 
+// Würfel während des Spielzugs deaktivieren
+function wuerfelSperren() {
+    wuerfelbuttons.forEach((button) => {
+      button.setAttribute('disabled', '')
+    });
+  }
+  
+  // Würfel nach dem Spielzug reaktivieren
+  function  wuerfelEntsperren() {
+    setTimeout(() => {
+      wuerfelbuttons.forEach((button) => {
+        button.removeAttribute('disabled')
+      });
+    }, 500);
+  }
