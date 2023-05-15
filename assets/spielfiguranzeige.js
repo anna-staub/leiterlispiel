@@ -9,7 +9,7 @@ class Spielfiguranzeige {
         this.#domElementSpielfiguranzeige.setAttribute('id', this.spiel.aktuelleSpielfigur.spielfigurname);
     }
 
-    // Spielfigur in Spielfiguranzeige anzeigen
+    // Spielfigur in Spielfiguranzeige anzeigen + ausgewählte Farben übergeben
     spielfigurAnzeigen(){
         this.#domElementSpielfiguranzeige.setAttribute('id', this.spiel.aktuelleSpielfigur.spielfigurname);
         if (debug_mode) {console.log('Aktuelle Spielfigur: '+ this.#domElementSpielfiguranzeige.id);}
