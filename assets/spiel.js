@@ -1,10 +1,15 @@
 // ! Spielfeld erstellen
 class Spiel {
-  #gewinner = null; 
+  #gewinner = null;
 
   constructor() {
     // Speicher auslesen
     this.spielfeld = new Spielfeld();
+    let feldVonFigur1 = Number(StorageService.get('spielfigur1'));
+    let feldVonFigur2 = Number(StorageService.get('spielfigur2'));
+    let letzterWurf = StorageService.get('letzter Wurf');
+    let letzterSpieler = StorageService.get('letzter Spieler');
+    // TODO: gespeicherte Werte einpflegen
     this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', 1, gespeicherteFarbe1, gespeicherterName1);
     this.spielfigur2 = new Spielfigur(Feld, 'spielfigur2', 2, gespeicherteFarbe2, gespeicherterName2);
     this.spielwuerfel = new Wuerfel(6);
@@ -38,7 +43,7 @@ class Spiel {
         // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
       } else {
         this.aufLeiterfeldPruefen();
-        spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'am Zug ist');
+        spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
         this.spielerWechseln();
       }
     } else {
@@ -56,7 +61,7 @@ class Spiel {
         this.tauschDurchfuehren();
       }
       }
-      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Zug von');
+      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       // in jedem Fall: Spieler wechseln
       this.spielerWechseln();
     }
@@ -75,7 +80,7 @@ class Spiel {
     if (this.landefeldnummer <0) {
       this.landefeldnummer = 0
       this.spielfigurPlatzieren();
-      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Zug von');
+      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       this.spielerWechseln();   
     } else if (this.landefeldnummer >= 99) {
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
@@ -86,14 +91,14 @@ class Spiel {
         // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
       } else {
         this.aufLeiterfeldPruefen();
-        spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Zug von');
+        spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
         this.spielerWechseln();
       }
     } else {
       this.spielfigurPlatzieren();
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
-      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Zug von');
+      spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       this.spielerWechseln();
     }
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
@@ -203,7 +208,7 @@ class Spiel {
   }
 }
 // Debug Modus zum deaktivieren von console.logs
-let debug_mode = true;
+let debug_mode = false;
 
 // in Storage gespeicherte Werte in Variablen speichern
 let gespeicherterName1 = StorageService.get('name1');
@@ -238,8 +243,16 @@ document.getElementById('zuFeld54').addEventListener('click', () => {
 // Spiel neu starten (mit den selben Spielern)
 document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()});
 
+// TODO: evtl. noch besseren Ort für die Funktiondefinition finden?
+function neustart(form) {
+  form.action = 'index.html';
+  return false;
+}
+
 // neues Spiel mit neuen Spielern starten (zurück zur Startseite)
 document.getElementById('neuesspiel').addEventListener('click', () => {
-  // TODO: Storage löschen
-  // TODO: zu Startseite navigieren
+  // Storage löschen
+  sessionStorage.clear();
+  // zur Startseite navigieren
+  neustart();
 });
