@@ -67,7 +67,7 @@ class Spiel {
     // Aktuelle Feldnummer der Spielfigur ermitteln
     this.aktuelleSpielfigurFeldnummer = this.aktuelleSpielfigur.getSpielfigurFeldNummer();
     // Würfeln und Resultat anzeigen
-    this.wuerfelergebnis = this.spielwuerfel.spezialWuerfeln(-5,10); // ! Würfelergebnis speichern
+    this.wuerfelergebnis = this.spielwuerfel.spezialWuerfeln(-5,10);
     this.spielwuerfel.wuerfelergebnisAusgeben(this.wuerfelergebnis);
     // Landefeld der Spielfigur ermitteln
     // Landefeld-Nummer = aktuellesFeld-Nummer + Wuerfelergebnis
@@ -205,6 +205,7 @@ class Spiel {
 // Debug Modus zum deaktivieren von console.logs
 let debug_mode = true;
 
+// in Storage gespeicherte Werte in Variablen speichern
 let gespeicherterName1 = StorageService.get('name1');
 let gespeicherterName2 = StorageService.get('name2');
 let gespeicherteFarbe1 = StorageService.get('farbe1');
@@ -234,7 +235,11 @@ document.getElementById('zuFeld54').addEventListener('click', () => {
   spiel.spielzug54();
 });
 
-
 // Spiel neu starten (mit den selben Spielern)
-document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()})
+document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()});
 
+// neues Spiel mit neuen Spielern starten (zurück zur Startseite)
+document.getElementById('neuesspiel').addEventListener('click', () => {
+  // TODO: Storage löschen
+  // TODO: zu Startseite navigieren
+});
