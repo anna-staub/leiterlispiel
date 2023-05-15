@@ -10,8 +10,8 @@ class Spiel {
     let letzterWurf = StorageService.get('letzter Wurf');
     let letzterSpieler = StorageService.get('letzter Spieler');
     // TODO: gespeicherte Werte einpflegen
-    this.spielfigur1 = new Spielfigur(Feld, 'spielfigur1', 1, gespeicherteFarbe1, gespeicherterName1);
-    this.spielfigur2 = new Spielfigur(Feld, 'spielfigur2', 2, gespeicherteFarbe2, gespeicherterName2);
+    this.spielfigur1 = new Spielfigur('spielfigur1', 1, gespeicherteFarbe1, gespeicherterName1);
+    this.spielfigur2 = new Spielfigur('spielfigur2', 2, gespeicherteFarbe2, gespeicherterName2);
     this.spielwuerfel = new Wuerfel(6);
     // zu Testzwecken: this.spielwuerfel = new Wuerfel(1);
     this.aktuelleSpielfigur = this.spielfigur1;
