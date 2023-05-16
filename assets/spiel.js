@@ -51,7 +51,6 @@ class Spiel {
       this.spielfigurPlatzieren();
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
-        // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
       } else {
         this.aufLeiterfeldPruefen();
         spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
@@ -99,7 +98,6 @@ class Spiel {
       this.spielfigurPlatzieren();
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
-        // TODO: Spiel beenden/zurücksetzen? (Neues Spiel initialisieren?) (z. B. Dialog anzeigen: Spiel gewonnen! Option Spiel zurücksetzen)
       } else {
         this.aufLeiterfeldPruefen();
         spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
@@ -201,7 +199,13 @@ class Spiel {
     if (landefeldnummer == 99){
       // Sieger ausrufen 
       this.#gewinner=this.aktuelleSpielfigur.spielername;
-      setTimeout(() => {alert(this.#gewinner+' hat gewonnen!')}, 500);
+      setTimeout(() => {
+        alert(this.#gewinner+' hat gewonnen!');
+        // Spieler fragen, ob sie nochmal spielen wollen und je nach Antwort das Spiel neu starten
+        if(confirm('Nochmal spielen?') == true) {
+          this.spielZuruecksetzen();
+        }
+      }, 500);
     }
   }
 
