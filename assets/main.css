@@ -109,6 +109,10 @@ main {
     #feld99 {
         background-color: #7c7b7b;
     }
+    /* Tauschfeld */
+    #feld55 {
+        background-color: rgb(150, 85, 43);
+    }
 
     /* Spielfiguren */
     .spielfigur {

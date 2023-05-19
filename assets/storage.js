@@ -17,3 +17,8 @@ function spielstandSpeichern(figurname, feld, wuerfel, zahl, aktuellerSpieler) {
     StorageService.set(wuerfel, zahl);
     StorageService.set(aktuellerSpieler, figurname);
 }
+
+function teilspielstandSpeichern(figurname, feld, wuerfel, zahl) {
+    StorageService.set(figurname, feld);
+    StorageService.set(wuerfel, zahl);
+}

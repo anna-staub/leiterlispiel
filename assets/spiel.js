@@ -17,8 +17,7 @@ class Spiel {
     if(letzterWurf != null) {
       this.spielwuerfel.wuerfelergebnisAusgeben(letzterWurf);
     }
-    // zu Testzwecken: 
-    this.spielwuerfel = new Wuerfel(1);
+    // zu Testzwecken: this.spielwuerfel = new Wuerfel(1);
     // Spielfigur bestimmen, welche am Zug ist
     if((letzterSpieler == 'spielfigur2' && letzterWurf == '6') | (letzterSpieler == 'spielfigur1' && letzterWurf != '6' && letzterWurf != '')) {
       this.aktuelleSpielfigur = this.spielfigur2;
@@ -64,11 +63,11 @@ class Spiel {
       // Spezialfeld für Spielfigurentausch prüfen
       if (this.landefeldnummer == 55) {
         this.spielfigurPlatzieren();
-        // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen (funktioniert noch nicht / timing -> Problem: an gewissen Stellen gibt es Timeouts, der nachfolgende Code wird aber schon vorher ausgeführt, deshalb funktioniert es nicht -> evtl. irgendwie mit async/await lösbar?)
+        // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen
         setTimeout(() => {if (this.tauschfeldAbfragen()) {
           if (debug_mode) {console.log('Tausch durchführen');}
           this.tauschDurchfuehren();
-        }},500)
+        }},500);
       }
       spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       // in jedem Fall: Spieler wechseln
@@ -106,18 +105,29 @@ class Spiel {
       this.spielfigurPlatzieren();
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
+      // Spezialfeld für Spielfigurentausch prüfen
+      if (this.landefeldnummer == 55) {
+        this.spielfigurPlatzieren();
+        // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen
+        setTimeout(() => {if (this.tauschfeldAbfragen()) {
+          if (debug_mode) {console.log('Tausch durchführen');}
+          this.tauschDurchfuehren();
+        }},500);
+      }
       spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       this.spielerWechseln();
     }
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
   }
 
-  // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum testen Würfel(1) noch enablen)
+  /*
+  // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum Testen Würfel(1), Würfeldeld und Eventlistener für Würfelfeld noch auskommentieren)
   spielzug54() {
     this.landefeldnummer = 54;
     this.spielfigurPlatzieren();
     this.spielerWechseln();
   }
+  */
 
   aufLeiterfeldPruefen() {
     if (this.landefeldObjekt instanceof Leiterfeld) {
@@ -153,10 +163,10 @@ class Spiel {
   tauschfeldAbfragen() {
     console.log('Du bist auf dem Tauschfeld gelandet.');
     if (window.confirm('Möchtest du mit der gegnerischen Spielfigur Platz tauschen?')) {
-      console.log('Figuren tauschen!');
+      console.log('Ja, Figuren tauschen!');
       return true;      
     } else{
-      console.log('Figuren NICHT tauschen');
+      console.log('Nein, Figuren NICHT tauschen!');
       return false;
     }
   }
@@ -176,10 +186,14 @@ class Spiel {
     // Spielfigur wechseln
     this.spielerWechseln();
     // andere Spielfigur dem Feld mit der Feldnummer positionAlt zuweisen
-    this.landefeldnummer = positionAlt;
-    this.spielfigurPlatzieren();
+    setTimeout(() => {
+      this.landefeldnummer = positionAlt;
+      this.spielfigurPlatzieren();
+      teilspielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis);
+    },510);
     // Spielfigur wechseln
     this.spielerWechseln();
+    teilspielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis);
   }
   
   spielerWechseln() {
@@ -255,10 +269,12 @@ wuerfelbuttons.forEach((button) => {
   });
 });
 
+/*
 // Auslöser, um Spielfigur direkt auf Feld 54 setzen
 document.getElementById('zuFeld54').addEventListener('click', () => {
   spiel.spielzug54();
 });
+*/
 
 // Spiel neu starten (mit den selben Spielern)
 document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()});
