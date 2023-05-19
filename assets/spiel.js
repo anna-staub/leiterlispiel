@@ -17,7 +17,8 @@ class Spiel {
     if(letzterWurf != null) {
       this.spielwuerfel.wuerfelergebnisAusgeben(letzterWurf);
     }
-    // zu Testzwecken: this.spielwuerfel = new Wuerfel(1);
+    // zu Testzwecken: 
+    this.spielwuerfel = new Wuerfel(1);
     // Spielfigur bestimmen, welche am Zug ist
     if((letzterSpieler == 'spielfigur2' && letzterWurf == '6') | (letzterSpieler == 'spielfigur1' && letzterWurf != '6' && letzterWurf != '')) {
       this.aktuelleSpielfigur = this.spielfigur2;
@@ -63,13 +64,11 @@ class Spiel {
       // Spezialfeld für Spielfigurentausch prüfen
       if (this.landefeldnummer == 55) {
         this.spielfigurPlatzieren();
-      // Abfragen, ob getauscht werden soll
-      this.tauschfeldAbfragen();
-      // Falls Abfrage true ergibt: Tausch durchführen (funktioniert noch nicht / timing)
-      if (this.tauschfeldAbfragen) {
-        if (debug_mode) {console.log('Tausch durchführen');}
-        this.tauschDurchfuehren();
-      }
+        // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen (funktioniert noch nicht / timing -> Problem: an gewissen Stellen gibt es Timeouts, der nachfolgende Code wird aber schon vorher ausgeführt, deshalb funktioniert es nicht -> evtl. irgendwie mit async/await lösbar?)
+        setTimeout(() => {if (this.tauschfeldAbfragen()) {
+          if (debug_mode) {console.log('Tausch durchführen');}
+          this.tauschDurchfuehren();
+        }},500)
       }
       spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       // in jedem Fall: Spieler wechseln
@@ -163,7 +162,7 @@ class Spiel {
   }
 
   tauschDurchfuehren() {
-    let positionAlt = this.aktuelleSpielfigurFeldnummer;
+    let positionAlt = this.landefeldnummer;
     let positionNeu;
     if (this.aktuelleSpielfigur === this.spielfigur1) {
       positionNeu = this.spielfigur2.getSpielfigurFeldNummer();
@@ -172,12 +171,12 @@ class Spiel {
     }
     console.log('Alte Position = '+positionAlt+'. Neue Position = '+positionNeu);
     // aktuelleSpielfigur dem Feld mit der Feldnummer positionNeu zuweisen
-    this.landefeldnummer=positionNeu;
+    this.landefeldnummer = positionNeu;
     this.spielfigurPlatzieren();
     // Spielfigur wechseln
     this.spielerWechseln();
     // andere Spielfigur dem Feld mit der Feldnummer positionAlt zuweisen
-    this.landefeldnummer=positionAlt;
+    this.landefeldnummer = positionAlt;
     this.spielfigurPlatzieren();
     // Spielfigur wechseln
     this.spielerWechseln();
@@ -229,7 +228,7 @@ class Spiel {
   }
 }
 // Debug Modus zum deaktivieren von console.logs
-let debug_mode = false;
+let debug_mode = true;
 
 // in Storage gespeicherte Werte in Variablen speichern
 let gespeicherterName1 = StorageService.get('name1');
