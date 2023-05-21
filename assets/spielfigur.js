@@ -15,13 +15,8 @@ class Spielfigur {
 
     // Class-Attribut und ID-Attribut auf DOM-Element setzen
     this.#domElementSpielfigur.setAttribute('class', 'spielfigur');
-    if (this.spielfigurname === 'spielfigur1') {
-      this.#domElementSpielfigur.setAttribute('id', 'spielfigur1');
-      this.#domElementSpielfigur.setAttribute("style", "background-color:"+this.spielfigurfarbe)
-    } else if (this.spielfigurname === 'spielfigur2') {
-      this.#domElementSpielfigur.setAttribute('id', 'spielfigur2');
-      this.#domElementSpielfigur.setAttribute("style", "background-color:"+this.spielfigurfarbe)
-    }
+    this.#domElementSpielfigur.style.backgroundColor = this.spielfigurfarbe;
+    this.#domElementSpielfigur.setAttribute('id', this.spielfigurname);
   }
 
   // Feldnummer der Spielfigur ermitteln 
@@ -36,4 +31,19 @@ class Spielfigur {
   addToFeld(Feld) {
     Feld.appendChild(this.#domElementSpielfigur);
   }
+}
+
+// ToDo: evtl. bessere Stelle für diese Funktionen finden
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+function drag(event) {
+  event.dataTransfer.setData("text", event.target.id);
+}
+
+function drop(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("text");
+  event.target.appendChild(document.getElementById(data));
 }
