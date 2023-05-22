@@ -34,19 +34,19 @@ class Feld {
     
     // DOM-Element einer Klasse zuweisen
     normalesFeldKlassieren() {
-      this.domElement.setAttribute('class', 'normalesfeld')
+      this.domElement.setAttribute('class', 'normalesfeld feld');
     }
     leiterfeldRunterStartKlassieren() {
-      this.domElement.setAttribute('class', 'leiterfeld_runter_start');
+      this.domElement.setAttribute('class', 'leiterfeld_runter_start feld');
     }
     leiterfeldRunterEndeKlassieren() {
-      this.domElement.setAttribute('class', 'leiterfeld_runter_ende');
+      this.domElement.setAttribute('class', 'leiterfeld_runter_ende feld');
     }
     leiterfeldHochStartKlassieren() {
-      this.domElement.setAttribute('class', 'leiterfeld_hoch_start');
+      this.domElement.setAttribute('class', 'leiterfeld_hoch_start feld');
     }
     leiterfeldHochEndeKlassieren() {
-      this.domElement.setAttribute('class', 'leiterfeld_hoch_ende');
+      this.domElement.setAttribute('class', 'leiterfeld_hoch_ende feld');
     }
     // DOM-Element dem Spielfeld hinzufügen
     addToBoard(board) {
