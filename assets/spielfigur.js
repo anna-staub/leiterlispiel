@@ -46,6 +46,4 @@ function drop(event) {
   event.preventDefault();
   var data = event.dataTransfer.getData("text");
   event.target.appendChild(document.getElementById(data));
-  // Wert von Variable pausiert auf false setzen, damit warten() beendet wird
-  pausiert = false;
 }
