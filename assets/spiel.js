@@ -48,7 +48,10 @@ class Spiel {
     if (this.landefeldnummer >= 99){
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99 - (this.landefeldnummer - 99);
-      this.spielfigurPlatzierenAutomatisch();
+      // this.spielfigurPlatzierenAutomatisch();
+      pausiert = true;
+      this.spielfigurPlatzierenManuell(this.landefeldnummer);
+      warten();
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
       } else {
@@ -57,14 +60,19 @@ class Spiel {
         this.spielerWechseln();
       }
     } else {
-      this.spielfigurPlatzierenAutomatisch();
-      // this.spielfigurPlatzierenManuell();
+      // this.spielfigurPlatzierenAutomatisch();
+      pausiert = true;
+      this.spielfigurPlatzierenManuell(this.landefeldnummer);
+      warten();
       // ToDo: Rest von Spielzug in Eventlistener packen, damit es erst ausgeführt wird, sobald die Figur platziert wurde.
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
       // Spezialfeld für Spielfigurentausch prüfen
       if (this.landefeldnummer == 55) {
-        this.spielfigurPlatzierenAutomatisch();
+        // this.spielfigurPlatzierenAutomatisch();
+        pausiert = true;
+        this.spielfigurPlatzierenManuell(this.landefeldnummer);
+        warten();
         // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen
         setTimeout(() => {if (this.tauschfeldAbfragen()) {
           if (debug_mode) {console.log('Tausch durchführen');}
@@ -89,13 +97,19 @@ class Spiel {
     this.landefeldnummer = this.aktuelleSpielfigurFeldnummer + this.wuerfelergebnis;
     if (this.landefeldnummer <0) {
       this.landefeldnummer = 0
-      this.spielfigurPlatzierenAutomatisch();
+      // this.spielfigurPlatzierenAutomatisch();
+      pausiert = true;
+      this.spielfigurPlatzierenManuell(this.landefeldnummer);
+      warten();
       spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       this.spielerWechseln();   
     } else if (this.landefeldnummer >= 99) {
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99 - (this.landefeldnummer - 99);
-      this.spielfigurPlatzierenAutomatisch();
+      // this.spielfigurPlatzierenAutomatisch();
+      pausiert = true;
+      this.spielfigurPlatzierenManuell(this.landefeldnummer);
+      warten();
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
       } else {
@@ -104,12 +118,18 @@ class Spiel {
         this.spielerWechseln();
       }
     } else {
-      this.spielfigurPlatzierenAutomatisch();
+      // this.spielfigurPlatzierenAutomatisch();
+      pausiert = true;
+      this.spielfigurPlatzierenManuell(this.landefeldnummer);
+      warten();
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
       // Spezialfeld für Spielfigurentausch prüfen
       if (this.landefeldnummer == 55) {
-        this.spielfigurPlatzierenAutomatisch();
+        // this.spielfigurPlatzierenAutomatisch();
+        pausiert = true;
+        this.spielfigurPlatzierenManuell(this.landefeldnummer);
+        warten();
         // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen
         setTimeout(() => {if (this.tauschfeldAbfragen()) {
           if (debug_mode) {console.log('Tausch durchführen');}
@@ -162,11 +182,11 @@ class Spiel {
     this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
   }
 
-  spielfigurPlatzierenManuell() {
+  spielfigurPlatzierenManuell(landefeldnummer) {
     // aktuelle Spielfigur draggable machen 
     addDraggable();
     // Landefeld droppable machen
-    addDroppable('feld'+ this.landefeldnummer); // ToDo: stimmt nur beim ersten Zug, danach irgendwie nicht mehr
+    addDroppable('feld'+ landefeldnummer); // ToDo: stimmt nur beim ersten Zug, danach irgendwie nicht mehr. Grund: this.aktuelleSpielfigurFeldnummer bleibt 0 weil noch vor dem Bewegen der Figur deren Standort gespeichert wird, welcher somit immer 0 ist.
   }
   
   tauschfeldAbfragen() {
@@ -251,6 +271,9 @@ class Spiel {
     this.spielfiguranzeige.spielfigurAnzeigen();
   }
 }
+
+var pausiert;
+
 // Debug Modus zum deaktivieren von console.logs
 let debug_mode = true;
 
@@ -283,6 +306,13 @@ function removeDroppable(feldId) {
   // Landefeld nicht mehr droppable machen
   document.getElementById(feldId).removeAttribute('ondrop', 'drop(event)');
   document.getElementById(feldId).removeAttribute('ondragover', 'allowDrop(event)');
+}
+
+function warten() {
+  if(pausiert) {
+    if(debug_mode) {console.log('warten...');}
+    setTimeout(()=> {warten()},1);
+  }
 }
 
 // Methode Spielzug auslösen, sobald gewürfelt wird
