@@ -59,7 +59,6 @@ class Spiel {
     } else {
       this.spielfigurPlatzierenAutomatisch();
       // this.spielfigurPlatzierenManuell();
-      // ToDo: Rest von Spielzug in Eventlistener packen, damit es erst ausgeführt wird, sobald die Figur platziert wurde.
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
       // Spezialfeld für Spielfigurentausch prüfen
@@ -162,11 +161,34 @@ class Spiel {
     this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
   }
 
+  // ToDo: evtl. bessere Stelle für diese 4 Funktionen finden
+  addDraggable() {
+    document.getElementById(this.aktuelleSpielfigur.spielfigurname).setAttribute('draggable', 'true');
+    document.getElementById(this.aktuelleSpielfigur.spielfigurname).setAttribute('ondragstart', 'drag(event)');
+  }
+
+  removeDraggable() {
+    document.getElementById(this.aktuelleSpielfigur.spielfigurname).removeAttribute('draggable');
+    document.getElementById(this.aktuelleSpielfigur.spielfigurname).removeAttribute('ondragstart');
+  }
+
+  addDroppable(feldId) {
+    document.getElementById(feldId).setAttribute('ondrop', 'drop(event)');
+    document.getElementById(feldId).setAttribute('ondragover', 'allowDrop(event)');
+  }
+  
+  removeDroppable(feldId) {
+    // Landefeld nicht mehr droppable machen -> ToDo: Methode verwenden -> könnte evtl. ein Problem geben wegen Parameter feldId
+    document.getElementById(feldId).removeAttribute('ondrop', 'drop(event)');
+    document.getElementById(feldId).removeAttribute('ondragover', 'allowDrop(event)');
+  }
+
   spielfigurPlatzierenManuell() {
+    let feldId = 'feld'+ this.landefeldnummer;
     // aktuelle Spielfigur draggable machen 
-    addDraggable();
+    this.addDraggable(feldId);
     // Landefeld droppable machen
-    addDroppable('feld'+ this.landefeldnummer); // ToDo: stimmt nur beim ersten Zug, danach irgendwie nicht mehr
+    this.addDroppable(feldId);
   }
   
   tauschfeldAbfragen() {
@@ -263,37 +285,10 @@ let gespeicherteFarbe2 = StorageService.get('farbe2');
 // neues Spiel instanzieren
 let spiel = new Spiel();
 
-// ToDo: evtl. bessere Stelle für diese 4 Funktionen finden
-function addDraggable() {
-  document.getElementById(spiel.aktuelleSpielfigur.spielfigurname).setAttribute('draggable', 'true');
-  document.getElementById(spiel.aktuelleSpielfigur.spielfigurname).setAttribute('ondragstart', 'drag(event)');
-}
-
-function removeDraggable() {
-  document.getElementById('spielfigur1').removeAttribute('draggable');
-  document.getElementById('spielfigur2').removeAttribute('draggable');
-}
-
-function addDroppable(feldId) {
-  document.getElementById(feldId).setAttribute('ondrop', 'drop(event)');
-  document.getElementById(feldId).setAttribute('ondragover', 'allowDrop(event)');
-}
-
-function removeDroppable(feldId) {
-  // Landefeld nicht mehr droppable machen
-  document.getElementById(feldId).removeAttribute('ondrop', 'drop(event)');
-  document.getElementById(feldId).removeAttribute('ondragover', 'allowDrop(event)');
-}
-
 // Methode Spielzug auslösen, sobald gewürfelt wird
 let wuerfelbuttons = document.querySelectorAll('#wuerfelfeld button');
 wuerfelbuttons.forEach((button) => {
   button.addEventListener('click', () => {
-    // vorheriges Landefeld nicht mehr droppable und Figur nicht mehr draggable machen
-    if(spiel.landefeldnummer) {
-      removeDroppable('feld'+ spiel.landefeldnummer);
-      removeDraggable();
-    }
     // Würfel während des Spielzugs disablen
     wuerfelSperren()
     if (button.id === 'wuerfelbutton') {
