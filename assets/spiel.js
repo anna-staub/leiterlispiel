@@ -48,7 +48,7 @@ class Spiel {
     if (this.landefeldnummer >= 99){
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99 - (this.landefeldnummer - 99);
-      this.spielfigurPlatzierenAutomatisch();
+      this.spielfigurPlatzieren();
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
       } else {
@@ -57,13 +57,12 @@ class Spiel {
         this.spielerWechseln();
       }
     } else {
-      this.spielfigurPlatzierenAutomatisch();
-      // this.spielfigurPlatzierenManuell();
+      this.spielfigurPlatzieren();
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
       // Spezialfeld für Spielfigurentausch prüfen
       if (this.landefeldnummer == 55) {
-        this.spielfigurPlatzierenAutomatisch();
+        this.spielfigurPlatzieren();
         // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen
         setTimeout(() => {if (this.tauschfeldAbfragen()) {
           if (debug_mode) {console.log('Tausch durchführen');}
@@ -88,13 +87,13 @@ class Spiel {
     this.landefeldnummer = this.aktuelleSpielfigurFeldnummer + this.wuerfelergebnis;
     if (this.landefeldnummer <0) {
       this.landefeldnummer = 0
-      this.spielfigurPlatzierenAutomatisch();
+      this.spielfigurPlatzieren();
       spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       this.spielerWechseln();   
     } else if (this.landefeldnummer >= 99) {
       // this.aktuelleSpielfigur (DOM) in Zielfeld (DOM) platzieren
       this.landefeldnummer = 99 - (this.landefeldnummer - 99);
-      this.spielfigurPlatzierenAutomatisch();
+      this.spielfigurPlatzieren();
       if (this.landefeldnummer == 99) {
         this.siegAusrufen(this.landefeldnummer);
       } else {
@@ -103,12 +102,12 @@ class Spiel {
         this.spielerWechseln();
       }
     } else {
-      this.spielfigurPlatzierenAutomatisch();
+      this.spielfigurPlatzieren();
       // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
       // Spezialfeld für Spielfigurentausch prüfen
       if (this.landefeldnummer == 55) {
-        this.spielfigurPlatzierenAutomatisch();
+        this.spielfigurPlatzieren();
         // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen
         setTimeout(() => {if (this.tauschfeldAbfragen()) {
           if (debug_mode) {console.log('Tausch durchführen');}
@@ -125,7 +124,7 @@ class Spiel {
   // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum Testen Würfel(1), Würfeldeld und Eventlistener für Würfelfeld noch auskommentieren)
   spielzug54() {
     this.landefeldnummer = 54;
-    this.spielfigurPlatzierenAutomatisch();
+    this.spielfigurPlatzieren();
     this.spielerWechseln();
   }
   */
@@ -153,42 +152,12 @@ class Spiel {
       setTimeout(() => {this.aktuelleSpielfigur.setFeld(this.landefeldObjekt); this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);}, 500);
   }
 
-  spielfigurPlatzierenAutomatisch() {
+  spielfigurPlatzieren() {
     // Der Landefeldnummer entsprechendes Objekt aus dem Felder-Array holen
     this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
     // Spielfigur die entsprechende Feldnummer zuschreiben und Spielfigur-DOM-Element in entsprechendes Feld-DOM-Element platzieren
     this.aktuelleSpielfigur.setFeld(this.landefeldObjekt);
     this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);
-  }
-
-  // ToDo: evtl. bessere Stelle für diese 4 Funktionen finden
-  addDraggable() {
-    document.getElementById(this.aktuelleSpielfigur.spielfigurname).setAttribute('draggable', 'true');
-    document.getElementById(this.aktuelleSpielfigur.spielfigurname).setAttribute('ondragstart', 'drag(event)');
-  }
-
-  removeDraggable() {
-    document.getElementById(this.aktuelleSpielfigur.spielfigurname).removeAttribute('draggable');
-    document.getElementById(this.aktuelleSpielfigur.spielfigurname).removeAttribute('ondragstart');
-  }
-
-  addDroppable(feldId) {
-    document.getElementById(feldId).setAttribute('ondrop', 'drop(event)');
-    document.getElementById(feldId).setAttribute('ondragover', 'allowDrop(event)');
-  }
-  
-  removeDroppable(feldId) {
-    // Landefeld nicht mehr droppable machen -> ToDo: Methode verwenden -> könnte evtl. ein Problem geben wegen Parameter feldId
-    document.getElementById(feldId).removeAttribute('ondrop', 'drop(event)');
-    document.getElementById(feldId).removeAttribute('ondragover', 'allowDrop(event)');
-  }
-
-  spielfigurPlatzierenManuell() {
-    let feldId = 'feld'+ this.landefeldnummer;
-    // aktuelle Spielfigur draggable machen 
-    this.addDraggable(feldId);
-    // Landefeld droppable machen
-    this.addDroppable(feldId);
   }
   
   tauschfeldAbfragen() {
@@ -213,13 +182,13 @@ class Spiel {
     console.log('Alte Position = '+positionAlt+'. Neue Position = '+positionNeu);
     // aktuelleSpielfigur dem Feld mit der Feldnummer positionNeu zuweisen
     this.landefeldnummer = positionNeu;
-    this.spielfigurPlatzierenAutomatisch();
+    this.spielfigurPlatzieren();
     // Spielfigur wechseln
     this.spielerWechseln();
     // andere Spielfigur dem Feld mit der Feldnummer positionAlt zuweisen
     setTimeout(() => {
       this.landefeldnummer = positionAlt;
-      this.spielfigurPlatzierenAutomatisch();
+      this.spielfigurPlatzieren();
       teilspielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis);
     },510);
     // Spielfigur wechseln
@@ -232,7 +201,6 @@ class Spiel {
     setTimeout(() => {if (this.wuerfelergebnis != 6) {
       // Spielfiguranzeige leeren
       this.spielfiguranzeige.spielfigurAusAnzeigeEntfernen();
-      // ToDo: aktuelle Spielfigur nicht mehr draggable machen -> aber erst nachdem sie gesetzt wurde
       //Spielfigur wechseln
       this.aktuelleSpielfigur = this.aktuelleSpielfigur === this.spielfigur1? this.spielfigur2 : this.spielfigur1;
       // Spielfiguranzeige mit aktuelle Spielfigur füllen
