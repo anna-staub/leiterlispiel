@@ -84,21 +84,28 @@ main {
         background-color: transparent;
     }
     .leiterfeld_runter_start {
-        background-color: rgb(224, 210, 16);
-        /*
-        background-image: url("./images/xyz.png");
-        background-size: 40%;
+        /* background-color: rgb(224, 210, 16);  */
+        background-image: url("./images/roehre_down_oben.png");
+        background-size: 70%;
         background-position: bottom;
-        */
     }
     .leiterfeld_runter_ende {
-        background-color: rgb(158, 148, 12);
+       /* background-color: rgb(158, 148, 12); */
+        background-image: url("./images/roehre_down_unten.png");
+        background-size: 70%;
+        background-position: top;
     }
     .leiterfeld_hoch_start {
-        background-color: rgb(31, 114, 31);
+        /* background-color: rgb(31, 114, 31); */
+        background-image: url("./images/roehre_up_unten.png");
+        background-size: 70%;
+        background-position: top;
     }
     .leiterfeld_hoch_ende {
-        background-color: rgb(15, 65, 15);
+        /* background-color: rgb(15, 65, 15); */
+        background-image: url("./images/roehre_up_oben.png");
+        background-size: 70%;
+        background-position: bottom;
     }
 
     /* Startfeld */
@@ -111,7 +118,10 @@ main {
     }
     /* Tauschfeld */
     #feld55 {
-        background-color: rgb(150, 85, 43);
+        /* background-color: rgb(150, 85, 43); */
+        background-image: url("./images/swap.png");
+        background-size: 80%;
+        background-position: center;
     }
 
     /* Spielfiguren */
