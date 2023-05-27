@@ -107,6 +107,18 @@ main {
         background-size: 70%;
         background-position: bottom;
     }
+    /* Röhrenfelder mit Verbindungsstücken rot */
+    #feld17, #feld27, #feld69, #feld70, #feld89, #feld83 {
+        background-image: url("./images/roehre_down_verbindung.png");
+        background-size: 70%;
+        background-position: center;
+    }
+    /* Röhrenfelder mit Verbindungsstücken grün */
+    #feld23, #feld45, #feld67, #feld72, #feld77 {
+        background-image: url("./images/roehre_up_verbindung.png");
+        background-size: 70%;
+        background-position: center;
+    }
 
     /* Startfeld */
     #feld0 {
