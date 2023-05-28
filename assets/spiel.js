@@ -17,7 +17,8 @@ class Spiel {
     if(letzterWurf != null) {
       this.spielwuerfel.wuerfelergebnisAusgeben(letzterWurf);
     }
-    // zu Testzwecken: this.spielwuerfel = new Wuerfel(1);
+    // zu Testzwecken:
+    this.spielwuerfel = new Wuerfel(1);
     // Spielfigur bestimmen, welche am Zug ist
     if((letzterSpieler == 'spielfigur2' && letzterWurf == '6') | (letzterSpieler == 'spielfigur1' && letzterWurf != '6' && letzterWurf != '')) {
       this.aktuelleSpielfigur = this.spielfigur2;
@@ -120,14 +121,14 @@ class Spiel {
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
   }
 
-  /*
-  // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum Testen Würfel(1), Würfeldeld und Eventlistener für Würfelfeld noch auskommentieren)
+  
+  // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum Testen Würfel(1), Würfeldeld und Eventlistener für Würfelfeld und im spiel.html Testbutton auskommentieren)
   spielzug54() {
     this.landefeldnummer = 54;
     this.spielfigurPlatzieren();
     this.spielerWechseln();
   }
-  */
+  
 
   aufLeiterfeldPruefen() {
     if (this.landefeldObjekt instanceof Leiterfeld) {
@@ -215,8 +216,13 @@ class Spiel {
       setTimeout(() => {
         alert(this.#gewinner+' hat gewonnen!');
         // Spieler fragen, ob sie nochmal spielen wollen und je nach Antwort das Spiel neu starten
-        if(confirm('Nochmal spielen?') == true) {
+        if(confirm('Nochmal spielen?')) {
           this.spielZuruecksetzen();
+        } else {
+          // Storage löschen
+          sessionStorage.clear();
+          // zur Startseite navigieren
+          neustart();
         }
       }, 500);
     }
@@ -269,12 +275,12 @@ wuerfelbuttons.forEach((button) => {
   });
 });
 
-/*
+
 // Auslöser, um Spielfigur direkt auf Feld 54 setzen
 document.getElementById('zuFeld54').addEventListener('click', () => {
   spiel.spielzug54();
 });
-*/
+
 
 // Spiel neu starten (mit den selben Spielern)
 document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()});

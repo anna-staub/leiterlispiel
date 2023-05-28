@@ -156,7 +156,7 @@ main {
 
     /* Startfeld und Zielfeld*/
     div #feld0, div #feld99 {
-        background: rgba(245,198,255, .9);
+        background: rgba(245,198,255, .5);
     }
 
     /* Tauschfeld */
@@ -220,14 +220,14 @@ main {
         
     }
     #wuerfelbutton:disabled {
-        background-color: #cccccc;
+        background-color: #DCD0FF;
         cursor: not-allowed;
     }
     #spezialwuerfelbutton {
         margin-top: 10%;
     }
     #spezialwuerfelbutton:disabled {
-        background-color: #cccccc;
+        background-color: #DCD0FF;
         cursor: not-allowed;
     }
 
