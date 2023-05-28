@@ -2,38 +2,44 @@
 @import "https://unpkg.com/open-props";
 @import "https://unpkg.com/open-props/normalize.min.css";
 */
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;900&display=swap');
 
 /* Farbschema im Dark Mode */
 @media (prefers-color-scheme: dark) {
     html {
         background-color: black;
     }
+    
 
    }
 
 
-
+@media (prefers-color-scheme: light) {
 /* Für alle Bildschirmbreiten*/
 .header {
     padding: 1em;
     /* border-bottom: 1px solid var(--yellow-4); */
 }
 html {
-    background-color: powderblue; 
+    background-image: url("./images/galaxy-light.jpg");
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+    color: #6305C0;
+    
 }
 h1,h2 {
     max-width: 650px;
     margin: auto;
-    color: #cccccc;
 }
-p {
-    color: white;
+h1{
+    font-size: 56pt;
 }
+
 main {
     width: 80vw;
     max-width: 1200px;
     margin: 1em auto;
+    
 }
 
 
@@ -90,9 +96,11 @@ main {
         display: block;
         text-align: center;
         aspect-ratio: 1/1;
-        border: solid #cccccc 1px;
+        border: solid #6305C0 0.5px;
+        font-family:'Raleway', sans-serif;
         font-size: 12px;
-        color: white;
+        padding: 5%;
+        
     }
 
     /* Feldfarben */
@@ -101,58 +109,61 @@ main {
     }
     .leiterfeld_runter_start {
         /* background-color: rgb(224, 210, 16);  */
-        background-image: url("./images/roehre_down_oben.png");
+        background-image: url("./images/roehre_down_oben_light.png");
         background-size: 70%;
         background-position: bottom;
         background-repeat: no-repeat;
     }
-    .leiterfeld_runter_ende {
+    #board div.leiterfeld_runter_ende {
        /* background-color: rgb(158, 148, 12); */
-        background-image: url("./images/roehre_down_unten.png");
+        background-image: url("./images/roehre_down_unten_light.png");
         background-size: 70%;
         background-position: top;
         background-repeat: no-repeat;
+        color:white;        
     }
-    .leiterfeld_hoch_start {
+    #board div.leiterfeld_hoch_start {
         /* background-color: rgb(31, 114, 31); */
-        background-image: url("./images/roehre_up_unten.png");
+        background-image: url("./images/roehre_up_unten_light.png");
         background-size: 70%;
         background-position: top;
         background-repeat: no-repeat;
+        color:white;
     }
     .leiterfeld_hoch_ende {
         /* background-color: rgb(15, 65, 15); */
-        background-image: url("./images/roehre_up_oben.png");
+        background-image: url("./images/roehre_up_oben_light.png");
         background-size: 70%;
         background-position: bottom;
         background-repeat: no-repeat;
     }
     /* Röhrenfelder mit Verbindungsstücken rot */
-    #feld17, #feld27, #feld69, #feld70, #feld89, #feld83 {
-        background-image: url("./images/roehre_down_verbindung.png");
+    div #feld17, div #feld27, div #feld69, div #feld70, div #feld89, div #feld83 {
+        background-image: url("./images/roehre_down_verbindung_light.png");
         background-size: 70%;
         background-position: center;
+        background-repeat: no-repeat;
+        color: white;
     }
     /* Röhrenfelder mit Verbindungsstücken grün */
-    #feld23, #feld45, #feld67, #feld72, #feld77 {
-        background-image: url("./images/roehre_up_verbindung.png");
+    div #feld23, div #feld45, div #feld67, div #feld72, div #feld77 {
+        background-image: url("./images/roehre_up_verbindung_light.png");
         background-size: 70%;
         background-position: center;
+        background-repeat: no-repeat;
+        color: white;
     }
 
-    /* Startfeld */
-    #feld0 {
-        background-color: #7c7b7b;
+    /* Startfeld und Zielfeld*/
+    div #feld0, div #feld99 {
+        background: rgba(245,198,255, .9);
     }
-    /* Zielfeld */
-    #feld99 {
-        background-color: #7c7b7b;
-    }
+
     /* Tauschfeld */
     #feld55 {
         /* background-color: rgb(150, 85, 43); */
         background-image: url("./images/swap.png");
-        background-size: 80%;
+        background-size: 70%;
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -160,12 +171,13 @@ main {
     /* Spielfiguren */
     .spielfigur {
         border-radius: 50px;
-        width: 30%;
-        height: 30%;
+        width: 20px;
+        height: 20px;
         overflow: visible;
         border: none;
         margin: auto;
     }
+
     #board div.spielfigur {
         border: none;
     }
@@ -178,13 +190,15 @@ main {
         padding: 10px;
         justify-content: center;
         align-items: center;
-        border: solid #cccccc 1px;
+        border: solid #6305C0 0.5px;
+        background: rgba(245,198,255, .5);
         position: sticky;
         bottom: 10px;
     }
     /* Spielfiguranzeige */
     #spielfiguranzeige {
         font-size: 1em;
+        font-weight:bold;
         display: flex;
         justify-content: center;
         margin: 5px;
@@ -192,22 +206,24 @@ main {
     /* Wuerfelanzeige */
     #wuerfelanzeige {
         text-align: center;
-        color: white;
+    }
+    button {
+        background-color: #BAA1FF;
+        color: #6305C0;
+        padding: 5px;
+        border-radius: 5%;
+        border-style: none;
+        font-family: 'Raleway', sans-serif;
     }
     #wuerfelbutton {
-        padding: 5px;
-        border: solid #cccccc 1px;
-        border-radius: 5%;
         margin-top: 10%;
+        
     }
     #wuerfelbutton:disabled {
         background-color: #cccccc;
         cursor: not-allowed;
     }
     #spezialwuerfelbutton {
-        padding: 5px;
-        border: solid #cccccc 1px;
-        border-radius: 5%;
         margin-top: 10%;
     }
     #spezialwuerfelbutton:disabled {
@@ -218,7 +234,8 @@ main {
     /* Details mit Spielregeln */
     details {
         margin: 10px 0;
-        background-color: rgb(41, 41, 41);
+        padding: 5px;
+        background: rgba(245,198,255, .5);
     }
     /* Spielregeln */
     #regelfeld {
@@ -230,7 +247,7 @@ main {
         text-align: justify;
     }
 }
-
+}
 /* Unter minimaler Bildschirmbreite */
 @media (max-width:780px) {
     #smallscreen{
