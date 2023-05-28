@@ -7,30 +7,110 @@
 /* Farbschema im Dark Mode */
 @media (prefers-color-scheme: dark) {
     html {
-        background-color: black;
+        background-image: url("./images/galaxy_dark.jpg");
+        color: #FEC7FF;
+    }
+
+    /* Spielfelder */
+    #board div {
+        border: solid #FEC7FF 0.5px;
+    }
+
+    /* Startfeld und Zielfeld*/
+    div #feld0, div #feld99 {
+        background: rgba(28,0,105, .5);
+    }
+
+    #feld55 {
+        background-image: url("./images/swap_dark.png");
+        background-size: 70%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #wuerfelfeld {
+        border: solid #FEC7FF 0.5px;
+        background: rgba(28,0,105, .5);
+    }
+
+    button {
+        background-color: #180846;
+        color: #FEC7FF;
+        border: #FEC7FF;
     }
     
+    #wuerfelbutton:disabled {
+        color: #6305C0;
+    }
+    #spezialwuerfelbutton:disabled {
+        color: #6305C0;
+    }
+
+    details {
+        background: rgba(28,0,105, .5);
+        border: #FEC7FF;
+    }
 
    }
 
 
 @media (prefers-color-scheme: light) {
+
+    html {
+        background-image: url("./images/galaxy-light.jpg");
+        color: #6305C0;
+    }
+
+    /* Spielfelder */
+    #board div {
+        border: solid #6305C0 0.5px;
+    }
+
+    /* Startfeld und Zielfeld*/
+    div #feld0, div #feld99 {
+        background: rgba(245,198,255, .5);
+    }
+
+    #feld55 {
+        background-image: url("./images/swap_light.png");
+        background-size: 70%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #wuerfelfeld {
+        border: solid #6305C0 0.5px;
+        background: rgba(245,198,255, .5);
+    }
+
+    button {
+        background-color: #F3BAFF;
+        color: #6305C0;
+        border: #6305C0;
+    }
+
+    details {
+        background: rgba(245,198,255, .5);
+        border: #6305C0;
+    }
+
+
+}
 /* Für alle Bildschirmbreiten*/
 .header {
     padding: 1em;
-    /* border-bottom: 1px solid var(--yellow-4); */
 }
+
 html {
-    background-image: url("./images/galaxy-light.jpg");
     background-size: cover;
     font-family: 'Raleway', sans-serif;
-    color: #6305C0;
-    
 }
+
 h1,h2 {
     max-width: 650px;
     margin: auto;
 }
+
 h1{
     font-size: 56pt;
 }
@@ -39,9 +119,7 @@ main {
     width: 80vw;
     max-width: 1200px;
     margin: 1em auto;
-    
 }
-
 
 
 /* Ab minimaler Bildschirmbreite */
@@ -96,11 +174,9 @@ main {
         display: block;
         text-align: center;
         aspect-ratio: 1/1;
-        border: solid #6305C0 0.5px;
         font-family:'Raleway', sans-serif;
         font-size: 12px;
         padding: 5%;
-        
     }
 
     /* Feldfarben */
@@ -153,20 +229,7 @@ main {
         background-repeat: no-repeat;
         color: white;
     }
-
-    /* Startfeld und Zielfeld*/
-    div #feld0, div #feld99 {
-        background: rgba(245,198,255, .5);
-    }
-
-    /* Tauschfeld */
-    #feld55 {
-        /* background-color: rgb(150, 85, 43); */
-        background-image: url("./images/swap.png");
-        background-size: 70%;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+   
 
     /* Spielfiguren */
     .spielfigur {
@@ -177,7 +240,6 @@ main {
         border: none;
         margin: auto;
     }
-
     #board div.spielfigur {
         border: none;
     }
@@ -190,10 +252,9 @@ main {
         padding: 10px;
         justify-content: center;
         align-items: center;
-        border: solid #6305C0 0.5px;
-        background: rgba(245,198,255, .5);
         position: sticky;
         bottom: 10px;
+        border-style: dashed;
     }
     /* Spielfiguranzeige */
     #spielfiguranzeige {
@@ -203,22 +264,21 @@ main {
         justify-content: center;
         margin: 5px;
     }
+
     /* Wuerfelanzeige */
     #wuerfelanzeige {
         text-align: center;
     }
     button {
-        background-color: #BAA1FF;
-        color: #6305C0;
         padding: 5px;
         border-radius: 5%;
-        border-style: none;
+        border: solid 0.5px;
+        border-style: dashed;
         font-family: 'Raleway', sans-serif;
         cursor: pointer;
     }
     #wuerfelbutton {
         margin-top: 10%;
-        
     }
     #wuerfelbutton:disabled {
         background-color: #DCD0FF;
@@ -236,7 +296,8 @@ main {
     details {
         margin: 10px 0;
         padding: 5px;
-        background: rgba(245,198,255, .5);
+        border: solid 0.5px;
+        border-style: dashed;
     }
     summary {
         cursor: pointer;
@@ -251,7 +312,7 @@ main {
         text-align: justify;
     }
 }
-}
+
 /* Unter minimaler Bildschirmbreite */
 @media (max-width:780px) {
     #smallscreen{
