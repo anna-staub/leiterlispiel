@@ -137,7 +137,7 @@ main {
         background-position: bottom;
         background-repeat: no-repeat;
     }
-    /* Röhrenfelder mit Verbindungsstücken rot */
+    /* Röhrenfelder mit Verbindungsstücken blau */
     div #feld17, div #feld27, div #feld69, div #feld70, div #feld89, div #feld83 {
         background-image: url("./images/roehre_down_verbindung_light.png");
         background-size: 70%;
@@ -145,7 +145,7 @@ main {
         background-repeat: no-repeat;
         color: white;
     }
-    /* Röhrenfelder mit Verbindungsstücken grün */
+    /* Röhrenfelder mit Verbindungsstücken pink */
     div #feld23, div #feld45, div #feld67, div #feld72, div #feld77 {
         background-image: url("./images/roehre_up_verbindung_light.png");
         background-size: 70%;
@@ -214,6 +214,7 @@ main {
         border-radius: 5%;
         border-style: none;
         font-family: 'Raleway', sans-serif;
+        cursor: pointer;
     }
     #wuerfelbutton {
         margin-top: 10%;
@@ -236,6 +237,9 @@ main {
         margin: 10px 0;
         padding: 5px;
         background: rgba(245,198,255, .5);
+    }
+    summary {
+        cursor: pointer;
     }
     /* Spielregeln */
     #regelfeld {
