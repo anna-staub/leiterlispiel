@@ -17,7 +17,10 @@ class Spiel {
     if(letzterWurf != null) {
       this.spielwuerfel.wuerfelergebnisAusgeben(letzterWurf);
     }
-    // zu Testzwecken: this.spielwuerfel = new Wuerfel(1);
+    // Bei aktivem zug54 Modus aktivierung des 1er-Würfels für den Test des Tauschfeldes
+    if (zug45mode) {
+      this.spielwuerfel = new Wuerfel(1);
+    }
     // Spielfigur bestimmen, welche am Zug ist
     if((letzterSpieler == 'spielfigur2' && letzterWurf == '6') | (letzterSpieler == 'spielfigur1' && letzterWurf != '6' && letzterWurf != '')) {
       this.aktuelleSpielfigur = this.spielfigur2;
@@ -120,14 +123,12 @@ class Spiel {
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
   }
 
-  /*
-  // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum Testen Würfel(1), Würfeldeld und Eventlistener für Würfelfeld und im spiel.html Testbutton auskommentieren)
+  // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum den zug45mode auf true setzen und im spiel.html Testbutton auskommentieren)
   spielzug54() {
     this.landefeldnummer = 54;
     this.spielfigurPlatzieren();
     this.spielerWechseln();
   }
-  */
 
   aufLeiterfeldPruefen() {
     if (this.landefeldObjekt instanceof Leiterfeld) {
@@ -250,6 +251,9 @@ class Spiel {
 // Debug Modus zum deaktivieren von console.logs
 let debug_mode = true;
 
+// zug54 Modus zum testen des Tauschfeldes
+let zug45mode = false;
+
 // in Storage gespeicherte Werte in Variablen speichern
 let gespeicherterName1 = StorageService.get('name1');
 let gespeicherterName2 = StorageService.get('name2');
@@ -275,12 +279,14 @@ wuerfelbuttons.forEach((button) => {
   });
 });
 
-/*
+// Button um direkt zu Feld 54 zu gelangen entfernen, wenn der zug45 Modus deaktiviert ist
+if (zug45mode === false) {
+  document.getElementById('zuFeld54').style.display='none';
+}
 // Auslöser, um Spielfigur direkt auf Feld 54 setzen
 document.getElementById('zuFeld54').addEventListener('click', () => {
   spiel.spielzug54();
 });
-*/
 
 // Spiel neu starten (mit den selben Spielern)
 document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()});
