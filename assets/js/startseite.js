@@ -36,7 +36,7 @@ function eingabenPruefen(form) {
         window.alert('ACHTUNG! \nDie Namen und Farben der Spieler*innen dürfen weder leer noch identisch sein. Bitte korrigiert eure Eingaben.');
     }
     else {
-        form.action='assets/html/spiel.html';
+        form.action='./spiel.html';
     }
     return false;
 }   
