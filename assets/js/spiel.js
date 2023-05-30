@@ -17,8 +17,8 @@ class Spiel {
     if(letzterWurf != null) {
       this.spielwuerfel.wuerfelergebnisAusgeben(letzterWurf);
     }
-    // Bei aktivem zug54 Modus aktivierung des 1er-Würfels für den Test des Tauschfeldes
-    if (zug45mode) {
+    // Bei aktivem zug54 Modus Aktivierung des 1er-Würfels für den Test des Tauschfeldes
+    if (zug54mode) {
       this.spielwuerfel = new Wuerfel(1);
     }
     // Spielfigur bestimmen, welche am Zug ist
@@ -123,7 +123,7 @@ class Spiel {
     if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
   }
 
-  // Testfunktion, um aktuelle Spielfigur auf Feld 54 setzen (zum den zug45mode auf true setzen und im spiel.html Testbutton auskommentieren)
+  // Testfunktion, um aktuelle Spielfigur auf Feld 54 zu setzen (zum Testen den zug54mode auf true setzen und im spiel.html den Testbutton auskommentieren)
   spielzug54() {
     this.landefeldnummer = 54;
     this.spielfigurPlatzieren();
@@ -249,10 +249,10 @@ class Spiel {
   }
 }
 // Debug Modus zum deaktivieren von console.logs
-let debug_mode = true;
+let debug_mode = false;
 
 // zug54 Modus zum testen des Tauschfeldes
-let zug45mode = false;
+let zug54mode = false;
 
 // in Storage gespeicherte Werte in Variablen speichern
 let gespeicherterName1 = StorageService.get('name1');
@@ -279,8 +279,8 @@ wuerfelbuttons.forEach((button) => {
   });
 });
 
-// Button um direkt zu Feld 54 zu gelangen entfernen, wenn der zug45 Modus deaktiviert ist
-if (zug45mode === false) {
+// Button um direkt zu Feld 54 zu gelangen entfernen, wenn der zug54 Modus deaktiviert ist
+if (zug54mode === false) {
   document.getElementById('zuFeld54').style.display='none';
 }
 // Auslöser, um Spielfigur direkt auf Feld 54 setzen
