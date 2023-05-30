@@ -12,7 +12,7 @@
   },
   "servers": [
     {
-      "url": "https://todo.swagger.io/api/v3"
+      "url": "https://343505-29.web.fhgr.ch/api/leiterlispiel/"
     }
   ],
   "tags": [
@@ -112,7 +112,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -149,11 +149,14 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
         "responses": {
+          "204": {
+            "description": "Kein Inhalt vorhanden"
+          },
           "400": {
             "description": "Fehlerhafte Anfrage"
           },
@@ -248,7 +251,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -267,7 +270,7 @@
             "description": "Fehlerhafte Anfrage"
           },
           "404": {
-            "description": "Spiel wurde nicht gefunden"
+            "description": "Spielfigur wurde nicht gefunden"
           },
           "405": {
             "description": "Unerlaubte Methode"
@@ -285,11 +288,14 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
         "responses": {
+          "204": {
+            "description": "Kein Inhalt vorhanden"
+          },
           "400": {
             "description": "Fehlerhafte Anfrage"
           },
@@ -311,7 +317,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -330,7 +336,7 @@
             "description": "Fehlerhafte Anfrage"
           },
           "404": {
-            "description": "Spiel wurde nicht gefunden"
+            "description": "Spielfigur wurde nicht gefunden"
           },
           "405": {
             "description": "Unerlaubte Methode"
@@ -348,11 +354,14 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
         "responses": {
+          "204": {
+            "description": "Kein Inhalt vorhanden"
+          },
           "400": {
             "description": "Fehlerhafte Anfrage"
           },
@@ -447,7 +456,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
@@ -484,11 +493,14 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "integer"
+              "type": "string"
             }
           }
         ],
         "responses": {
+          "204": {
+            "description": "Kein Inhalt vorhanden"
+          },
           "400": {
             "description": "Fehlerhafte Anfrage"
           },
@@ -505,9 +517,8 @@
         "type": "object",
         "properties": {
           "spielId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 1
+            "type": "string",
+            "example": "abc-123"
           },
           "wuerfelergebnis": {
             "type": "integer",
@@ -515,9 +526,8 @@
             "example": 5
           },
           "aktuelleSpielfigurId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 7
+            "type": "string",
+            "example": "abc-123"
           }
         }
       },
@@ -525,9 +535,8 @@
         "type": "object",
         "properties": {
           "spielfigurId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 1
+            "type": "string",
+            "example": "abc-123"
           },
           "farbe": {
             "type": "string",
@@ -539,14 +548,12 @@
             "example": 25
           },
           "spielId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 7
+            "type": "string",
+            "example": "abc-123"
           },
           "userId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 7
+            "type": "string",
+            "example": "abc-123"
           }
         }
       },
@@ -558,9 +565,8 @@
             "example": "Testspieler"
           },
           "userid": {
-            "type": "integer",
-            "format": "int32",
-            "example": 5
+            "type": "string",
+            "example": "abc-123"
           }
         }
       }

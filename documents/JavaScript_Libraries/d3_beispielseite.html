@@ -1,0 +1,107 @@
+<!-- Eine simple Seite mit zwei SVG-Kreisen, welche mit D3.js generiert und, je nach Nutzerinput, gestyled werden. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Beispielseite</h1>
+    <section>
+
+        <!-- div für die beiden Kreise-->
+        <div id = "ausgabe">
+            <svg height="200" width="1000">
+            </svg>
+        </div>
+
+        <!-- div für den Nutzerinput -->
+        <div id = "eingabe">
+
+            <!-- Farbwahl für Kreis 1 -->
+            <label for="farben1">Welche Farbe soll Kreis 1 haben?</label>
+            <select name="farben1" id="farben1">
+                <option value="none">---</option>
+                <option value="red">Rot</option>
+                <option value="green">Grün</option>
+                <option value="yellow">Gelb</option>
+                <option value="blue">Blau</option>
+                <option value="purple">Violett</option>
+            </select>
+            <button id="farben1bestaetigen">Bestätigen</button>
+
+            <!-- Farbwahl für Kreis 2 -->
+            <label for="farben2">Welche Farbe soll Kreis 2 haben?</label>
+            <select name="farben2" id="farben2">
+                <option value="none">---</option>
+                <option value="red">Rot</option>
+                <option value="green">Grün</option>
+                <option value="yellow">Gelb</option>
+                <option value="blue">Blau</option>
+                <option value="purple">Violett</option>
+            </select>
+            <button id="farben2bestaetigen">Bestätigen</button>
+
+        </div>
+    </section>
+
+
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="text/JavaScript">
+
+    let radii = [40, 80];
+
+        // Erstellen des ersten Kreises
+        d3.select("svg")// svg-Element ansprechen
+            .append("circle")       // ein Kreis-Element anhängen
+            .attr("id", "kreis1")   // dem Kreis-Element eine ID geben
+            .attr("cx", 250)        // Mittepunkt des 1. Kreises auf der x-Achse in Position 250 festlegen
+            .attr("cy", 100)        // Mittepunkt des 1. Kreises auf der y-Achse in Position 100 festlegen
+            .style("stroke", "black")   // Kontur festlegen
+            .style("fill", "none"); // Füllfarbe auf "none" festlegen
+            
+        
+        // Erstellen des zweiten Kreises analog zum ersten
+        d3.select("svg")
+        .append("circle")
+            .attr("id", "kreis2")
+            .attr("cx", 550)        // Mittepunkt des 2. Kreises auf der x-Achse in Position 550 festlegen
+            .attr("cy", 100)
+            .style("stroke", "black")
+            .style("fill", "none");
+
+
+
+        // Den Kreisen einen Radius geben basierend auf dem Mini-Datensatz "radii"
+        d3.selectAll("circle").data(radii)
+        .attr("r", function(d){return d;})
+
+
+        // Farbwahl für den 1. Kreis 
+        let farbwahl1 = document.getElementById("farben1");
+        let button1 = document.getElementById("farben1bestaetigen");
+        let farbe1 ;
+        button1.onclick = (event) => {
+            farbe1 = farbwahl1.value;
+            console.log(farbe1);
+            // 1. Kreis ansprechen und stylen
+            d3.select("#kreis1")
+                .style("fill", farbe1);
+        };
+        
+        // Farbwahl für den 2. Kreis analog zum ersten
+        let farbwahl2 = document.getElementById("farben2");
+        let button2 = document.getElementById("farben2bestaetigen");
+        let farbe2 ;
+        button2.onclick = (event) => {
+            farbe2 = farbwahl2.value;
+            console.log(farbe2);
+            d3.select("#kreis2")
+                .style("fill", farbe2);
+        };
+    </script>
+</body>
+</html>

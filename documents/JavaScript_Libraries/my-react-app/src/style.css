@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 5px; font-size: 18px;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+
+.avatar { 
+  margin: 5px;
+}
+
+.box {
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  margin-top: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  width: 200px;
+  float: left;
+}

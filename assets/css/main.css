@@ -1,0 +1,344 @@
+/* Alle verwendeten Bilder sind selbst erstellt, mit Ausnahme der beiden Hintergrundbilder */
+
+/* verwendete Schriftfamilie */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;900&display=swap');
+
+/* Farbschema im Dark Mode */
+@media (prefers-color-scheme: dark) {
+    html {
+        background-image: url("../images/galaxy_dark.jpg");
+        /* Bildquelle: WhataWin/shutterstock. Lizenziert. */
+        color: #FEC7FF;
+    }
+
+    /* Spielfelder */
+    #board div {
+        border: solid #FEC7FF 0.5px;
+    }
+
+    /* Startfeld und Zielfeld */
+    div #feld0, div #feld99 {
+        background: rgba(28,0,105, .5);
+    }
+
+    /* Tauschfeld */
+    #feld55 {
+        background-image: url("../images/swap_dark.png");
+        background-size: 70%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #wuerfelfeld {
+        border: solid #FEC7FF 0.5px;
+        background: rgba(28,0,105, .5);
+    }
+
+    button {
+        background-color: #180846;
+        color: #FEC7FF;
+        border: #FEC7FF;
+    }
+    
+    #wuerfelbutton:disabled {
+        color: #6305C0;
+    }
+
+    #spezialwuerfelbutton:disabled {
+        color: #6305C0;
+    }
+
+    details {
+        background: rgba(28,0,105, .5);
+        border: #FEC7FF;
+    }
+   }
+
+@media (prefers-color-scheme: light) {
+    html {
+        background-image: url("../images/galaxy-light.jpg");
+        /* Bildquelle: s_maria/shutterstock. Lizenziert. */
+        color: #6305C0;
+    }
+
+    /* Spielfelder */
+    #board div {
+        border: solid #6305C0 0.5px;
+    }
+
+    /* Startfeld und Zielfeld*/
+    div #feld0, div #feld99 {
+        background: rgba(245,198,255, .5);
+    }
+
+    /* Tauschfeld */
+    #feld55 {
+        background-image: url("../images/swap_light.png");
+        background-size: 70%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    #wuerfelfeld {
+        border: solid #6305C0 0.5px;
+        background: rgba(245,198,255, .5);
+    }
+
+    button {
+        background-color: #F3BAFF;
+        color: #6305C0;
+        border: #6305C0;
+    }
+
+    details {
+        background: rgba(245,198,255, .5);
+        border: #6305C0;
+    }
+}
+
+/* Für alle Bildschirmbreiten*/
+.header {
+    padding: 1em;
+}
+
+html {
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1,h2 {
+    max-width: 650px;
+    margin: auto;
+}
+
+h1{
+    font-size: 56pt;
+}
+
+main {
+    width: 80vw;
+    max-width: 1200px;
+    margin: 1em auto;
+}
+
+/* Ab minimaler Bildschirmbreite */
+@media (min-width:780px) {
+    #smallscreen {
+        display: none;
+    }
+
+    #spiel {
+        display: block;
+    }
+
+    /* Anzeige über Spielfeld*/
+    #anzeige_oben {
+        display: flex;
+    }
+
+    #nochmalspielen {
+        margin-right: 8px;;
+    }
+
+    /* Startseite */
+    .addspieler {
+        margin-bottom: 5px;
+    }
+
+    #addspieler1 {
+        margin-top: 5px;
+    }
+
+    #spielerauswahl {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Sektion mit Spielfeld und Würfelfeld */
+    #game_area {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    /* Spielbrett */
+    #board {
+        width: 75%;
+        display: grid; 
+        grid-template-columns: repeat(10, 1fr);
+        gap: 6px;
+        margin-top: 6px;
+    }
+
+    /* Spielfelder */
+    #board div {
+        position: relative;
+        display: block;
+        text-align: center;
+        aspect-ratio: 1/1;
+        font-family:'Raleway', sans-serif;
+        font-size: 12px;
+        padding: 5%;
+    }
+
+    /* Feldfarben */
+    .normalesfeld {
+        background-color: transparent;
+    }
+
+    .leiterfeld_runter_start {
+        background-image: url("../images/roehre_down_oben.png");
+        background-size: 70%;
+        background-position: bottom;
+        background-repeat: no-repeat;
+    }
+
+    #board div.leiterfeld_runter_ende {
+        background-image: url("../images/roehre_down_unten.png");
+        background-size: 70%;
+        background-position: top;
+        background-repeat: no-repeat;
+        color:white;        
+    }
+
+    #board div.leiterfeld_hoch_start {
+        background-image: url("../images/roehre_up_unten.png");
+        background-size: 70%;
+        background-position: top;
+        background-repeat: no-repeat;
+        color:white;
+    }
+
+    .leiterfeld_hoch_ende {
+        background-image: url("../images/roehre_up_oben.png");
+        background-size: 70%;
+        background-position: bottom;
+        background-repeat: no-repeat;
+    }
+
+    /* Röhrenfelder mit Verbindungsstücken blau */
+    div #feld17, div #feld27, div #feld69, div #feld70, div #feld89, div #feld83 {
+        background-image: url("../images/roehre_down_verbindung.png");
+        background-size: 70%;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+    }
+
+    /* Röhrenfelder mit Verbindungsstücken pink */
+    div #feld23, div #feld45, div #feld67, div #feld72, div #feld77 {
+        background-image: url("../images/roehre_up_verbindung.png");
+        background-size: 70%;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+    }
+   
+    /* Spielfiguren */
+    .spielfigur {
+        border-radius: 50px;
+        width: 20px;
+        height: 20px;
+        overflow: visible;
+        border: none;
+        margin: auto;
+    }
+
+    #board div.spielfigur {
+        border: none;
+    }
+
+    /* Wuerfelfeld */
+    #wuerfelfeld {
+        display: flex;
+        flex-direction: column;
+        margin: 0 6px;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        position: sticky;
+        bottom: 10px;
+        border-style: dashed;
+    }
+
+    /* Spielfiguranzeige */
+    #spielfiguranzeige {
+        font-size: 1em;
+        font-weight:bold;
+        display: flex;
+        justify-content: center;
+        margin: 5px;
+    }
+
+    /* Wuerfelanzeige */
+    #wuerfelanzeige {
+        text-align: center;
+    }
+
+    button {
+        padding: 5px;
+        border-radius: 5%;
+        border: solid 0.5px;
+        border-style: dashed;
+        font-family: 'Raleway', sans-serif;
+        cursor: pointer;
+    }
+
+    #wuerfelbutton {
+        margin-top: 10%;
+    }
+
+    #wuerfelbutton:disabled {
+        background-color: #DCD0FF;
+        cursor: not-allowed;
+    }
+
+    #spezialwuerfelbutton {
+        margin-top: 10%;
+    }
+
+    #spezialwuerfelbutton:disabled {
+        background-color: #DCD0FF;
+        cursor: not-allowed;
+    }
+
+    /* Details mit Spielregeln */
+    details {
+        margin: 10px 0;
+        padding: 5px;
+        border: solid 0.5px;
+        border-style: dashed;
+    }
+
+    summary {
+        cursor: pointer;
+    }
+
+    /* Spielregeln */
+    #regelfeld {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: justify;
+    }
+}
+
+/* Unter minimaler Bildschirmbreite */
+@media (max-width:780px) {
+    #smallscreen{
+        display: block;
+    }
+
+    p {
+        margin: 3%;
+    }
+
+    #spiel{
+        display: none;
+    }
+}
