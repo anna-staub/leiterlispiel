@@ -293,7 +293,7 @@ document.getElementById('nochmalspielen').addEventListener('click', () => {spiel
 
 // TODO: evtl. noch besseren Ort für die Funktiondefinition finden?
 function neustart(form) {
-  form.action = '../../index.html';
+  form.action = './index.html';
   return false;
 }
 
