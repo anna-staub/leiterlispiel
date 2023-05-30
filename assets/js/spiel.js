@@ -223,7 +223,7 @@ class Spiel {
           // Storage löschen
           sessionStorage.clear();
           // zur Startseite navigieren
-          location.href = '../../index.html';
+          location.href = 'index.html';
         }
       }, 500);
     }
