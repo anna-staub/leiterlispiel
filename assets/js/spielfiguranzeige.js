@@ -9,10 +9,10 @@ class Spielfiguranzeige {
         this.#domElementSpielfiguranzeige.setAttribute('id', this.spiel.aktuelleSpielfigur.spielfigurname);
     }
 
-    // Spielfigur und Spielername in Spielfiguranzeige anzeigen + ausgewählte Farben übergeben
+    // Spielfigur und Spielername in Spielfiguranzeige anzeigen + ausgewählte Farben und angegebene Namen übergeben
     spielfigurAnzeigen(){
         this.#domElementSpielfiguranzeige.setAttribute('id', this.spiel.aktuelleSpielfigur.spielfigurname);
-        if (debug_mode) {console.log('Aktuelle Spielfigur: '+ this.#domElementSpielfiguranzeige.id);}
+        if (debug_modus) {console.log('Aktuelle Spielfigur: '+ this.#domElementSpielfiguranzeige.id);}
         this.#domElementSpielfiguranzeige.setAttribute('style', 'background-color:'+this.spiel.aktuelleSpielfigur.spielfigurfarbe);
         document.getElementById('spielfiguranzeige').innerHTML = this.spiel.aktuelleSpielfigur.spielername;
         document.getElementById('spielfiguranzeige').appendChild(this.#domElementSpielfiguranzeige);

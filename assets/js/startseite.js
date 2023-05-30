@@ -22,14 +22,6 @@ selektor2.addEventListener('change', () => {
     StorageService.set('farbe2', selektor2.value);
 });
 
-function disableSpielstart() {
-    document.getElementById('spielstarten').setAttribute('disabled', '');
-}
-
-function enableSpielstart() {
-    document.getElementById('spielstarten').removeAttribute('disabled');
-}
-
 function eingabenPruefen(form) {
     form.action ='';
     if (selektor1.value === 'leer' | selektor2.value === 'leer' | selektor1.value === selektor2.value | name1.value === '' | name2.value === '' | name1.value === name2.value) {
@@ -39,4 +31,4 @@ function eingabenPruefen(form) {
         form.action='./spiel.html';
     }
     return false;
-}   
+}

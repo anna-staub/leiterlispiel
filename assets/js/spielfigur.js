@@ -13,7 +13,7 @@ class Spielfigur {
     this.spielfigurfarbe = spielfigurfarbe;
     this.spielername = spielername;
 
-    // Class-Attribut und ID-Attribut auf DOM-Element setzen
+    // Class-Attribut und ID-Attribut auf DOM-Element setzen sowie Spielfigurfarbe übergeben
     this.#domElementSpielfigur.setAttribute('class', 'spielfigur');
     this.#domElementSpielfigur.style.backgroundColor = this.spielfigurfarbe;
     this.#domElementSpielfigur.setAttribute('id', this.spielfigurname);

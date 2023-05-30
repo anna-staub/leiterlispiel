@@ -1,7 +1,4 @@
-/*
-@import "https://unpkg.com/open-props";
-@import "https://unpkg.com/open-props/normalize.min.css";
-*/
+/* verwendete Schriftfamilie */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;900&display=swap');
 
 /* Farbschema im Dark Mode */
@@ -16,11 +13,12 @@
         border: solid #FEC7FF 0.5px;
     }
 
-    /* Startfeld und Zielfeld*/
+    /* Startfeld und Zielfeld */
     div #feld0, div #feld99 {
         background: rgba(28,0,105, .5);
     }
 
+    /* Tauschfeld */
     #feld55 {
         background-image: url("../images/swap_dark.png");
         background-size: 70%;
@@ -42,6 +40,7 @@
     #wuerfelbutton:disabled {
         color: #6305C0;
     }
+
     #spezialwuerfelbutton:disabled {
         color: #6305C0;
     }
@@ -50,12 +49,9 @@
         background: rgba(28,0,105, .5);
         border: #FEC7FF;
     }
-
    }
 
-
 @media (prefers-color-scheme: light) {
-
     html {
         background-image: url("../images/galaxy-light.jpg");
         color: #6305C0;
@@ -71,6 +67,7 @@
         background: rgba(245,198,255, .5);
     }
 
+    /* Tauschfeld */
     #feld55 {
         background-image: url("../images/swap_light.png");
         background-size: 70%;
@@ -93,9 +90,8 @@
         background: rgba(245,198,255, .5);
         border: #6305C0;
     }
-
-
 }
+
 /* Für alle Bildschirmbreiten*/
 .header {
     padding: 1em;
@@ -121,12 +117,12 @@ main {
     margin: 1em auto;
 }
 
-
 /* Ab minimaler Bildschirmbreite */
 @media (min-width:780px) {
     #smallscreen {
         display: none;
     }
+
     #spiel {
         display: block;
     }
@@ -135,6 +131,7 @@ main {
     #anzeige_oben {
         display: flex;
     }
+
     #nochmalspielen {
         margin-right: 8px;;
     }
@@ -143,9 +140,11 @@ main {
     .addspieler {
         margin-bottom: 5px;
     }
+
     #addspieler1 {
         margin-top: 5px;
     }
+
     #spielerauswahl {
         display: flex;
         flex-direction: column;
@@ -160,6 +159,7 @@ main {
         align-items: flex-end;
         justify-content: space-between;
     }
+
     /* Spielbrett */
     #board {
         width: 75%;
@@ -168,6 +168,7 @@ main {
         gap: 6px;
         margin-top: 6px;
     }
+
     /* Spielfelder */
     #board div {
         position: relative;
@@ -183,36 +184,37 @@ main {
     .normalesfeld {
         background-color: transparent;
     }
+
     .leiterfeld_runter_start {
-        /* background-color: rgb(224, 210, 16);  */
         background-image: url("../images/roehre_down_oben_light.png");
         background-size: 70%;
         background-position: bottom;
         background-repeat: no-repeat;
     }
+
     #board div.leiterfeld_runter_ende {
-       /* background-color: rgb(158, 148, 12); */
         background-image: url("../images/roehre_down_unten_light.png");
         background-size: 70%;
         background-position: top;
         background-repeat: no-repeat;
         color:white;        
     }
+
     #board div.leiterfeld_hoch_start {
-        /* background-color: rgb(31, 114, 31); */
         background-image: url("../images/roehre_up_unten_light.png");
         background-size: 70%;
         background-position: top;
         background-repeat: no-repeat;
         color:white;
     }
+
     .leiterfeld_hoch_ende {
-        /* background-color: rgb(15, 65, 15); */
         background-image: url("../images/roehre_up_oben_light.png");
         background-size: 70%;
         background-position: bottom;
         background-repeat: no-repeat;
     }
+
     /* Röhrenfelder mit Verbindungsstücken blau */
     div #feld17, div #feld27, div #feld69, div #feld70, div #feld89, div #feld83 {
         background-image: url("../images/roehre_down_verbindung_light.png");
@@ -221,6 +223,7 @@ main {
         background-repeat: no-repeat;
         color: white;
     }
+
     /* Röhrenfelder mit Verbindungsstücken pink */
     div #feld23, div #feld45, div #feld67, div #feld72, div #feld77 {
         background-image: url("../images/roehre_up_verbindung_light.png");
@@ -230,7 +233,6 @@ main {
         color: white;
     }
    
-
     /* Spielfiguren */
     .spielfigur {
         border-radius: 50px;
@@ -240,6 +242,7 @@ main {
         border: none;
         margin: auto;
     }
+
     #board div.spielfigur {
         border: none;
     }
@@ -256,6 +259,7 @@ main {
         bottom: 10px;
         border-style: dashed;
     }
+
     /* Spielfiguranzeige */
     #spielfiguranzeige {
         font-size: 1em;
@@ -269,6 +273,7 @@ main {
     #wuerfelanzeige {
         text-align: center;
     }
+
     button {
         padding: 5px;
         border-radius: 5%;
@@ -277,16 +282,20 @@ main {
         font-family: 'Raleway', sans-serif;
         cursor: pointer;
     }
+
     #wuerfelbutton {
         margin-top: 10%;
     }
+
     #wuerfelbutton:disabled {
         background-color: #DCD0FF;
         cursor: not-allowed;
     }
+
     #spezialwuerfelbutton {
         margin-top: 10%;
     }
+
     #spezialwuerfelbutton:disabled {
         background-color: #DCD0FF;
         cursor: not-allowed;
@@ -299,9 +308,11 @@ main {
         border: solid 0.5px;
         border-style: dashed;
     }
+
     summary {
         cursor: pointer;
     }
+
     /* Spielregeln */
     #regelfeld {
         display: flex;
@@ -318,9 +329,11 @@ main {
     #smallscreen{
         display: block;
     }
+
     p {
         margin: 3%;
     }
+
     #spiel{
         display: none;
     }
