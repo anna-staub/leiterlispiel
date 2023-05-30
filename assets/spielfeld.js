@@ -24,7 +24,7 @@ class Spielfeld {
         if (debug_mode) {console.log('landekonfig ist: '+landekonfig);} // gibt undefined bei normalem Feld oder [object Object] bei Leiterfeld
 
         // Wenn ein Objekt mit j als id im Leiterkonfig-Array vorhanden ist, wird das neue Feld als Leiterfeld instanziert.
-        if (konfig) { 
+        if (konfig) { // gibt true oder false
           feld = new Leiterfeld(this, j, konfig.zielfeld);
           if (debug_mode) {console.log('ist feld leiterfeld? ');}
           if (debug_mode) {console.log(feld instanceof Leiterfeld);}  // gibt true
