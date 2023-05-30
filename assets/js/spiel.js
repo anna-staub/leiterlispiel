@@ -1,4 +1,4 @@
-// ! Spielfeld erstellen
+// Spielfeld erstellen
 class Spiel {
   #gewinner = null;
 
@@ -17,8 +17,8 @@ class Spiel {
     if(letzterWurf != null) {
       this.spielwuerfel.wuerfelergebnisAusgeben(letzterWurf);
     }
-    // Bei aktivem zug54 Modus Aktivierung des 1er-Würfels für den Test des Tauschfeldes
-    if (zug54mode) {
+    // Bei aktivem zug54_modus oder zug98_modus Aktivierung des 1er-Würfels für den Test des Tauschfeldes oder des Sieges
+    if (zug54_modus || zug98_modus) {
       this.spielwuerfel = new Wuerfel(1);
     }
     // Spielfigur bestimmen, welche am Zug ist
@@ -27,7 +27,7 @@ class Spiel {
     } else {
       this.aktuelleSpielfigur = this.spielfigur1;
     }
-    // gespeicherte Feldnummer von spielfigur1 verwenden wenn vorhanden -> wenn nicht vorhanden ist der Wert 0 (siehe Erklärung bei let feldVonFigur1)
+    // gespeicherte Feldnummer von spielfigur1 verwenden wenn vorhanden -> wenn nicht vorhanden, ist der Wert 0 (siehe Erklärung bei let feldVonFigur1)
     let startfeld = this.spielfeld.getFeldUeberFeldnummer(feldVonFigur1);
     this.spielfigur1.setFeld(startfeld);
     this.spielfigur1.addToFeld(startfeld.domElement);
@@ -61,14 +61,13 @@ class Spiel {
       }
     } else {
       this.spielfigurPlatzieren();
-      // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
       // Spezialfeld für Spielfigurentausch prüfen
       if (this.landefeldnummer == 55) {
         this.spielfigurPlatzieren();
         // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen
         setTimeout(() => {if (this.tauschfeldAbfragen()) {
-          if (debug_mode) {console.log('Tausch durchführen');}
+          if (debug_modus) {console.log('Tausch durchführen');}
           this.tauschDurchfuehren();
         }},500);
       }
@@ -76,7 +75,7 @@ class Spiel {
       // in jedem Fall: Spieler wechseln
       this.spielerWechseln();
     }
-    if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
+    if (debug_modus) {console.log('landefeldnummer:'+this.landefeldnummer);}
   }
 
   spezialspielzug() {
@@ -106,33 +105,39 @@ class Spiel {
       }
     } else {
       this.spielfigurPlatzieren();
-      // Wenn die aktuelle Feldnummer anzeigt, dass das aktuelle Feld ein Leiterfeld ist...
       this.aufLeiterfeldPruefen();
       // Spezialfeld für Spielfigurentausch prüfen
       if (this.landefeldnummer == 55) {
         this.spielfigurPlatzieren();
         // Abfragen, ob getauscht werden soll, falls Abfrage true ergibt: Tausch durchführen
         setTimeout(() => {if (this.tauschfeldAbfragen()) {
-          if (debug_mode) {console.log('Tausch durchführen');}
+          if (debug_modus) {console.log('Tausch durchführen');}
           this.tauschDurchfuehren();
         }},500);
       }
       spielstandSpeichern(this.aktuelleSpielfigur.spielfigurname, this.landefeldnummer, 'letzter Wurf', this.wuerfelergebnis, 'letzter Spieler');
       this.spielerWechseln();
     }
-    if (debug_mode) {console.log('landefeldnummer:'+this.landefeldnummer);}
+    if (debug_modus) {console.log('landefeldnummer:'+this.landefeldnummer);}
   }
 
-  // Testfunktion, um aktuelle Spielfigur auf Feld 54 zu setzen (zum Testen den zug54mode auf true setzen und im spiel.html den Testbutton auskommentieren)
+  // Testfunktion, um aktuelle Spielfigur auf Feld 54 zu setzen (zum Testen den zug54_modus auf true setzen)
   spielzug54() {
     this.landefeldnummer = 54;
     this.spielfigurPlatzieren();
     this.spielerWechseln();
   }
 
+  // Testfunktion, um aktuelle Spielfigur auf Feld 98 zu setzen (zum Testen den zug98_modus auf true setzen)
+  spielzug98() {
+    this.landefeldnummer = 98;
+    this.spielfigurPlatzieren();
+    this.spielerWechseln();
+  }
+
   aufLeiterfeldPruefen() {
     if (this.landefeldObjekt instanceof Leiterfeld) {
-      if (debug_mode) {console.log('Leiter-Start:'+this.landefeldnummer);}
+      if (debug_modus) {console.log('Leiter-Start:'+this.landefeldnummer);}
       this.leiterBenutzen();
     }
   }
@@ -147,9 +152,8 @@ class Spiel {
         }
       });
       this.landefeldnummer = zielfeld;
-      if (debug_mode) {console.log('Leiter-Ende:'+this.landefeldnummer);}
+      if (debug_modus) {console.log('Leiter-Ende:'+this.landefeldnummer);}
       this.landefeldObjekt = this.spielfeld.getFeldUeberFeldnummer(this.landefeldnummer);
-      // ...wird die Spielfigur dem Zielfeld des entsprechenden Leiterfelds angehängt.
       setTimeout(() => {this.aktuelleSpielfigur.setFeld(this.landefeldObjekt); this.aktuelleSpielfigur.addToFeld(this.landefeldObjekt.domElement);}, 500);
   }
 
@@ -162,12 +166,12 @@ class Spiel {
   }
   
   tauschfeldAbfragen() {
-    console.log('Du bist auf dem Tauschfeld gelandet.');
+    if (debug_modus) {console.log('Du bist auf dem Tauschfeld gelandet.');}
     if (window.confirm('Möchtest du mit der gegnerischen Spielfigur Platz tauschen?')) {
-      console.log('Ja, Figuren tauschen!');
+      if (debug_modus) {console.log('Ja, Figuren tauschen!');}
       return true;      
     } else{
-      console.log('Nein, Figuren NICHT tauschen!');
+      if (debug_modus) {console.log('Nein, Figuren NICHT tauschen!');}
       return false;
     }
   }
@@ -180,7 +184,7 @@ class Spiel {
     } else {
      positionNeu = this.spielfigur1.getSpielfigurFeldNummer();
     }
-    console.log('Alte Position = '+positionAlt+'. Neue Position = '+positionNeu);
+    if (debug_modus) {console.log('Alte Position = '+positionAlt+'. Neue Position = '+positionNeu);}
     // aktuelleSpielfigur dem Feld mit der Feldnummer positionNeu zuweisen
     this.landefeldnummer = positionNeu;
     this.spielfigurPlatzieren();
@@ -198,13 +202,13 @@ class Spiel {
   }
   
   spielerWechseln() {
-    // Wenn nicht 6 gewürfelt wurde wechselt die aktuelle Spielfigur, bei 6 bleibt er gleich.
+    // Wenn nicht 6 gewürfelt wurde wechselt die aktuelle Spielfigur, bei 6 bleibt sie gleich.
     setTimeout(() => {if (this.wuerfelergebnis != 6) {
       // Spielfiguranzeige leeren
       this.spielfiguranzeige.spielfigurAusAnzeigeEntfernen();
       //Spielfigur wechseln
       this.aktuelleSpielfigur = this.aktuelleSpielfigur === this.spielfigur1? this.spielfigur2 : this.spielfigur1;
-      // Spielfiguranzeige mit aktuelle Spielfigur füllen
+      // Spielfiguranzeige mit aktueller Spielfigur füllen
       this.spielfiguranzeige.spielfigurAnzeigen();
     }}, 500);
   }
@@ -248,11 +252,14 @@ class Spiel {
     this.spielfiguranzeige.spielfigurAnzeigen();
   }
 }
-// Debug Modus zum deaktivieren von console.logs
-let debug_mode = false;
+// Debug Modus zum Deaktivieren von console.logs
+let debug_modus = false;
 
-// zug54 Modus zum testen des Tauschfeldes
-let zug54mode = false;
+// zug54 Modus zum Testen des Tauschfeldes
+let zug54_modus = false;
+
+// zug98 Modus zum Testen des Sieges
+let zug98_modus = false;
 
 // in Storage gespeicherte Werte in Variablen speichern
 let gespeicherterName1 = StorageService.get('name1');
@@ -279,28 +286,36 @@ wuerfelbuttons.forEach((button) => {
   });
 });
 
-// Button um direkt zu Feld 54 zu gelangen entfernen, wenn der zug54 Modus deaktiviert ist
-if (zug54mode === false) {
+// Button um direkt zu Feld 54 zu gelangen entfernen, wenn zug54_modus deaktiviert ist
+if (zug54_modus === false) {
   document.getElementById('zuFeld54').style.display='none';
 }
-// Auslöser, um Spielfigur direkt auf Feld 54 setzen
+// Auslöser, um Spielfigur direkt auf Feld 54 zu setzen
 document.getElementById('zuFeld54').addEventListener('click', () => {
   spiel.spielzug54();
+});
+
+// Button um direkt zu Feld 98 zu gelangen entfernen, wenn zug98_modus deaktiviert ist
+if (zug98_modus === false) {
+  document.getElementById('zuFeld98').style.display='none';
+}
+// Auslöser, um Spielfigur direkt auf Feld 98 zu setzen
+document.getElementById('zuFeld98').addEventListener('click', () => {
+  spiel.spielzug98();
 });
 
 // Spiel neu starten (mit den selben Spielern)
 document.getElementById('nochmalspielen').addEventListener('click', () => {spiel.spielZuruecksetzen()});
 
-// TODO: evtl. noch besseren Ort für die Funktiondefinition finden?
+// Funktion um zurück zu der Startseite zu gelangen
 function neustart(form) {
   form.action = './index.html';
   return false;
 }
 
-// neues Spiel mit neuen Spielern starten (zurück zur Startseite)
+// neues Spiel mit neuen Spielern starten (zurück zu der Startseite)
 document.getElementById('neuesspiel').addEventListener('click', () => {
   // Storage löschen
   sessionStorage.clear();
-  // zur Startseite navigieren
   neustart();
 });
