@@ -1,3 +1,5 @@
+/* Alle verwendeten Bilder sind selbst erstellt, mit Ausnahme der beiden Hintergrundbilder */
+
 /* verwendete Schriftfamilie */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;900&display=swap');
 
@@ -5,6 +7,7 @@
 @media (prefers-color-scheme: dark) {
     html {
         background-image: url("../images/galaxy_dark.jpg");
+        /* Bildquelle: WhataWin/shutterstock. Lizenziert. */
         color: #FEC7FF;
     }
 
@@ -54,6 +57,7 @@
 @media (prefers-color-scheme: light) {
     html {
         background-image: url("../images/galaxy-light.jpg");
+        /* Bildquelle: s_maria/shutterstock. Lizenziert. */
         color: #6305C0;
     }
 
@@ -186,14 +190,14 @@ main {
     }
 
     .leiterfeld_runter_start {
-        background-image: url("../images/roehre_down_oben_light.png");
+        background-image: url("../images/roehre_down_oben.png");
         background-size: 70%;
         background-position: bottom;
         background-repeat: no-repeat;
     }
 
     #board div.leiterfeld_runter_ende {
-        background-image: url("../images/roehre_down_unten_light.png");
+        background-image: url("../images/roehre_down_unten.png");
         background-size: 70%;
         background-position: top;
         background-repeat: no-repeat;
@@ -201,7 +205,7 @@ main {
     }
 
     #board div.leiterfeld_hoch_start {
-        background-image: url("../images/roehre_up_unten_light.png");
+        background-image: url("../images/roehre_up_unten.png");
         background-size: 70%;
         background-position: top;
         background-repeat: no-repeat;
@@ -209,7 +213,7 @@ main {
     }
 
     .leiterfeld_hoch_ende {
-        background-image: url("../images/roehre_up_oben_light.png");
+        background-image: url("../images/roehre_up_oben.png");
         background-size: 70%;
         background-position: bottom;
         background-repeat: no-repeat;
@@ -217,7 +221,7 @@ main {
 
     /* Röhrenfelder mit Verbindungsstücken blau */
     div #feld17, div #feld27, div #feld69, div #feld70, div #feld89, div #feld83 {
-        background-image: url("../images/roehre_down_verbindung_light.png");
+        background-image: url("../images/roehre_down_verbindung.png");
         background-size: 70%;
         background-position: center;
         background-repeat: no-repeat;
@@ -226,7 +230,7 @@ main {
 
     /* Röhrenfelder mit Verbindungsstücken pink */
     div #feld23, div #feld45, div #feld67, div #feld72, div #feld77 {
-        background-image: url("../images/roehre_up_verbindung_light.png");
+        background-image: url("../images/roehre_up_verbindung.png");
         background-size: 70%;
         background-position: center;
         background-repeat: no-repeat;
