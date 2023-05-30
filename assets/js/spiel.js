@@ -223,7 +223,7 @@ class Spiel {
           // Storage löschen
           sessionStorage.clear();
           // zur Startseite navigieren
-          location.href = './index.html';
+          location.href = '../../index.html';
         }
       }, 500);
     }
@@ -293,7 +293,7 @@ document.getElementById('nochmalspielen').addEventListener('click', () => {spiel
 
 // TODO: evtl. noch besseren Ort für die Funktiondefinition finden?
 function neustart(form) {
-  form.action = 'index.html';
+  form.action = '../../index.html';
   return false;
 }
 
