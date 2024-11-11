@@ -1,9 +1,10 @@
-# Leiterspiel FRONT Projekt 
+# Persönlicher Fork eines gemeinsam entwickelten Spiels 
 
-Repository für unser Projekt im Modul Frontend Development an der FHGR.<br>
+Dies ist ein Fork, um in Einzelarbeit am gemeinsam entwickelten Spiel weiter zu arbeiten.<br>
+Das originale Repository des gemeinsamen Projektes ist [hier](https://gitlab.com/yxaw/front-projekt) zu finden.<br>
 Autorinnen: Yara Wagner, Anna Staub, Morena Sager<br>
 Dozierende: Marc Iten, Elham Müller<br>
-Zeitraum: HS22 + FS23<br>
+Zeitraum des Gruppenprojektes: HS22 + FS23<br>
 
 
 ## Projektidee
