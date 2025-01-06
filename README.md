@@ -4,7 +4,7 @@ Dies ist ein Fork, um in Einzelarbeit am gemeinsam entwickelten Spiel weiter zu 
 Das originale Repository des gemeinsamen Projektes ist auf [GitLab](https://gitlab.com/yxaw/front-projekt) zu finden.<br>
 Autorinnen: Yara Wagner, Anna Staub, Morena Sager<br>
 Dozierende: Marc Iten, Elham Müller<br>
-Zeitraum des Gruppenprojektes: 12.09.2022 - 31-05-2023<br>
+Zeitraum des Gruppenprojektes: 12.09.2022 - 31.05.2023<br>
 
 ## Link zum Spiel
 
