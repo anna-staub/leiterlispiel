@@ -6,6 +6,9 @@ Autorinnen: Yara Wagner, Anna Staub, Morena Sager<br>
 Dozierende: Marc Iten, Elham Müller<br>
 Zeitraum des Gruppenprojektes: HS22 + FS23<br>
 
+## Link zum Spiel
+
+[Jetzt spielen](https://anna-staub.github.io/leiterlispiel/)
 
 ## Projektidee
 
