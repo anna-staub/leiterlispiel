@@ -11,6 +11,9 @@
     "version": "1.0.0"
   },
   "servers": [
+    {"description": "SwaggerHub API Auto Mocking"
+    "url": "https://virtserver.swaggerhub.com/INFO_767/swagger-leiterlispiel_open_api_3_0/1.0.0"
+    },
     {
       "url": "https://343505-29.web.fhgr.ch/api/leiterlispiel/"
     }
