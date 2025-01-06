@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Swagger Leiterlispiel - OpenAPI 3.0",
-    "description": "Dies ist eine Schnittstellendefinition für ein Leiterlispiel.\n\n- [Repository Leiterlispiel](https://gitlab.com/yxaw/front-projekt)\n- [Link zur Leiterlispiel-Schnittstellendefinition](https://gitlab.com/yxaw/front-projekt/-/blob/main/documents/Gruppe_C_Schnittstelle.json)",
+    "description": "Dies ist eine Schnittstellendefinition für ein Leiterlispiel.\n\n- [Repository Leiterlispiel](https://github.com/anna-staub/leiterlispiel)\n- [Link zur Leiterlispiel-Schnittstellendefinition](https://github.com/anna-staub/leiterlispiel/blob/main/documents/Gruppe_C_Schnittstelle.json)",
     "termsOfService": "http://swagger.io/terms/",
     "license": {
       "name": "Apache 2.0",
