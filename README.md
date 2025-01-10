@@ -6,10 +6,6 @@ Autorinnen: Yara Wagner, Anna Staub, Morena Sager<br>
 Dozierende: Marc Iten, Elham Müller<br>
 Zeitraum des Gruppenprojektes: 12.09.2022 - 31.05.2023<br>
 
-## Link zum Spiel
-
-[anna-staub.github.io/leiterlispiel](https://anna-staub.github.io/leiterlispiel/)
-
 ## Projektidee
 
 Wir verfolgen das Ziel, ein Leiterspiel zu programmieren. Das Spielfeld soll aus hundert Feldern bestehen. Dabei ist das erste Feld gleichzeitig auch das Startfeld und das letzte Feld das Zielfeld. Im Spiel sind die nummerierten Spielfelder mit Leitern verbunden, die man je nachdem hochklettern kann, um den Weg abzukürzen, oder runterklettern muss, um somit einen Teil des Weges erneut zurückzulegen. Mit einem Würfel wird bestimmt, wie weit die Spielfigur fahren darf. Würfelt man die Zahl sechs, darf man einen zusätzlichen Zug ausführen. Der Spieler, der als erstes das Zielfeld erreicht gewinnt.
